@@ -22,7 +22,21 @@ The library also supports mouse and keyboard handlers (WIP).
 
 Amelia's API's are inspired by [nannou](https://nannou.cc/) and [p5js](https://p5js.org/).
 
-## Example
+## Get started
+
+I have prepared a [getting started guide](https://birdboat00.github.io/amelia/guide/).
+
+### Requirements and Download
+**amelia** requires a browser that supports ES6 modules.
+
+To use it, download the `module` folder and drop it into
+your project. Then you can import the stuff you need
+from the `mod.mjs` module like this for example:
+```js
+import { app, Color } from "path/to/module/mod.mjs";
+```
+
+### Example
 
 Here is a quick example on how to use **amelia**.
 
@@ -51,20 +65,6 @@ app()
     .run();
 ```
 
-## Disclaimer
-It just started working on this library and there is still
-a lot of work to be done. Feel free to help out!
-
-## Requirements and Download
-**amelia** requires a browser that supports ES6 modules.
-
-To use it, download the `module` folder and drop it into
-your project. Then you can import the stuff you need
-from the `mod.mjs` module like this for example:
-```js
-import { app, Color } from "path/to/module/mod.mjs";
-```
-
 ## Goals and Non-Goals
 Goals:
 - ✅ be simple and lightweight
@@ -75,6 +75,10 @@ Non-Goals:
 - ❌ replace p5.js or Processing
 - ❌ 3D graphics
 - ❌ being the fastest
+
+## Disclaimer
+It just started working on this library and there is still
+a lot of work to be done. Feel free to help out!
 
 ## Benchmarks
 **TBD**
