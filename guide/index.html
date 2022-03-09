@@ -216,6 +216,46 @@ const view = (app, model) => {
                 The amelia coordinate system starts with
                 <code>(0 / 0)</code> at the top left.
             </p>
+            <h3>Framerate</h3>
+            <p>
+                By default the the framerate of the app
+                is the rate of <code>requestAnimationFrame()</code>
+                which is used by default. If you want a custom
+                framerate you can specify it by setting
+                the framerate property on the AppBuilder when
+                calling <code>app()</code> by calling the
+                <code>framerate(fps)</code> function with the
+                frames per second you want the app to run at.
+            </p>
+            <p>
+                So for example
+                <pre>
+                    <code>
+app()
+    .view(view)
+    .framerate(1)
+    .run();</code>
+                </pre>
+                would run the app at one frame per second.
+            </p>
+            <p>
+                You can also set the framerate of an app
+                that is already created and running by
+                calling <code>framerate(fps)</code> on the
+                app instance like this for example:
+                <pre>
+                    <code>
+const view = (app, model) => {
+    ...
+
+    app.framerate(10);
+
+    ...
+};</code>
+                </pre>
+                This will run the app with 10 frames per
+                second at the next frame.
+            </p>
         </section>
         <section id="drawing-shapes">
             <h2>Drawing shapes</h2>

@@ -22,6 +22,7 @@ export class AppBuilder {
     keyPressedFn;
     backend;
     parentElemId;
+    frameRate;
 
     constructor() {
         this.viewFn = () => { };
@@ -32,6 +33,7 @@ export class AppBuilder {
         this.parentElemId = null;
         this.canvasSize = { w: 100, h: 100 };
         this.backend = Backends.Canvas2D;
+        this.frameRate = null;
     }
 
     /**
@@ -125,6 +127,11 @@ export class AppBuilder {
         return this;
     }
 
+    framerate(fps) {
+        this.frameRate = fps;
+        return this;
+    }
+
     /**
      * Build and run an @type {App} with the specified parameters.
      * This function will not return until the app has exited.
@@ -137,7 +144,7 @@ export class AppBuilder {
             mousePressedFn: this.mousePressedFn,
             mouseMoveFn: this.mouseMoveFn
         };
-        new App(fns, this.parentElemId, this.canvasSize, null, this.backend).run();
+        new App(fns, this.parentElemId, this.canvasSize, null, this.backend, this.frameRate).run();
     }
 }
 
@@ -155,11 +162,12 @@ export class App {
     canvas;
     backendKind;
     parentElemId;
+    frameRate;
 
     fps;
     times;
 
-    constructor(fns, parentElemId, size, canvas, backendKind) {
+    constructor(fns, parentElemId, size, canvas, backendKind, frameRate) {
         this.viewFn = fns.viewFn;
         this.modelFn = fns.modelFn;
         this.mouseMoveFn = fns.mouseMoveFn;
@@ -170,6 +178,7 @@ export class App {
         this.frames = 0;
         this.backendKind = backendKind;
         this.parentElemId = parentElemId;
+        this.frameRate = frameRate;
 
         this.drawer = null;
 
@@ -203,7 +212,11 @@ export class App {
 
         this.model = this.modelFn(this);
 
-        requestAnimationFrame(this.#loop.bind(this));
+        if(this.frameRate == null) {
+            requestAnimationFrame(this.#loop.bind(this));
+        } else {
+            setTimeout(this.#loop.bind(this), 1000 / this.frameRate);
+        }
     }
 
     #loop(timestamp) {
@@ -218,7 +231,12 @@ export class App {
 
         this.frames++;
 
-        requestAnimationFrame(this.#loop.bind(this));
+        // requestAnimationFrame(this.#loop.bind(this));
+        if(this.frameRate == null) {
+            requestAnimationFrame(this.#loop.bind(this));
+        } else {
+            setTimeout(this.#loop.bind(this), 1000 / this.frameRate);
+        }
     }
 
     /**
@@ -240,6 +258,10 @@ export class App {
 
     fps() {
         return this.fps;
+    }
+
+    framerate(fps) {
+        this.frameRate = fps;
     }
 
     get width() {
