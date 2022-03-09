@@ -105,6 +105,17 @@ export class Color {
         return Color.fromFloats(r, g, b, 1.0);
     }
 
+    /**
+     * Creates a color from an HSL color value.
+     * Assumes h, s and l are in the range of 0 to 359 and 0 to 100.
+     * @param {number} h - hue
+     * @param {number} s - saturation
+     * @param {number} l - luminance
+     */
+    static fromHsl8(h, s, l) {
+        return Color.fromHsl(h / 359, s / 100, l / 100);
+    }
+
     static fromHsb8(h, s, b) {
         let l = (2 - s) * b / 2;
         if (l != 0) {
