@@ -101,3 +101,18 @@ code, pre { background-color: #f9f9f9; }
     .container { width: 80%; }
     .four.columns { width: calc(80% / 12 * 4); }
 }
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #333;
+        color: #fff;
+    }
+
+    pre, code {
+        background-color: #555;
+    }
+
+    small {
+        color: #eee;
+    }
+}
