@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinate System | examples | amelia</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Open+Sans+Condensed:300&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../guide/style.css">
+
+    <script type="module" id="script">
+        import { app, Color } from "../module/mod.mjs";
+
+        const view = (app) => {
+            let draw = app.draw();
+
+            draw.background()
+                .color(Color.Black);
+
+            draw.line()
+                .start(10, 5)
+                .end(10, 390)
+                .color(Color.White);
+
+            draw.line()
+                .start(5, 10)
+                .end(390, 10)
+                .color(Color.White);
+
+            draw.text()
+                .size(10)
+                .xy(15, 20)
+                .text("(10 / 10)")
+                .color(Color.White, Color.Transparent);
+
+            draw.text()
+                .size(10)
+                .xy(15, 100)
+                .text("(10 / 100)")
+                .color(Color.White, Color.Transparent);
+
+            draw.text()
+                .size(10)
+                .xy(100, 20)
+                .text("(100 / 10)")
+                .color(Color.White, Color.Transparent);
+
+            draw.finish();
+        }
+
+        app()
+            .size(400, 400)
+            .parent("example")
+            .view(view)
+            .run();
+    </script>
+</head>
+
+<body>
+    <div class="container center">
+        <h1>Coordinate System | <a href="./index.html">amelia examples</a></h1>
+        <p>The amelia coordinate system starts at the top left.</p>
+        <div id="example"></div>
+    </div>
+    <script src="injectcode.js" defer></script>
+</body>
+
+</html>

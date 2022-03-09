@@ -27,6 +27,7 @@
         <ol>
             <li><a href="#what-is-amelia">What is amelia?</a></li>
             <li><a href="#first-app">The first sketch</a></li>
+            <li><a href="#general">General information</a></li>
             <li><a href="#drawing-shapes">Drawing shapes</a></li>
         </ol>
         <section id="what-is-amelia">
@@ -208,6 +209,14 @@ const view = (app, model) => {
                 and calls <code>view()</code> again.
             </p>
         </section>
+        <section id="general">
+            <h2>General information</h2>
+            <h3>Coordinate System</h3>
+            <p>
+                The amelia coordinate system starts with
+                <code>(0 / 0)</code> at the top left.
+            </p>
+        </section>
         <section id="drawing-shapes">
             <h2>Drawing shapes</h2>
             <p>
@@ -251,6 +260,8 @@ const view = (app, model) => {
                 <li><a href="#prim-arc">Arcs</a></li>
                 <li><a href="#prim-tri">Triangles</a></li>
                 <li><a href="#prim-text">Text</a></li>
+                <li><a href="#prim-point">Points</a></li>
+                <li><a href="#prim-poly">Polygons</a></li>
             </ul>
             <h4 id="prim-rect">Rectangles</h4>
             <p>A rectangle shape.</p>
@@ -322,6 +333,20 @@ const view = (app, model) => {
                 the width of the text using <code>measureWidth()</code>.
                 It returns the width of the text in pixels when rendered
                 with the currently assigned properties.
+            </p>
+            <h4 id="prim-point">Points</h4>
+            <p>A single dot.</p>
+            <p>
+                A Point primitive is a single point at its specified
+                position. Internally it's drawn as an ellipse with a
+                radius of <code>0.4px</code>.
+            </p>
+            <h4 id="prim-poly">Polygons</h4>
+            <p>A polygon, like a quad but with a flexible number of edges.</p>
+            <p>
+                A polygon needs edge points. Those can be added with
+                <code>vertex(x, y)</code> which adds a new edge (vertex)
+                to the polygon at the given x and y coordinate.
             </p>
         </section>
     </main>

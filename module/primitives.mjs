@@ -130,6 +130,32 @@ export class Primitive extends DrawCommand {
     }
 }
 
+export class PointPrimitive extends Primitive {
+    constructor(queue) {
+        super(queue);
+    }
+}
+
+export class PolygonPrimitive extends Primitive {
+    vertices;
+    constructor(queue) {
+        super(queue);
+
+        this.vertices = [];
+    }
+
+    /**
+     * Push a vertex into the vertices list.
+     * @param {number} x - the x coordinate of the vertex
+     * @param {number} y - the y coordiante of the vertex
+     * @returns {PolygonPrimitive}
+     */
+    vertex(x, y) {
+        this.vertices.push({ x: x, y: y });
+        return this;
+    }
+}
+
 export class TextPrimitive extends Primitive {
     displayString;
     fontName;

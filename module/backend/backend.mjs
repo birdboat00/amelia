@@ -11,5 +11,7 @@ export class Backend {
     drawArc(arc) { }
     drawTriangle(tri) { }
     drawText(text) { }
+    drawPoint(point) { }
+    drawPolygon(polygon) { }
     clearBackground(bg) { }
 }

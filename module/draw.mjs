@@ -1,5 +1,5 @@
 import { getBackendInstance } from "./backend/backends.mjs";
-import { ArcPrimitive, Background, CirclePrimitive, LinePrimitive, QuadPrimitive, RectPrimitive, SetBlendMode, SetColor, SetOrigin, TextPrimitive, TrianglePrimitive } from "./primitives.mjs";
+import { ArcPrimitive, Background, CirclePrimitive, LinePrimitive, PointPrimitive, PolygonPrimitive, QuadPrimitive, RectPrimitive, SetBlendMode, SetColor, SetOrigin, TextPrimitive, TrianglePrimitive } from "./primitives.mjs";
 
 export class Drawer {
     canvas;
@@ -119,8 +119,24 @@ export class Drawer {
         return prim;
     }
 
-    textWidth(textString) {
-        return 0;
+    /**
+     * Begin drawing a point.
+     * @returns {PointPrimitive}
+     */
+    point() {
+        let prim = new PointPrimitive(this.queue);
+        this.queue.push(prim);
+        return prim;
+    }
+
+    /**
+     * Begin drawing a polygon.
+     * @returns {PolygonPrimitive}
+     */
+    poly() {
+        let prim = new PolygonPrimitive(this.queue);
+        this.queue.push(prim);
+        return prim;
     }
 
     /**
@@ -151,6 +167,10 @@ export class Drawer {
                 this.backend.drawArc(cmd);
             } else if (cmd instanceof TextPrimitive) {
                 this.backend.drawText(cmd);
+            } else if (cmd instanceof PointPrimitive) {
+                this.backend.drawPoint(cmd);
+            } else if (cmd instanceof PolygonPrimitive) {
+                this.backend.drawPolygon(cmd);
             }
             this.backend.endCmd();
         };

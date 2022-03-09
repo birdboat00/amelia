@@ -103,4 +103,21 @@ export class Canvas2DBackend extends Backend {
         this.ctx.fillText(text.displayString, text.pos.x, text.pos.y);
         this.ctx.strokeText(text.displayString, text.pos.x, text.pos.y);
     }
+
+    drawPoint(point) {
+        this.ctx.beginPath();
+        this.ctx.ellipse(point.pos.x, point.pos.y, 0.4, 0.4, 0, 0, Math.PI * 2);
+        this.ctx.stroke();
+    }
+
+    drawPolygon(poly) {
+        this.ctx.beginPath();
+        this.ctx.moveTo(poly.vertices[0].x, poly.vertices[0].y);
+        for(let i = 1; i < poly.vertices.length; i++) {
+            this.ctx.lineTo(poly.vertices[i].x, poly.vertices[i].y);
+        }
+        this.ctx.closePath();
+        this.ctx.stroke();
+        this.ctx.fill();
+    }
 }
