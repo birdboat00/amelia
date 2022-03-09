@@ -67,8 +67,26 @@ ol { list-style-type: decimal-leading-zero; }
 
 code, pre { background-color: #f9f9f9; }
 
-.disclaimer {
+.disclaimer, .importantbox {
     background: darkred;
+    color: #fff;
+    padding: 0.25em;
+    margin: 0 1em 1.5em 1em;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.warnbox {
+    background: yellow;
+    color: #333;
+    padding: 0.25em;
+    margin: 0 1em 1.5em 1em;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.infobox {
+    background: darkolivegreen;
     color: #fff;
     padding: 0.25em;
     margin: 0 1em 1.5em 1em;

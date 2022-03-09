@@ -15,6 +15,7 @@ export class LoopMode {
     static RefreshSync() { return new LoopMode(true, null, null); }
     static FrameRate(framerate) { return new LoopMode(null, null, framerate); }
     static NTimes(nTimes) { return new LoopMode(null, nTimes, null); }
+    static Once() { return new LoopMode(null, 0, null); }
 
     get isRefreshSync() { return this.refreshSync != null; }
     get isNTimes() { return this.nTimes != null; }

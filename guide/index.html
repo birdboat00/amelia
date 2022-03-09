@@ -20,7 +20,7 @@
             This guide walks you through setting up and using
             <a href="../">amelia</a> for you creative projects.
         </p>
-        <aside class="disclaimer">
+        <aside class="warnbox">
             <p>Amelia is still a very young project and heavily work-in-progress.</p>
         </aside>
         <h6>Sections</h6>
@@ -257,7 +257,7 @@ app()
                 you want the app to run at.
             </p>
             <h4>LoopMode.NTimes</h4>
-            <aside class="disclaimer">
+            <aside class="importantbox">
                 <p>This loop mode is currently not implemented yet.</p>
             </aside>
             <p>
@@ -268,6 +268,10 @@ app()
                 Use it with <code>LoopMode.NTimes(nTimes)</code> where
                 <code>nTimes</code> is the number of times you want
                 the view function to be called before the app stops.
+            </p>
+            <h4>LoopMode.Once</h4>
+            <p>
+                This is a shorthand for <code>LoopMode.NTimes(1)</code>.
             </p>
         </section>
         <section id="drawing-shapes">
