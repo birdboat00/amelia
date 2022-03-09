@@ -18,11 +18,11 @@ export const randomRangeInt = (min, max) => {
 
 export const map = (n, start1, stop1, start2, stop2, bounds) => {
     const newval = (n - start1) / (stop1 - start1) * (stop2 - start2) + start2;
-    if(!bounds) {
+    if (!bounds) {
         return newval;
     }
 
-    if(start2 < stop2) {
+    if (start2 < stop2) {
         return constrain(newval, start2, stop2);
     } else {
         return constrain(newval, stop2, start2);

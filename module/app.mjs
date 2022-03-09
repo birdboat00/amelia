@@ -23,11 +23,11 @@ export class AppBuilder {
     backend;
 
     constructor() {
-        this.viewFn = () => {};
-        this.modelFn = () => {};
-        this.mouseMoveFn = () => {};
-        this.mousePressedFn = () => {};
-        this.keyPressedFn = () => {};
+        this.viewFn = () => { };
+        this.modelFn = () => { };
+        this.mouseMoveFn = () => { };
+        this.mousePressedFn = () => { };
+        this.keyPressedFn = () => { };
         this.canvasSize = { w: 100, h: 100 };
         this.backend = Backends.Canvas2D;
     }
@@ -162,7 +162,7 @@ export class App {
     }
 
     run() {
-        if(this.canvas == null) {
+        if (this.canvas == null) {
             this.canvas = document.createElement("canvas");
             this.canvas.width = this.size.w;
             this.canvas.height = this.size.h;
@@ -189,7 +189,7 @@ export class App {
 
     #loop(timestamp) {
 
-        while(this.times.length > 0 && this.times[0] <= timestamp - 1000) {
+        while (this.times.length > 0 && this.times[0] <= timestamp - 1000) {
             this.times.shift();
         }
         this.times.push(timestamp);

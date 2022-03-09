@@ -1,0 +1,12 @@
+# EditorConfig: http://editorconfig.org/
+
+# Top-most EditorConfig file
+root = true
+
+# Rules for mjs files
+[*.mjs]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+end_of_line = crlf
+insert_final_newline = false

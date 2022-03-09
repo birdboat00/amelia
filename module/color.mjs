@@ -11,7 +11,7 @@ import { clamp } from "./util.mjs";
  *
  * Each component is a public member, an integer in the range 0 to 255
  */
- export class Color {
+export class Color {
     r;
     g;
     b;
@@ -106,8 +106,8 @@ import { clamp } from "./util.mjs";
     }
 
     static fromHsb8(h, s, b) {
-        let l = (2  - s) * b / 2;
-        if(l != 0) {
+        let l = (2 - s) * b / 2;
+        if (l != 0) {
             if (l == 0) {
                 s = 0;
             } else if (l < 0.5) {

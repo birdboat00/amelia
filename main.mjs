@@ -8,7 +8,7 @@ const organic_view = (app, model) => {
     let x = app.width / randomRange(70, 1000);
 
 
-    for(let i = 0; i < app.height * 2; i += x) {
+    for (let i = 0; i < app.height * 2; i += x) {
         let xp = app.width / 2 + (Math.tan(i) * i) / (x * 2);
         let yp = app.height - i;
         let hue = map(x, app.width / 1000, app.width / 70, 130, 50);
@@ -96,7 +96,7 @@ const circleAndTriView = (app, model) => {
 };
 
 const circleAndTriModel = (app) => {
-    return { circlePos: { x: 30, y: 30 }};
+    return { circlePos: { x: 30, y: 30 } };
 };
 
 const circleAndTriMp = (app, model, ev) => {

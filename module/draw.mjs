@@ -18,7 +18,7 @@ export class Drawer {
     /**
      * Reset the state in the Drawer instance.
      */
-    reset() {}
+    reset() { }
 
     /**
      * Translate the position of the origin to the

@@ -55,7 +55,7 @@ export class Canvas2DBackend extends Backend {
 
         let path = new Path2D();
         path.moveTo(quad.pos.x, quad.pos.y);
-        for(let i = 1; i < quad.vertices.length; i++) {
+        for (let i = 1; i < quad.vertices.length; i++) {
             let vert = quad.vertices[i];
             path.lineTo(vert.x, vert.y);
         }

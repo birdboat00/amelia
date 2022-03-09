@@ -7,7 +7,7 @@ export const Backends = {
 };
 
 export const getBackendInstance = (backend, canvas) => {
-    switch(backend) {
+    switch (backend) {
         case Backends.Canvas2D:
             return new Canvas2DBackend(canvas.getContext("2d"));
         case Backends.Null:
