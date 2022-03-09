@@ -32,17 +32,17 @@
                         Color.fromBytes(255, 255, i * 20));
             }
 
-            draw.text()
+            let titleText = draw.text()
                 .size(16)
                 .text("Forest Chamomile")
-                .xy(300 - 65, 540)
                 .color(Color.Yellow, Color.Transparent);
+            titleText.xy(300 - titleText.measureWidth() / 2, 540);
 
-            draw.text()
+            let text = draw.text()
                 .size(14)
                 .text("birdboat00 | made with amelia")
-                .xy(300 - 93, 560)
                 .color(Color.White, Color.Transparent);
+            text.xy(300 - text.measureWidth() / 2, 560);
 
             draw.finish();
         };

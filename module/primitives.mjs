@@ -172,6 +172,20 @@ export class TextPrimitive extends Primitive {
         this.fontSize = fontSize;
         return this;
     }
+
+    /**
+     * Calculates the width of the text in pixels with
+     * the currently assigned properties.
+     * WARNING: can be slow and probably always is
+     * @returns {number} - the width of the text in pixels
+     */
+    measureWidth() {
+        // TODO: this must be very slow oooof
+        const canvas = document.createElement("canvas");
+        let ctx = canvas.getContext("2d");
+        ctx.font = `${this.fontSize}px ${this.fontName}`;
+        return ctx.measureText(this.displayString).width;
+    }
 }
 
 export class TrianglePrimitive extends Primitive {
