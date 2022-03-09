@@ -1,6 +1,26 @@
 import { Backends } from "./backend/backends.mjs";
 import { Drawer } from "./draw.mjs";
 
+export class LoopMode {
+    nTimes;
+    frameRate;
+    refreshSync;
+
+    constructor(refreshSync, nTimes, frameRate) {
+        this.refreshSync = refreshSync;
+        this.nTimes = nTimes;
+        this.frameRate = frameRate;
+    }
+
+    static RefreshSync() { return new LoopMode(true, null, null); }
+    static FrameRate(framerate) { return new LoopMode(null, null, framerate); }
+    static NTimes(nTimes) { return new LoopMode(null, nTimes, null); }
+
+    get isRefreshSync() { return this.refreshSync != null; }
+    get isNTimes() { return this.nTimes != null; }
+    get isFrameRate() { return this.frameRate != null; }
+}
+
 /**
  * Begin building the @type {App}
  * @returns {AppBuilder} - the app builder
@@ -22,7 +42,7 @@ export class AppBuilder {
     keyPressedFn;
     backend;
     parentElemId;
-    frameRate;
+    loopMode;
 
     constructor() {
         this.viewFn = () => { };
@@ -33,7 +53,7 @@ export class AppBuilder {
         this.parentElemId = null;
         this.canvasSize = { w: 100, h: 100 };
         this.backend = Backends.Canvas2D;
-        this.frameRate = null;
+        this.loopMode = LoopMode.RefreshSync();
     }
 
     /**
@@ -127,8 +147,13 @@ export class AppBuilder {
         return this;
     }
 
-    framerate(fps) {
-        this.frameRate = fps;
+    /**
+     * Specify the loop mode that the app should use.
+     * @param {LoopMode} mode - the loop mode to use
+     * @returns {AppBuilder}
+     */
+    loopmode(mode) {
+        this.loopMode = mode;
         return this;
     }
 
@@ -144,7 +169,7 @@ export class AppBuilder {
             mousePressedFn: this.mousePressedFn,
             mouseMoveFn: this.mouseMoveFn
         };
-        new App(fns, this.parentElemId, this.canvasSize, null, this.backend, this.frameRate).run();
+        new App(fns, this.parentElemId, this.canvasSize, null, this.backend, this.loopMode).run();
     }
 }
 
@@ -162,12 +187,12 @@ export class App {
     canvas;
     backendKind;
     parentElemId;
-    frameRate;
+    loopMode;
 
     fps;
     times;
 
-    constructor(fns, parentElemId, size, canvas, backendKind, frameRate) {
+    constructor(fns, parentElemId, size, canvas, backendKind, loopMode) {
         this.viewFn = fns.viewFn;
         this.modelFn = fns.modelFn;
         this.mouseMoveFn = fns.mouseMoveFn;
@@ -178,7 +203,7 @@ export class App {
         this.frames = 0;
         this.backendKind = backendKind;
         this.parentElemId = parentElemId;
-        this.frameRate = frameRate;
+        this.loopMode = loopMode;
 
         this.drawer = null;
 
@@ -212,10 +237,11 @@ export class App {
 
         this.model = this.modelFn(this);
 
-        if(this.frameRate == null) {
+        console.log(this.loopMode);
+        if(this.loopMode.isRefreshSync) {
             requestAnimationFrame(this.#loop.bind(this));
-        } else {
-            setTimeout(this.#loop.bind(this), 1000 / this.frameRate);
+        } else if (this.loopMode.isFrameRate) {
+            setTimeout(this.#loop.bind(this), 1000 / this.loopMode.frameRate);
         }
     }
 
@@ -231,11 +257,10 @@ export class App {
 
         this.frames++;
 
-        // requestAnimationFrame(this.#loop.bind(this));
-        if(this.frameRate == null) {
+        if(this.loopMode.isRefreshSync) {
             requestAnimationFrame(this.#loop.bind(this));
-        } else {
-            setTimeout(this.#loop.bind(this), 1000 / this.frameRate);
+        } else if (this.loopMode.isFrameRate) {
+            setTimeout(this.#loop.bind(this), 1000 / this.loopMode.frameRate);
         }
     }
 
@@ -260,8 +285,15 @@ export class App {
         return this.fps;
     }
 
-    framerate(fps) {
-        this.frameRate = fps;
+    /**
+     * Specify the loop mode that the app should use.
+     * This is used from the next frame on.
+     * @param {LoopMode} mode - the loop mode to use
+     * @returns {App}
+     */
+    loopmode(mode) {
+        this.loopMode = mode;
+        return this;
     }
 
     get width() {

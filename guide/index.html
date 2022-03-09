@@ -216,45 +216,58 @@ const view = (app, model) => {
                 The amelia coordinate system starts with
                 <code>(0 / 0)</code> at the top left.
             </p>
-            <h3>Framerate</h3>
+            <h3>Loop Modes</h3>
             <p>
-                By default the the framerate of the app
-                is the rate of <code>requestAnimationFrame()</code>
-                which is used by default. If you want a custom
-                framerate you can specify it by setting
-                the framerate property on the AppBuilder when
-                calling <code>app()</code> by calling the
-                <code>framerate(fps)</code> function with the
-                frames per second you want the app to run at.
+                By default the app will run as fast as the
+                browser calls <code>requestAnimationFrame</code>.
+                This is one of the three loop modes.
             </p>
             <p>
-                So for example
+                The loop mode is specified by calling either
+                <code>loopmode(mode)</code> on the app builder
+                with one of the loop modes as an argument or
+                by calling the function with same name on the app
+                instance while it is running. In that case the loop
+                mode is used after the current frame is finished.
+                Here is an example:
                 <pre>
                     <code>
 app()
     .view(view)
-    .framerate(1)
+    .loopmode(LoopMode.FrameRate(1))
     .run();</code>
                 </pre>
-                would run the app at one frame per second.
+            </p>
+            <h4>LoopMode.RefreshSync</h4>
+            <p>
+                With that loop mode the view loop runs as fast as
+                the browser calls <code>requestAnimationFrame()</code>.
             </p>
             <p>
-                You can also set the framerate of an app
-                that is already created and running by
-                calling <code>framerate(fps)</code> on the
-                app instance like this for example:
-                <pre>
-                    <code>
-const view = (app, model) => {
-    ...
-
-    app.framerate(10);
-
-    ...
-};</code>
-                </pre>
-                This will run the app with 10 frames per
-                second at the next frame.
+                Use it with <code>LoopMode.RefreshSync()</code>.
+            </p>
+            <h4>LoopMode.FrameRate</h4>
+            <p>
+                In this loop mode the view loop as called as many
+                times a second as you want it to be called.
+            </p>
+            <p>
+                Use it with <code>LoopMode.FrameRate(framerate)</code>
+                where <code>framerate</code> is the frames per second
+                you want the app to run at.
+            </p>
+            <h4>LoopMode.NTimes</h4>
+            <aside class="disclaimer">
+                <p>This loop mode is currently not implemented yet.</p>
+            </aside>
+            <p>
+                This loop mode calls the view loop as many times as you
+                want and then stops.
+            </p>
+            <p>
+                Use it with <code>LoopMode.NTimes(nTimes)</code> where
+                <code>nTimes</code> is the number of times you want
+                the view function to be called before the app stops.
             </p>
         </section>
         <section id="drawing-shapes">
