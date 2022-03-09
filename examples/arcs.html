@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Chamomile | examples | amelia</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Open+Sans+Condensed:300&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../guide/style.css">
+
+    <script type="module" id="script">
+        import { app, Color } from "../module/mod.mjs";
+
+        const view = (app, model) => {
+            let draw = app.draw();
+
+            model.iteration += 0.05;
+
+            draw.background()
+                .color(Color.fromHex(0x141414ff));
+
+            for(let i = 0; i < 20; i++) {
+                draw.arc()
+                    .xy(300, 300)
+                    .radius(20 * i / 2)
+                    .start(0)
+                    .end(Math.PI * (2 - i / model.iteration))
+                    .color(Color.Transparent,
+                        Color.fromBytes(255, 255, i * 20));
+            }
+
+            draw.text()
+                .size(16)
+                .text("Forest Chamomile")
+                .xy(300 - 65, 540)
+                .color(Color.Yellow, Color.Transparent);
+
+            draw.text()
+                .size(14)
+                .text("birdboat00 | made with amelia")
+                .xy(300 - 93, 560)
+                .color(Color.White, Color.Transparent);
+
+            draw.finish();
+        };
+
+        const model = (app) => {
+            return {
+                iteration: 10
+            }
+        }
+
+        app()
+            .size(600, 600)
+            .parent("example")
+            .view(view)
+            .model(model)
+            .run();
+    </script>
+</head>
+
+<body>
+    <div class="container center">
+        <h1>Forest Chamomile | <a href="./index.html">amelia examples</a></h1>
+        <div id="example"></div>
+        <script src="injectcode.js" defer></script>
+    </div>
+</body>
+
+</html>
