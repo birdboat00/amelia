@@ -9,7 +9,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Open+Sans+Condensed:300&amp;display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../guide/style.css">
 
     <script type="module" id="script">
         import { app, Color } from "../module/mod.mjs";
@@ -23,7 +23,7 @@
             draw.rect()
                 .xy(10, 10)
                 .wh(200, 100)
-                .color(Color.Red);
+                .color(Color.Pink);
 
             draw.circle()
                 .xy(300, 60)
@@ -32,28 +32,29 @@
 
             draw.tri()
                 .abc(110, 130, 10, 230, 210, 230)
-                .color(Color.Green);
+                .color(Color.Plum);
 
             draw.line()
                 .start(10, 240)
                 .end(590, 240)
-                .color(Color.Cyan);
+                .color(Color.Cornflower);
 
             draw.quad()
                 .points(10, 250, 100, 270, 120, 350, 20, 330)
-                .color(Color.Blue);
+                .color(Color.BabyBlue);
 
             draw.arc()
                 .xy(200, 300)
                 .radius(50)
                 .start(0)
                 .end(Math.PI)
-                .color(Color.White);
+                .color(Color.PastellGreen);
 
             draw.text()
                 .xy(10, 390)
                 .text("This is some text!")
-                .color(Color.White);
+                .size(16)
+                .color(Color.White, Color.Transparent);
 
             draw.finish();
         };

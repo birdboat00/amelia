@@ -133,12 +133,14 @@ export class Primitive extends DrawCommand {
 export class TextPrimitive extends Primitive {
     displayString;
     fontName;
+    fontSize;
 
     constructor(queue) {
         super(queue);
 
         this.displayString = "";
         this.fontName = "Arial";
+        this.fontSize = 12;
     }
 
     /**
@@ -158,6 +160,16 @@ export class TextPrimitive extends Primitive {
      */
     font(fontName) {
         this.fontName = fontName;
+        return this;
+    }
+
+    /**
+     * Specify the font size in pixels.
+     * @param {number} fontSize - the font size in pixels
+     * @returns {TextPrimitive}
+     */
+    size(fontSize) {
+        this.fontSize = fontSize;
         return this;
     }
 }

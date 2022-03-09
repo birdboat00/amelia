@@ -137,4 +137,45 @@ export class Color {
     static get Magenta() { return new Color(255, 0, 255); }
     static get Cyan() { return new Color(0, 255, 255); }
     static get Transparent() { return new Color(0, 0, 0, 0); }
+
+    static get PastellRed() { return new Color(172, 51, 53); }
+    static get GrassGreen() { return new Color(96, 117, 76); }
+    static get MetallicGold() { return new Color(211, 175, 55); }
+    static get Pink() { return new Color(255, 192, 203); }
+    static get PinkPantone() { return new Color(215, 72, 148); }
+    static get Plum() { return new Color(142, 69, 133); }
+    static get DarkViolet() { return new Color(112, 41, 99); }
+    static get OrchidViolet() { return new Color(122, 55, 139); }
+    static get Burgundy() { return new Color(159, 29, 53); }
+    static get LightBlue() { return new Color(153, 170, 255); }
+    static get PastellViolet() { return new Color(170, 102, 170); }
+    static get PastellYellow() { return new Color(230, 192, 115); }
+    static get Orange() { return new Color(255, 143, 0); }
+    static get PastellLightViolet() { return new Color(245, 206, 239); }
+    static get PastellGreen() { return new Color(154, 188, 167); }
+    static get LightGray() { return new Color(240, 240, 240); }
+    static get CardboardBrown() { return new Color(183, 168, 150); }
+    static get DarkBlue() { return new Color(28, 37, 77); }
+
+    static get Amaranth() { return new Color(229, 43, 80); }
+    static get Amber() { return new Color(255, 191, 0); }
+    static get Amethyst() { return new Color(153, 102, 204); }
+    static get BabyBlue() { return new Color(137, 207, 240); }
+    static get BananaYellow() { return new Color(255, 225, 53); }
+    static get BitterLemon() { return new Color(202, 224, 13); }
+    static get BitterLime() { return new Color(191, 255, 0); }
+    static get Bittersweet() { return new Color(254, 111, 94); }
+    static get BlackCoffee() { return new Color(59, 47, 47); }
+    static get Camouflage() { return new Color(120, 134, 107); }
+    static get Carmine() { return new Color(150, 0, 24); }
+    static get Champagne() { return new Color(247, 231, 206); }
+    static get Charcoal() { return new Color(54, 69, 79); }
+    static get CherryBlossom() { return new Color(255, 183, 197); }
+    static get ChromeYellow() { return new Color(255, 167, 0); }
+    static get Cobalt() { return new Color(0, 71, 171); }
+    static get Copper() { return new Color(184, 115, 51); }
+    static get Coral() { return new Color(255, 127, 80); }
+    static get Cornflower() { return new Color(100, 149, 237); }
+    static get Crimson() { return new Color(220, 20, 60); }
+    static get Dandelion() { return new Color(240, 225, 48); }
 }

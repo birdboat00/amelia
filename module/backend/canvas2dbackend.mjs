@@ -6,6 +6,8 @@ export class Canvas2DBackend extends Backend {
     constructor(context) {
         super();
         this.ctx = context;
+        // anti-alias fix
+        this.ctx.translate(0.5, 0.5);
     }
 
     beginCmd() {
@@ -96,7 +98,7 @@ export class Canvas2DBackend extends Backend {
     }
 
     drawText(text) {
-        this.ctx.font = text.fontName;
+        this.ctx.font = `${text.fontSize}px ${text.fontName}`;
 
         this.ctx.fillText(text.displayString, text.pos.x, text.pos.y);
         this.ctx.strokeText(text.displayString, text.pos.x, text.pos.y);
