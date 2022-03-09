@@ -1,18 +1,36 @@
-export class SetOrigin {
+export class DrawCommand {
+    preCommands;
+
+    constructor() {
+        this.preCommands = [];
+    }
+
+    pushPreCmd(cmd) {
+        this.preCommands.push(cmd);
+    }
+
+    popPreCmd() {
+        return this.preCommands.pop();
+    }
+}
+
+export class SetOrigin extends DrawCommand {
     x;
     y;
 
     constructor(x, y) {
+        super();
         this.x = x;
         this.y = y;
     }
 }
 
-export class SetColor {
+export class SetColor extends DrawCommand {
     strokeColor;
     fillColor;
 
     constructor(color, strokeColor) {
+        super();
         this.strokeColor = strokeColor || color;
         this.fillColor = color;
     }
@@ -22,20 +40,22 @@ export const BlendMode = {
     Multiply: "multiply"
 }
 
-export class SetBlendMode {
+export class SetBlendMode extends DrawCommand {
     mode;
 
     constructor(mode) {
+        super();
         this.mode = mode;
     }
 }
 
-export class Primitive {
+export class Primitive extends DrawCommand {
     pos;
     weight;
     queue;
 
     constructor(queue) {
+        super();
         this.queue = queue;
         this.pos = { x: 0, y: 0 };
         this.strokeCol = { r: 0, g: 0, b: 0, a: 0 };
@@ -50,7 +70,8 @@ export class Primitive {
      * @returns {Primitive} - the primitive
      */
     color(fillColor, strokeColor) {
-        this.queue.splice(this.queue.length - 1, 0, new SetColor(fillColor, strokeColor));
+        // this.queue.splice(this.queue.length - 1, 0, new SetColor(fillColor, strokeColor));
+        this.preCommands.push(new SetColor(fillColor, strokeColor));
         return this;
     }
 
@@ -386,7 +407,7 @@ export class RectPrimitive extends Primitive {
     }
 }
 
-export class Background {
+export class Background extends DrawCommand {
     col;
 
     /**

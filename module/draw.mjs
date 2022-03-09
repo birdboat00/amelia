@@ -127,7 +127,7 @@ export class Drawer {
      * Finish the frame and draw it.
      */
     finish() {
-        this.queue.forEach(cmd => {
+        const processCmd = (cmd) => {
             this.backend.beginCmd();
             if (cmd instanceof SetOrigin) {
                 this.backend.setOrigin(cmd);
@@ -153,6 +153,13 @@ export class Drawer {
                 this.backend.drawText(cmd);
             }
             this.backend.endCmd();
+        };
+
+        this.queue.forEach(cmd => {
+            cmd.preCommands.forEach(preCmd => {
+                processCmd(preCmd);
+            });
+            processCmd(cmd);
         });
 
         // clears the array

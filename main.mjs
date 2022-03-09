@@ -106,7 +106,7 @@ const circleAndTriMp = (app, model, ev) => {
 
 const main = () => {
     app()
-        .size(800, 800)
+        .size(600, 600)
         .model(organic_model)
         .view(organic_view)
         .run();
