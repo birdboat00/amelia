@@ -75,7 +75,7 @@ export class Canvas2DBackend extends Backend {
     }
 
     drawArc(arc) {
-        this.ctx.lineWidth = circle.weight;
+        this.ctx.lineWidth = arc.weight;
 
         this.ctx.beginPath();
         this.ctx.arc(arc.pos.x, arc.pos.y, arc.rad, arc.startAngle, arc.endAngle);

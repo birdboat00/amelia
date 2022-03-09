@@ -137,7 +137,7 @@ export class TextPrimitive extends Primitive {
     constructor(queue) {
         super(queue);
 
-        this.text = "";
+        this.displayString = "";
         this.fontName = "Arial";
     }
 
@@ -147,7 +147,7 @@ export class TextPrimitive extends Primitive {
      * @returns {TextPrimitive}
      */
     text(text) {
-        this.text = text;
+        this.displayString = text;
         return this;
     }
 

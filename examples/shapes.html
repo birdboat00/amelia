@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shapes | examples | amelia</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Open+Sans+Condensed:300&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <script type="module" id="script">
+        import { app, Color } from "../module/mod.mjs";
+
+        const view = (app) => {
+            let draw = app.draw();
+
+            draw.background()
+                .color(Color.fromHex(0x333333ff));
+
+            draw.rect()
+                .xy(10, 10)
+                .wh(200, 100)
+                .color(Color.Red);
+
+            draw.circle()
+                .xy(300, 60)
+                .radius(50)
+                .color(Color.Yellow);
+
+            draw.tri()
+                .abc(110, 130, 10, 230, 210, 230)
+                .color(Color.Green);
+
+            draw.line()
+                .start(10, 240)
+                .end(590, 240)
+                .color(Color.Cyan);
+
+            draw.quad()
+                .points(10, 250, 100, 270, 120, 350, 20, 330)
+                .color(Color.Blue);
+
+            draw.arc()
+                .xy(200, 300)
+                .radius(50)
+                .start(0)
+                .end(Math.PI)
+                .color(Color.White);
+
+            draw.text()
+                .xy(10, 390)
+                .text("This is some text!")
+                .color(Color.White);
+
+            draw.finish();
+        };
+
+        app()
+            .size(400, 400)
+            .parent("example")
+            .view(view)
+            .run();
+    </script>
+</head>
+<body>
+    <h1>Basic setup | <a href="./index.html">amelia examples</a></h1>
+    <div id="example"></div>
+    <script src="injectcode.js" defer></script>
+</body>
+</html>

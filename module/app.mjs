@@ -21,6 +21,7 @@ export class AppBuilder {
     mousePressedFn;
     keyPressedFn;
     backend;
+    parentElemId;
 
     constructor() {
         this.viewFn = () => { };
@@ -28,6 +29,7 @@ export class AppBuilder {
         this.mouseMoveFn = () => { };
         this.mousePressedFn = () => { };
         this.keyPressedFn = () => { };
+        this.parentElemId = null;
         this.canvasSize = { w: 100, h: 100 };
         this.backend = Backends.Canvas2D;
     }
@@ -113,6 +115,17 @@ export class AppBuilder {
     }
 
     /**
+     * Specify the DOM Element by its ID which should
+     * be the parent of the canvas that the app creates.
+     * @param {string} parentId - the DOM id
+     * @returns {AppBuilder} - itself
+     */
+    parent(parentId) {
+        this.parentElemId = parentId;
+        return this;
+    }
+
+    /**
      * Build and run an @type {App} with the specified parameters.
      * This function will not return until the app has exited.
      */
@@ -124,7 +137,7 @@ export class AppBuilder {
             mousePressedFn: this.mousePressedFn,
             mouseMoveFn: this.mouseMoveFn
         };
-        new App(fns, this.canvasSize, null, this.backend).run();
+        new App(fns, this.parentElemId, this.canvasSize, null, this.backend).run();
     }
 }
 
@@ -141,11 +154,12 @@ export class App {
     frames;
     canvas;
     backendKind;
+    parentElemId;
 
     fps;
     times;
 
-    constructor(fns, size, canvas, backendKind) {
+    constructor(fns, parentElemId, size, canvas, backendKind) {
         this.viewFn = fns.viewFn;
         this.modelFn = fns.modelFn;
         this.mouseMoveFn = fns.mouseMoveFn;
@@ -155,6 +169,7 @@ export class App {
         this.canvas = canvas;
         this.frames = 0;
         this.backendKind = backendKind;
+        this.parentElemId = parentElemId;
 
         this.drawer = null;
 
@@ -177,7 +192,11 @@ export class App {
                 this.keyPressFn(this, this.model, ev);
             });
 
-            document.body.appendChild(this.canvas);
+            if(this.parentElemId) {
+                document.getElementById(this.parentElemId).appendChild(this.canvas);
+            } else {
+                document.body.appendChild(this.canvas);
+            }
         }
 
         this.drawer = new Drawer(this.canvas, this.backendKind);
