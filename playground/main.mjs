@@ -1,4 +1,4 @@
-import { app, Color, BlendMode, randomRange, map } from "./module/mod.mjs";
+import { app, Color, BlendMode, randomRange, map } from "../module/mod.mjs";
 
 const organic_view = (app, model) => {
     let drawer = app.draw();

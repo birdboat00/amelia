@@ -5,8 +5,26 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "open sans condensed", helvetica, arial, sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.09rem;
+    margin-bottom: 20px;
 }
 
 pre {
     background-color: #eeeeff;
+}
+
+.container {
+    width: 100%;
+    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.center { text-align: center; }
+
+@media (min-width: 550px) {
+    .container { width: 80%; }
 }
