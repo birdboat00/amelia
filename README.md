@@ -5,7 +5,7 @@ Amelia is an open-source creative-coding toolkit for modern JavaScript.
 Amelia is a collection of APIs meant to make it easy to
 create sketches with simple and fast code. It puts an
 emphasis on the following aspects:
-- **lightweight**: at the moment ~40KB in size.
+- **lightweight**: at the moment ~50KB in size.
 - **functional**: it has a simple to use and understand functional style API.
 - **fast**: tries to be as fast as possible by being a thin wrapper around the Canvas API (with WebGL planned for the future).
 
@@ -17,6 +17,8 @@ Currently it support the following primitives:
 - Line (line)
 - Arc (arc)
 - Text (text)
+- Point (point)
+- Polygon (poly)
 
 The library also supports mouse and keyboard handlers (WIP).
 
