@@ -46,6 +46,19 @@ export class Color {
     }
 
     /**
+     * Create a color from floats. Expects the floats
+     * to be in the range of 0.0 to 1.0.
+     * @param {number} r - the red value
+     * @param {number} g - the green value
+     * @param {number} b - the blue value
+     * @param {number} a - the alpha value
+     * @returns {Color}
+     */
+    static fromRgba(r, g, b, a) {
+        return Color.fromFloats(r, g, b, a);
+    }
+
+    /**
      * Creates a color from integers. Expectes the
      * integers to be in the range from 0 to 255.
      * @param {number} r - red value
@@ -56,6 +69,19 @@ export class Color {
      */
     static fromBytes(r, g, b, a) {
         return new Color(r || 0, g || 0, b || 0, a || 255);
+    }
+
+    /**
+     * Creates a color from integers. Expects the
+     * integers to be in the range of 0 to 255.
+     * @param {number} r - the red value
+     * @param {number} g - the green value
+     * @param {number} b - the blue value
+     * @param {number} a - the alpha value
+     * @returns {Color}
+     */
+    static fromRgba8(r, g, b, a) {
+        return Color.fromBytes(r, g, b, a);
     }
 
     /**
@@ -70,6 +96,15 @@ export class Color {
         let a = hex & 0xff;
 
         return new Color(r, g, b, a);
+    }
+
+    /**
+     * Creates a color from a hex string value.
+     * @param {string} hexStr - the hex color string in the format 0xrrggbbaa
+     * @returns {Color}
+     */
+    static fromHexStr(hexStr) {
+        return Color.fromHex(parseInt(hexStr, 16));
     }
 
     /**
@@ -133,10 +168,18 @@ export class Color {
 
     /**
      * Returns the color as a CSS color string.
-     * @returns {string} - the css rgb() color string
+     * @returns {string} - the css rgba() color string
      */
     asCss() {
         return `rgb(${this.r},${this.g},${this.b},${this.a})`;
+    }
+
+    /**
+     * Returns the color as a CSS color string.
+     * @returns {string} - the css rgba() color string
+     */
+    get css() {
+        return this.asCss();
     }
 
     static get Black() { return new Color(0, 0, 0); }

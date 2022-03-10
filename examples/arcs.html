@@ -13,15 +13,15 @@
         import { app, Color } from "../module/mod.mjs";
 
         const view = (app, model) => {
-            let draw = app.draw();
+            let pen = app.pen();
 
             model.iteration += 0.05;
 
-            draw.background()
+            pen.background()
                 .color(Color.fromHex(0x141414ff));
 
             for(let i = 0; i < 20; i++) {
-                draw.arc()
+                pen.arc()
                     .xy(300, 300)
                     .radius(20 * i / 2)
                     .start(0)
@@ -30,19 +30,19 @@
                         Color.fromBytes(255, 255, i * 20));
             }
 
-            let titleText = draw.text()
+            let titleText = pen.text()
                 .size(16)
                 .text("Forest Chamomile")
                 .color(Color.Yellow, Color.Transparent);
             titleText.xy(300 - titleText.measureWidth() / 2, 540);
 
-            let text = draw.text()
+            let text = pen.text()
                 .size(14)
                 .text("made with amelia by birdboat00")
                 .color(Color.White, Color.Transparent);
             text.xy(300 - text.measureWidth() / 2, 560);
 
-            draw.finish();
+            pen.plot();
         };
 
         const model = (app) => {

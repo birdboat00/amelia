@@ -10,14 +10,12 @@ This is a list of planned functionality and API's for amelia.
 - update loop seperate of view loop
 
 ## List
-- functionality to control the main loop (stop looping, loop speed etc)
 - Color math functions
 - Vector and Point classes
 - nofill and nostroke properties
 - ellipse primitive
 - square primitive (could be a function of the rect primitive)
 - curves and bezier curves
-- VertexList (polygon) primitive
 - translation, rotation, scale
 - resize canvas
 - offscreen rendering

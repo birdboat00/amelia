@@ -185,4 +185,11 @@ export class Drawer {
         // clears the array
         this.queue.length = 0;
     }
+
+    /**
+     * Finish the frame and draw it onto the canvas!
+     */
+    plot() {
+        this.finish();
+    }
 }

@@ -1,5 +1,53 @@
-import { app, Color, BlendMode, randomRange, map, Size } from "../module/mod.mjs";
+import { app, Color, BlendMode, randomRange, map, Size, LoopMode, randomRangeInt } from "../module/mod.mjs";
 // import { app, Color, BlendMode, randomRange, map, Size } from "https://cdn.jsdelivr.net/gh/birdboat00/amelia/module/mod.mjs";
+
+const autumncolors_view = (app, model) => {
+    let pen = app.pen();
+
+    // pen.background().color(Color.BitterLemon);
+
+    pen.blendMode(BlendMode.Multiply);
+
+    let radius = randomRangeInt(10, 30);
+    let x = randomRangeInt(radius * 2 + 20, app.width - radius * 2 + 20);
+    let y = randomRangeInt(radius * 2 + 20, app.height - radius * 2 + 20);
+
+    pen.circle()
+        .xy(x, y)
+        .radius(radius)
+        .color(model.colors[randomRangeInt(0, model.colors.length)]);
+
+    pen.plot();
+};
+
+const autumncolors_model = (app) => {
+
+    app.pen().background().color(Color.OldPaper);
+    app.pen().plot();
+
+    return {
+        colors: [
+            Color.fromBytes(170, 21, 3, 220),
+            Color.fromBytes(199, 66, 5, 220),
+            Color.fromBytes(229, 205, 29, 220),
+            Color.fromBytes(165, 167, 36, 220)
+        ],
+        plant: null,
+        plantX: app.width / 2,
+        plantY: app.height * 9
+    };
+};
+
+const start_autumncolors = () => {
+    app()
+        .sizeSz(Size.paperA5)
+        .model(autumncolors_model)
+        .view(autumncolors_view)
+        .loopmode(LoopMode.NTimes(200))
+        .run();
+};
+
+start_autumncolors();
 
 const organic_view = (app, model) => {
     let drawer = app.draw();
@@ -105,12 +153,12 @@ const circleAndTriMp = (app, model, ev) => {
     model.circlePos.y = ev.y;
 };
 
-const main = () => {
+/*const main = () => {
     app()
-        .sizeSz(Size.paperA5.portrait())
-        .model(organic_model)
+        .sizeSz(Size.paperA5)
+        // .model(organic_model)
         .view(organic_view)
         .run();
 };
 
-main();
+main();*/

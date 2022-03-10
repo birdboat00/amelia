@@ -13,46 +13,46 @@
         import { app, Color } from "../module/mod.mjs";
 
         const view = (app) => {
-            let draw = app.draw();
+            let pen = app.pen();
 
-            draw.background()
+            pen.background()
                 .color(Color.fromHex(0x333333ff));
 
-            draw.rect()
+            pen.rect()
                 .xy(10, 10)
                 .wh(200, 100)
                 .color(Color.Pink);
 
-            draw.circle()
+            pen.circle()
                 .xy(300, 60)
                 .radius(50)
                 .color(Color.Yellow);
 
-            draw.tri()
+            pen.tri()
                 .abc(110, 130, 10, 230, 210, 230)
                 .color(Color.Plum);
 
-            draw.line()
+            pen.line()
                 .start(10, 240)
                 .end(390, 240)
                 .color(Color.Cornflower);
 
-            draw.quad()
+            pen.quad()
                 .points(10, 250, 100, 270, 120, 350, 20, 330)
                 .color(Color.BabyBlue);
 
-            draw.arc()
+            pen.arc()
                 .xy(200, 300)
                 .radius(50)
                 .start(0)
                 .end(Math.PI)
                 .color(Color.PastellGreen);
 
-            draw.point()
+            pen.point()
                 .xy(5, 240)
                 .color(Color.Red);
 
-            draw.poly()
+            pen.poly()
                 .vertex(300, 300)
                 .vertex(320, 320)
                 .vertex(320, 340)
@@ -60,13 +60,13 @@
                 .vertex(330, 350)
                 .color(Color.LightGray);
 
-            draw.text()
+            pen.text()
                 .xy(10, 390)
                 .text("This is some text!")
                 .size(16)
                 .color(Color.White, Color.Transparent);
 
-            draw.finish();
+            pen.plot();
         };
 
         app()

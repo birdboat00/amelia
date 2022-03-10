@@ -13,32 +13,32 @@
         import { app, Color, Size, BlendMode } from "../module/mod.mjs";
 
         const view = (app) => {
-            let draw = app.draw();
+            let pen = app.pen();
 
-            draw.background()
+            pen.background()
                 .color(Color.OldPaper);
 
             let w10 = app.width / 100 * 10;
             let h10 = app.height / 100 * 10;
 
-            draw.blendMode(BlendMode.Multiply);
+            pen.blendMode(BlendMode.Multiply);
 
-            draw.rect()
+            pen.rect()
                 .xy(w10, h10)
                 .wh(app.width - w10 * 2, h10 * 3.33333)
                 .color(Color.Cyan);
 
-            draw.rect()
+            pen.rect()
                 .xy(w10, h10 * 3)
                 .wh(app.width - w10 * 2.5, h10 * 3.33333)
                 .color(Color.Yellow);
 
-            draw.rect()
+            pen.rect()
                 .xy(w10, h10 * 6)
                 .wh(app.width - w10 * 3, h10 * 3.33333)
                 .color(Color.Magenta);
 
-            draw.finish();
+            pen.plot();
         }
 
         app()

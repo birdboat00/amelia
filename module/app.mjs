@@ -309,7 +309,7 @@ export class App {
             requestAnimationFrame(this.#loop.bind(this));
         } else if (this.loopMode.isFrameRate) {
             setTimeout(this.#loop.bind(this), 1000 / this.loopMode.frameRate);
-        } else if (this.loopMode.isNTimes && this.elapsedFrames() < this.loopMode.nTimes) {
+        } else if (this.loopMode.isNTimes && this.frames < this.loopMode.nTimes) {
             requestAnimationFrame(this.#loop.bind(this));
         }
     }
@@ -323,16 +323,20 @@ export class App {
     }
 
     /**
+     * Produce the App's Draw API for drawing geometry
+     * @returns {Drawer}
+     */
+    pen() {
+        return this.drawer;
+    }
+
+    /**
      * The number of times the view function has been called
      * since the start of the program.
      * @returns {number} number of frames
      */
-    elapsedFrames() {
+    iterations() {
         return this.frames;
-    }
-
-    fps() {
-        return this.fps;
     }
 
     /**
@@ -346,11 +350,41 @@ export class App {
         return this;
     }
 
+    /**
+     * The width of the app canvas
+     */
     get width() {
         return this.canvas.width;
     }
 
+    /**
+     * The height of the app canvas
+     */
     get height() {
         return this.canvas.height;
+    }
+
+    /**
+     * Set the width of the app canvas
+     */
+    set width(width) {
+        this.canvas.height = width;
+    }
+
+    /**
+     * Set the height of the app canvas
+     */
+    set height(height) {
+        this.canvas.height = height;
+    }
+
+    /**
+     * Set the size of the app canvas using the
+     * @type {Size} type.
+     * @param {Size} size - the size that the canvas should be set to
+     */
+    size(size) {
+        this.width = size.width;
+        this.height = size.height;
     }
 }

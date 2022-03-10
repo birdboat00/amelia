@@ -92,7 +92,7 @@ loops through our `view` function and does some other nice stuff.
 
 #### Creating an app
 
-Amelia some handy functionality to quickly create an `App`. This is done using
+Amelia has some handy functionality to quickly create an `App`. This is done using
 the `AppBuilder` class via the `app` function. You use it like this:
 
 ```js
@@ -110,7 +110,7 @@ want your canvas added as a child to some HTML element you can pass its ID to
 
 The `model` function when calling `app()` allows you to specify a function that
 will be called before the app loops for the first time and supply a state
-(model) to the app that you can access in `view` function.
+(model) to the app that you can access in the `view` function.
 
 The model function looks like this:
 
@@ -120,7 +120,7 @@ const model = (app) => {
 };
 ```
 
-It is supplied the app instance so you can access it. For now we return a empty
+The app instance is passed to your model function so you can access it. For now we return a empty
 model because we don't have any state yet.
 
 You can imagine the `model` function as the place where you prepare your
@@ -149,11 +149,11 @@ radius, width and height, color and so on.
 Lets draw a a plum colored rectangle on an orange colored background.
 
 First we have to aquire the `Drawer` instance of the app which is done by
-calling `.draw()` on the app instance.
+calling `.pen()` on the app instance.
 
 ```js
 const view = (app, model) => {
-  let draw = app.draw();
+  let pen = app.pen();
 };
 ```
 
@@ -162,7 +162,7 @@ function on the drawer! This gives us a `Background` that we can give a color to
 with the `.color()` function.
 
 ```js
-draw.background()
+pen.background()
   .color(Color.Orange);
 ```
 
@@ -174,13 +174,13 @@ drawer. There are a lot of other primitives it can draw but more on that later
 in the guide.
 
 ```js
-draw.rect();
+pen.rect();
 ```
 
 We also want to give it a position, size and a color.
 
 ```js
-draw.rect()
+pen.rect()
     .xy(20, 20)
     .wh(60, 60)
     .color(Color.Plum);
@@ -191,10 +191,10 @@ calling `wh(w, h)` we specify the width and height in pixels. We also want to
 paint it in a nice color so we call `color(color)` with the color we want.
 
 After all that we got to finish the frame and actually paint it on the canvas.
-This is done by calling `Drawer.finish()` on the drawer.
+This is done by calling `Drawer.plot()` on the drawer.
 
 ```js
-draw.finish();
+pen.plot();
 ```
 
 This should give us the following image:
@@ -208,15 +208,15 @@ The `Drawer` can handle a lot of different primitives which
 you can use to create beautiful art.
 
 Here is a list:
-- [Rectangles]()
-- [Circles]()
-- [Quads]()
-- [Lines]()
-- [Arcs]()
-- [Triangles]()
-- [Points]()
-- [Polygons]()
-- [Text]()
+- [Rectangles](#rectangles)
+- [Circles](#circles)
+- [Quads](#quads)
+- [Lines](#lines)
+- [Arcs](#arcs)
+- [Triangles](#triangles)
+- [Points](#points)
+- [Polygons](#polygons)
+- [Text](#text)
 
 All primitives have some basic functionality like setting the
 position and setting the color.

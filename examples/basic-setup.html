@@ -13,12 +13,12 @@
         import { app, Color } from "../module/mod.mjs";
 
         const view = (app) => {
-            let draw = app.draw();
+            let pen = app.pen();
 
-            draw.background()
+            pen.background()
                 .color(Color.Black);
 
-            draw.finish();
+            pen.plot();
         }
 
         app()

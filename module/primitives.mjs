@@ -491,6 +491,15 @@ export class Background extends DrawCommand {
     }
 
     /**
+     * Makes the background clear transparent.
+     * @returns {Background}
+     */
+    transparent() {
+        this.col = Color.Transparent;
+        return this;
+    }
+
+    /**
      * Clear the background with the given color.
      * The alpha value is set to 1.0.
      * @param {number} r - the red value as float

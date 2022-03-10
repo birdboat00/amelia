@@ -13,40 +13,40 @@
         import { app, Color } from "../module/mod.mjs";
 
         const view = (app) => {
-            let draw = app.draw();
+            let pen = app.pen();
 
-            draw.background()
+            pen.background()
                 .color(Color.Black);
 
-            draw.line()
+            pen.line()
                 .start(10, 5)
                 .end(10, 390)
                 .color(Color.White);
 
-            draw.line()
+            pen.line()
                 .start(5, 10)
                 .end(390, 10)
                 .color(Color.White);
 
-            draw.text()
+            pen.text()
                 .size(10)
                 .xy(15, 20)
                 .text("(10 / 10)")
                 .color(Color.White, Color.Transparent);
 
-            draw.text()
+            pen.text()
                 .size(10)
                 .xy(15, 100)
                 .text("(10 / 100)")
                 .color(Color.White, Color.Transparent);
 
-            draw.text()
+            pen.text()
                 .size(10)
                 .xy(100, 20)
                 .text("(100 / 10)")
                 .color(Color.White, Color.Transparent);
 
-            draw.finish();
+            pen.plot();
         }
 
         app()

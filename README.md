@@ -46,19 +46,19 @@ Here is a quick example on how to use **amelia**.
 import { app, Color } from "./module/mod.mjs";
 
 const view = (app) => {
-    let draw = app.draw();
+    let pen = app.pen();
 
-    draw
+    pen
         .background()
         .color(Color.Black);
 
-    draw
+    pen
         .rect()
         .xy(50, 50)
         .wh(100, 50)
         .color(Color.Yellow);
 
-    draw.finish();
+    pen.plot();
 };
 
 app()
