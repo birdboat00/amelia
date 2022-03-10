@@ -189,4 +189,6 @@ export class Color {
     static get Cornflower() { return new Color(100, 149, 237); }
     static get Crimson() { return new Color(220, 20, 60); }
     static get Dandelion() { return new Color(240, 225, 48); }
+
+    static get OldPaper() { return new Color(255, 255, 248); }
 }
