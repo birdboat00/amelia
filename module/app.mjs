@@ -1,6 +1,9 @@
 import { Backends } from "./backend/backends.mjs";
 import { Drawer } from "./draw.mjs";
 
+/**
+ * The type describing the loop mode of the app.
+ */
 export class LoopMode {
     nTimes;
     frameRate;
@@ -12,10 +15,31 @@ export class LoopMode {
         this.frameRate = frameRate;
     }
 
+    /**
+     * Create a loop mode that uses requestAnimationFrame()
+     * @returns {LoopMode}
+     */
     static RefreshSync() { return new LoopMode(true, null, null); }
+    /**
+     * Create a loop mode that uses setTimeout at the specified frame rate.
+     * The framerate is specified at frames per second.
+     * @param {number} framerate - the framerate the app should run at.
+     * @returns {LoopMode}
+     */
     static FrameRate(framerate) { return new LoopMode(null, null, framerate); }
+    /**
+     * Create a loop mode that loops a specific number of times and
+     * the stops the app.
+     * @param {number} nTimes - the number of times that app should loop
+     * @returns {LoopMode}
+     */
     static NTimes(nTimes) { return new LoopMode(null, nTimes, null); }
-    static Once() { return new LoopMode(null, 0, null); }
+    /**
+     * Create a loop mode that loops the app once and then stops the app.
+     * This is a shorthand for calling NTimes(1).
+     * @returns {LoopMode}
+     */
+    static Once() { return new LoopMode(null, 1, null); }
 
     get isRefreshSync() { return this.refreshSync != null; }
     get isNTimes() { return this.nTimes != null; }
@@ -113,7 +137,7 @@ export class AppBuilder {
     /**
      * Specify the default canvas size in points.
      *
-     * If the size is not specified or less than zero,
+     * If the size is not specified or less or equal to zero,
      * the default size of 100x100 will be used.
      * @param {number} w - width
      * @param {number} h - height
@@ -124,6 +148,18 @@ export class AppBuilder {
         this.canvasSize.h = h <= 0 ? 100 : h;
 
         return this;
+    }
+
+    /**
+     * Specify the default canvas size using the @type {Size} type.
+     *
+     * If the size is less or equal to zero,
+     * the default size will be 100x100 pixels.
+     * @param {Size} sz - the size
+     * @returns {AppBuilder}
+     */
+    sizeSz(sz) {
+        return this.size(sz.width, sz.height);
     }
 
     /**
@@ -238,7 +274,6 @@ export class App {
 
         this.model = this.modelFn(this);
 
-        console.log(this.loopMode);
         if(this.loopMode.isRefreshSync) {
             requestAnimationFrame(this.#loop.bind(this));
         } else if (this.loopMode.isFrameRate) {
@@ -246,8 +281,8 @@ export class App {
         }
     }
 
-    #loop(timestamp) {
-
+    #loop(ts) {
+        let timestamp = ts || performance.now();
         while (this.times.length > 0 && this.times[0] <= timestamp - 1000) {
             this.times.shift();
         }

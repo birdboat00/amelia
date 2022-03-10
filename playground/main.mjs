@@ -1,4 +1,4 @@
-import { app, Color, BlendMode, randomRange, map } from "../module/mod.mjs";
+import { app, Color, BlendMode, randomRange, map, Size } from "../module/mod.mjs";
 
 const organic_view = (app, model) => {
     let drawer = app.draw();
@@ -106,7 +106,7 @@ const circleAndTriMp = (app, model, ev) => {
 
 const main = () => {
     app()
-        .size(600, 600)
+        .sizeSz(Size.paperA5.portrait())
         .model(organic_model)
         .view(organic_view)
         .run();

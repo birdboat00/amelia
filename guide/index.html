@@ -121,6 +121,12 @@ app()
                 with different properties you specify.
                 Then we first call the <code>size</code> function,
                 which sets the window size to 400x400 pixels.
+                You can also call <code>sizeSz</code> with a <code>Size</code>
+                type instance which can create paper sizes and sizes from
+                millimeters and inches (i.e. <code>Size.paperA5</code> or
+                <code>Size.fromMillimeters(mmWidth, mmHeight)</code>) and
+                can turn landscape or portrait (with <code>Size.landscape()</code>
+                and <code>Size.portrait()</code>).
                 After that we call the <code>model</code> function
                 that specifies the function that gets called once before
                 the app starts drawing. Imagine it like preparing
