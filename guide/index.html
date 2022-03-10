@@ -29,6 +29,7 @@
             <li><a href="#first-app">The first sketch</a></li>
             <li><a href="#general">General information</a></li>
             <li><a href="#drawing-shapes">Drawing shapes</a></li>
+            <li><a href="#drawer-state">Changing the Drawer state</a></li>
         </ol>
         <section id="what-is-amelia">
             <h2>What is amelia?</h2>
@@ -333,6 +334,12 @@ app()
                 by calling <code>wh(width, height)</code> or
                 <code>w(width)</code> and <code>h(height)</code>.
             </p>
+            <p>
+                The size can also be set using the <code>Size</code>
+                type. This is done using the <code>size(size)</code>
+                function where you pass the <code>Size</code> you want
+                to use.
+            </p>
             <h4 id="prim-line">Lines</h4>
             <p>A line.</p>
             <p>
@@ -410,6 +417,31 @@ app()
                 A polygon needs edge points. Those can be added with
                 <code>vertex(x, y)</code> which adds a new edge (vertex)
                 to the polygon at the given x and y coordinate.
+            </p>
+        </section>
+        <section id="drawer-state">
+            <h2>Changing the Drawer state</h2>
+            <p>
+                The <code>Drawer</code> class is the <em>pen</em>
+                of our app. It is accessed by calling <code>app.draw()</code>
+                in the view loop which gives us the apps drawer instance.
+                This drawer gives us functions to draw the primitives we
+                just talked about but it also has a state that can be changed.
+            </p>
+            <h3>Blend Mode</h3>
+            <p>
+                The blend mode is changed by calling <code>Drawer.blendMode(mode)</code>
+                with the <code>BlendMode</code> you want. The default blend mode
+                overwrites the bottom layer with the top layer colors (source-over).
+            </p>
+            <h4>BlendMode.SourceOver</h4>
+            <p>
+                The color of the bottom layer is overwritten with the color of
+                the top layer.
+            </p>
+            <h4>BlendMode.Multiply</h4>
+            <p>
+                The color of the top layer is multiplied with the pixel of the layer under it.
             </p>
         </section>
     </main>

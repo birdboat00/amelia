@@ -39,7 +39,7 @@ export class Canvas2DBackend extends Backend {
     }
 
     drawRect(rect) {
-        this.ctx.fillRect(rect.pos.x, rect.pos.y, rect.size.w, rect.size.h);
+        this.ctx.fillRect(rect.pos.x, rect.pos.y, rect.sz.width, rect.sz.height);
     }
 
     drawLine(line) {

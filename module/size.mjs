@@ -88,6 +88,20 @@ export class Size {
     }
 
     /**
+     * Set the size in pixels.
+     */
+    set width(width) {
+        this.#w = width;
+    }
+
+    /**
+     * Set the height in pixels.
+     */
+    set height(height) {
+        this.#h = height;
+    }
+
+    /**
      * Turn the size landscape.
      * This makes the shorter dimensions the width and
      * the longer dimensions the height.
@@ -161,4 +175,10 @@ export class Size {
      * 210x210mm
      */
     static get paperCarreL() { return Size.fromMillimeters(210, 210); }
+
+    /**
+     * Zero size.
+     * 0x0 pixels.
+     */
+    static get zero() { return new Size(0, 0); }
 }

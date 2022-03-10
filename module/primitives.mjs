@@ -1,3 +1,5 @@
+import { Size } from "./size.mjs";
+
 export class DrawCommand {
     preCommands;
 
@@ -37,6 +39,7 @@ export class SetColor extends DrawCommand {
 }
 
 export const BlendMode = {
+    SourceOver: "source-over",
     Multiply: "multiply"
 }
 
@@ -419,11 +422,16 @@ export class LinePrimitive extends Primitive {
 
 export class RectPrimitive extends Primitive {
 
-    size;
+    sz;
 
     constructor(queue) {
         super(queue);
-        this.size = { w: 0, h: 0 };
+        this.sz = Size.fromPx(0, 0);
+    }
+
+    size(size) {
+        this.sz = size;
+        return this;
     }
 
     /**
@@ -433,8 +441,8 @@ export class RectPrimitive extends Primitive {
      * @returns {RectPrimitive} - itself
      */
     wh(w, h) {
-        this.size.w = w;
-        this.size.h = h;
+        this.sz.width = w;
+        this.sz.height = h;
         return this;
     }
 
@@ -444,7 +452,7 @@ export class RectPrimitive extends Primitive {
      * @returns {RectPrimitive} - itself
      */
     w(w) {
-        this.size.w = w;
+        this.sz.width = w;
         return this;
     }
 
@@ -454,7 +462,7 @@ export class RectPrimitive extends Primitive {
      * @returns {RectPrimitive}
      */
     h(h) {
-        this.size.h = h;
+        this.sz.height = h;
         return this;
     }
 }
