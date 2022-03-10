@@ -130,6 +130,43 @@ export class Size {
     }
 
     /**
+     * Returns a new size with the smallest width
+     * and smallest height of the two supplied sizes.
+     * @param {Size} size1 - first size
+     * @param {Size} size2 - second size
+     * @returns {Size}
+     */
+    static min(size1, size2) {
+        return new Size(
+            Math.min(size1.width, size2.width),
+            Math.min(size1.height, size2.height)
+        );
+    }
+
+    /**
+     * Returns a new size with the largest width
+     * and largest height of the two supplied sizes.
+     * @param {Size} size1 - the first size
+     * @param {Size} size2 - the second size
+     * @returns {Size}
+     */
+    static max(size1, size2) {
+        return new Size(
+            Math.max(size1.width, size2.width),
+            Math.max(size1.height, size2.height)
+        );
+    }
+
+    /**
+     * Creates a new size with a random width and height
+     * between 0 and 1.
+     * @returns {Size}
+     */
+    static random() {
+        return new Size(Math.random(), Math.random());
+    }
+
+    /**
      * North american postcard paper size.
      * 101.6x152.4mm
      */
