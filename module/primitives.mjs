@@ -314,6 +314,15 @@ export class CirclePrimitive extends Primitive {
         this._radius = r;
         return this;
     }
+
+    /**
+     * Specify the diameter of the circle.
+     * @param {number} d - the diameter
+     * @returns {CirclePrimitive}
+     */
+    diameter(d) {
+        return this.radius(d / 2);
+    }
 }
 
 export class QuadPrimitive extends Primitive {
@@ -412,7 +421,7 @@ export class LinePrimitive extends Primitive {
      * @param {number} ys - start point y coordinate
      * @param {number} xe - end point x coordinate
      * @param {number} ye - end point y coordinate
-     * @returns
+     * @returns {LinePrimitive}
      */
     points(xs, ys, xe, ye) {
         this.start(xs, ys);

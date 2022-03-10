@@ -1,0 +1,24 @@
+iframe {
+    width: 100%;
+    border: 1px solid #333;
+    min-height: 500px;
+
+}
+
+textarea {
+    font-family: monospace;
+    appearance: none;
+    color: #333;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #333;
+    width: 100%;
+    height: 100%;
+}
+
+.row {
+    display: grid;
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-columns: repeat(2, 1fr);
+}

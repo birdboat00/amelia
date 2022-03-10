@@ -1,53 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>amelia</title>
+    <title>amelia - a creative-coding framework</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Open+Sans+Condensed:300&amp;display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="guide/style.css">
+    <link rel="stylesheet" href="./style.css">
+
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"></script>
+    <script defer>hljs.highlightAll();</script>
 </head>
-
 <body>
-    <div class="container">
-        <h1 class="center">Amelia</h1>
-        <p>
-            Amelia is an open-source creative-coding toolkit
+    <header>
+        <div id="title">
+            <a href="../">amelia</a>
+        </div>
+        <div id="menu">
+            <a href="./guide/">guide</a>
+            <a href="./examples/">examples</a>
+            <a href="https://github.com/birdboat00/amelia/">github</a>
+        </div>
+    </header>
+    <main>
+        <p class="cc">
+            Amelia is an open-source creative coding toolkit
             for modern JavaScript.
-
-            I created it to have a lightweight, functional
-            and fast collection of API's to rapidly create
-            generative art sketches.
+            <br>
+            It is lightweight, functional and fast.
+            <br>
+            It allows you to create your starry nightsky at a squint.
         </p>
-        <div class="container center" style="margin-bottom: 20px;">
-            <div class="row">
-                <div class="four columns">
-                    <img alt="" src="./guide.svg">
-                    <a href="./guide/">Read the guide</a>
-                </div>
-                <div class="four columns">
-                    <img alt="" src="./examples.svg">
-                    <a href="./examples/">Look at the examples</a>
-                </div>
-                <div class="four columns">
-                    <img alt="" src="./code.svg">
-                    <a href="https://github.com/birdboat00/amelia">Look at the code on GitHub</a>
+        <div class="twocolumn">
+            <div>
+                <img src="./guide/organic2.png">
+                <div class="cc">
+                    <a href="./guide/" class="btn">Get started</a>
+                    <a href="./examples/" class="btn">Examples</a>
                 </div>
             </div>
-        </div>
-        <div class="center container">
-            <a href="./examples/organic.html">
-                <img src="./guide/organic.png" alt="organic sketch">
-            </a>
-        </div>
-        <footer>
-            <p>2022 birdboat00 (me)</p>
-        </footer>
-    </div>
-</body>
+            <div>
+                <h1>Get amelia</h1>
+            <p>
+                Amelia is lightweight and modular and is written in modern
+                JavaScript.
+            </p>
+            <p>
+                Use it directly by downloading from <a href="https://github.com/birdboat00/amelia">GitHub</a>:
+                <pre>
+                    <code class="language-js">
+import { app } from "/path/to/amelia/mod.mjs";
+                    </code>
+                </pre>
+            </p>
+            <p>
+                Or import it from <a href="https://cdn.jsdelivr.net/gh/birdboat00/amelia/module/mod.mjs">jsDelivr</a>:
+                <pre>
+                    <code class="language-js">
+import { app } from "https://cdn.jsdelivr.net/gh/birdboat00/amelia/module/mod.mjs";
+                    </code>
+                </pre>
+            </p>
+            <p>
+                Draw a rectangle in 7 lines of code:
+                <pre>
+                    <code class="language-js">
+import { app, Color } from "/path/to/amelia/mod.mjs";
 
+app().view((app) => {
+    let pen = app.draw();
+
+    pen.background().color(Color.Plum);
+
+    pen.rect().xy(20, 20).wh(60, 60).color(Color.Amber);
+
+    pen.finish();
+}).run();</code>
+                </pre>
+            </p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <a href="../">amelia</a> by <a href="https://github.com/birdboat00">birdboat00</a> and contributors in 2022 licensed under the MIT license.
+    </footer>
+</body>
 </html>

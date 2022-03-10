@@ -195,6 +195,16 @@ export class AppBuilder {
     }
 
     /**
+     * Set the loop mode to LoopMode.Once().
+     * Shorthand for loopmode(LoopMode.Once()).
+     * @returns {AppBuilder}
+     */
+    once() {
+        this.loopMode = LoopMode.Once();
+        return this;
+    }
+
+    /**
      * Build and run an @type {App} with the specified parameters.
      * This function will not return until the app has exited.
      */
@@ -278,6 +288,8 @@ export class App {
             requestAnimationFrame(this.#loop.bind(this));
         } else if (this.loopMode.isFrameRate) {
             setTimeout(this.#loop.bind(this), 1000 / this.loopMode.frameRate);
+        } else if(this.loopMode.isNTimes && this.loopMode.nTimes > 0) {
+            requestAnimationFrame(this.#loop.bind(this));
         }
     }
 
@@ -297,6 +309,8 @@ export class App {
             requestAnimationFrame(this.#loop.bind(this));
         } else if (this.loopMode.isFrameRate) {
             setTimeout(this.#loop.bind(this), 1000 / this.loopMode.frameRate);
+        } else if (this.loopMode.isNTimes && this.elapsedFrames() < this.loopMode.nTimes) {
+            requestAnimationFrame(this.#loop.bind(this));
         }
     }
 

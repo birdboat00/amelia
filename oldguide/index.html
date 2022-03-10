@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>guide - amelia</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Open+Sans+Condensed:300&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="amg-header">
+        <img src="organic.png" alt="">
+        <div><h1>amelia</h1></div>
+    </header>
+    <main>
+        <h1>guide</h1>
+        <p>
+            This guide walks you through setting up and using
+            <a href="../">amelia</a> for you creative projects.
+        </p>
+        <aside class="warnbox">
+            <p>Amelia is still a very young project and heavily work-in-progress.</p>
+        </aside>
+        <h6>Sections</h6>
+        <ol>
+            <li><a href="#what-is-amelia">What is amelia?</a></li>
+            <li><a href="#first-app">The first sketch</a></li>
+            <li><a href="#general">General information</a></li>
+            <li><a href="#drawing-shapes">Drawing shapes</a></li>
+            <li><a href="#drawer-state">Changing the Drawer state</a></li>
+        </ol>
+        <section id="what-is-amelia">
+            <h2>What is amelia?</h2>
+            <p>
+                Amelia is an open-source creative-coding toolkit
+                for modern JavaScript.
+            </p>
+            <p>
+                I created it to have a simple and functional
+                collection of API's to rapidly create simple
+                and fast sketches. It puts an emphasis on the
+                following aspects:
+            </p>
+            <ul>
+                <li><strong>lightweight</strong>: at the moment ~40KB in size</li>
+                <li><strong>functional</strong>: simple and easy to use functional style API</li>
+                <li><strong>fast</strong>: tries to be as fast as possible by being a thin wrapper over the canvas API</li>
+            </ul>
+            <p>
+                You can find the code on <a href="https://github.com/birdboat00/amelia">GitHub.</a>
+                I have also written a bunch of examples. You can find them
+                <a href="../examples/">here.</a>
+            </p>
+        </section>
+        <section id="first-app">
+            <h2>The first sketch</h2>
+            <p>
+                Amelia is a collection of building blocks to help
+                you create generative art. Lets take a look at the
+                building blocks.
+            </p>
+            <p>
+                Here is an example of a simple amelia app that draws
+                a rectangle:
+            </p>
+            <pre>
+                <code>
+import { app, Color } from "./amelia/mod.ts";
+
+const model = (app) => {
+    return {};
+}
+
+const view = (app, model) => {
+    let draw = app.draw();
+
+    draw.background()
+        .color(Color.Black);
+
+    draw.rect()
+        .xy(100, 100)
+        .wh(100, 100)
+        .color(Color.Red)
+
+    draw.finish();
+};
+
+app()
+    .size(400, 400)
+    .model(model)
+    .view(view)
+    .run();
+                </code>
+            </pre>
+            <p>
+                Lets start from the top!
+            </p>
+            <h3>Import the necessary items</h3>
+            <code>import { app, Color } from "./amelia/mod.ts";</code>
+            <p>
+                This line imports the <code>app</code> function
+                and <code>Color</code> class into the scope.
+            </p>
+            <h3>The app function</h3>
+            <p>
+                We first have to create an amelia <code>App</code>.
+            </p>
+            <pre>
+                <code>
+app()
+    .size(400, 400)
+    .model(model)
+    .view(view)
+    .run();
+                </code>
+            </pre>
+            <p>
+                This code first creates an <code>AppBuilder</code>.
+                That's a class that can create an <code>App</code>
+                with different properties you specify.
+                Then we first call the <code>size</code> function,
+                which sets the window size to 400x400 pixels.
+                You can also call <code>sizeSz</code> with a <code>Size</code>
+                type instance which can create paper sizes and sizes from
+                millimeters and inches (i.e. <code>Size.paperA5</code> or
+                <code>Size.fromMillimeters(mmWidth, mmHeight)</code>) and
+                can turn landscape or portrait (with <code>Size.landscape()</code>
+                and <code>Size.portrait()</code>).
+                After that we call the <code>model</code> function
+                that specifies the function that gets called once before
+                the app starts drawing. Imagine it like preparing
+                your brushes and colors.
+                Then we call the <code>view</code> function which
+                specifies the function that gets called every frame.
+                The view function is the most import part of the app,
+                it is where the drawing happens.
+                And after doing all the setup we finally call the
+                <code>run</code> function, which creates the app,
+                adds the Canvas to the HTML DOM and finally starts
+                the drawing loop.
+            </p>
+            <h3>The model</h3>
+            <pre>
+                <code>
+const model = (app) => {
+    return {};
+};
+                </code>
+            </pre>
+            <p>
+                The <code>model</code> function is called once before
+                the app first starts drawing. Imagine it to be the
+                function where you prepare your brushes and colors.
+                It is the setup stage of our app. This also creates
+                the state of our app but for now we just return and
+                empty model. The model is passed every frame to the
+                <code>view</code> function of our app that we will
+                talk about next.
+            </p>
+            <h3>The view</h3>
+            <pre>
+                <code>
+const view = (app, model) => {
+    let draw = app.draw();
+
+    draw.background()
+        .color(Color.Black);
+
+    draw.rect()
+        .xy(100, 100)
+        .wh(100, 100)
+        .color(Color.Red)
+
+    draw.finish();
+};
+                </code>
+            </pre>
+            <p>
+                After we run the app, the <code>view</code> function
+                gets continously called. It's where the most time of
+                the app is spent. It's where the magic happens and
+                the drawing gets done.
+            </p>
+            <p>
+                First we call <code>app.draw()</code> that returns the
+                <code>Drawer</code> which gives us access to all the
+                drawing functionality. Imagine it like the pen of our
+                app. We can give it commands that we can modify.
+            </p>
+            <p>
+                Then we call the <code>draw.background()</code> function.
+                This gives us a <code>Background</code> command. On the
+                background command we call the <code>color</code> function.
+                This specifies the color that is used for the background.
+            </p>
+            <p>
+                Then we move on and call <code>draw.rect()</code>, which
+                gives us a <code>RectanglePrimitive</code> command. On which
+                we call <code>xy(100, 100)</code> which sets the x and y
+                coordinates of the rectangle to 100 and 100. Then we call
+                the <code>wh(100, 100)</code> function which sets the width
+                and height of the rectangle to 100 and 100. And lastly we call
+                the <code>color(Color.Red)</code> function which you guessed right,
+                sets the color of the Rectangle to red.
+            </p>
+            <p>
+                There are a lot more primitives, commands and functions to modify
+                the commands but more on that later!
+            </p>
+            <p>
+                And to finish the drawing we call <code>draw.finish()</code> which
+                executes our commands and draws onto the canvas! And then the app
+                moves on and waits until your browser is ready to draw the next frame
+                and calls <code>view()</code> again.
+            </p>
+        </section>
+        <section id="general">
+            <h2>General information</h2>
+            <h3>Coordinate System</h3>
+            <p>
+                The amelia coordinate system starts with
+                <code>(0 / 0)</code> at the top left.
+            </p>
+            <h3>Loop Modes</h3>
+            <p>
+                By default the app will run as fast as the
+                browser calls <code>requestAnimationFrame</code>.
+                This is one of the three loop modes.
+            </p>
+            <p>
+                The loop mode is specified by calling either
+                <code>loopmode(mode)</code> on the app builder
+                with one of the loop modes as an argument or
+                by calling the function with same name on the app
+                instance while it is running. In that case the loop
+                mode is used after the current frame is finished.
+                Here is an example:
+                <pre>
+                    <code>
+app()
+    .view(view)
+    .loopmode(LoopMode.FrameRate(1))
+    .run();</code>
+                </pre>
+            </p>
+            <h4>LoopMode.RefreshSync</h4>
+            <p>
+                With that loop mode the view loop runs as fast as
+                the browser calls <code>requestAnimationFrame()</code>.
+            </p>
+            <p>
+                Use it with <code>LoopMode.RefreshSync()</code>.
+            </p>
+            <h4>LoopMode.FrameRate</h4>
+            <p>
+                In this loop mode the view loop as called as many
+                times a second as you want it to be called.
+            </p>
+            <p>
+                Use it with <code>LoopMode.FrameRate(framerate)</code>
+                where <code>framerate</code> is the frames per second
+                you want the app to run at.
+            </p>
+            <h4>LoopMode.NTimes</h4>
+            <aside class="importantbox">
+                <p>This loop mode is currently not implemented yet.</p>
+            </aside>
+            <p>
+                This loop mode calls the view loop as many times as you
+                want and then stops.
+            </p>
+            <p>
+                Use it with <code>LoopMode.NTimes(nTimes)</code> where
+                <code>nTimes</code> is the number of times you want
+                the view function to be called before the app stops.
+            </p>
+            <h4>LoopMode.Once</h4>
+            <p>
+                This is a shorthand for <code>LoopMode.NTimes(1)</code>.
+            </p>
+        </section>
+        <section id="drawing-shapes">
+            <h2>Drawing shapes</h2>
+            <p>
+                We already learned how to draw a rectangle,
+                but there are a lot more primitive shapes you
+                can draw with amelia! Lets look at what all
+                primitive shapes have in common and what makes
+                every shape special.
+            </p>
+            <h3>What every Primitive can do</h3>
+            <p>
+                Every primitive has some basic functions,
+                like settings the position, the color and
+                the stroke weight.
+            </p>
+            <p>
+                Setting the position can be done with either
+                <code>xy(x, y)</code>, <code>pos(x, y)</code>
+                or <code>x(x)</code> and <code>y(y)</code>.
+            </p>
+            <p>
+                Setting the color is done by calling
+                <code>color(fillColor, strokeColor)</code>.
+                It always expects to get a <code>Color</code>
+                as <code>fillColor</code>. That is the color
+                that the primitive will be filled with. You can
+                also specify a <code>strokeColor</code> which is
+                the color of the outline. When it's not specified
+                the fill color is used.
+            </p>
+            <h3>The different primitives</h3>
+            <p>
+                There are a bunch of basic primitives that
+                can be used in amelia.
+            </p>
+            <ul>
+                <li><a href="#prim-rect">Rectangles</a></li>
+                <li><a href="#prim-line">Lines</a></li>
+                <li><a href="#prim-quad">Quads</a></li>
+                <li><a href="#prim-circle">Circles</a></li>
+                <li><a href="#prim-arc">Arcs</a></li>
+                <li><a href="#prim-tri">Triangles</a></li>
+                <li><a href="#prim-text">Text</a></li>
+                <li><a href="#prim-point">Points</a></li>
+                <li><a href="#prim-poly">Polygons</a></li>
+            </ul>
+            <h4 id="prim-rect">Rectangles</h4>
+            <p>A rectangle shape.</p>
+            <p>
+                The rectangle has a width and height which can be set
+                by calling <code>wh(width, height)</code> or
+                <code>w(width)</code> and <code>h(height)</code>.
+            </p>
+            <p>
+                The size can also be set using the <code>Size</code>
+                type. This is done using the <code>size(size)</code>
+                function where you pass the <code>Size</code> you want
+                to use.
+            </p>
+            <h4 id="prim-line">Lines</h4>
+            <p>A line.</p>
+            <p>
+                A line has a start and an end point. Those can be specified
+                by calling either <code>points(xStart, yStart, xEnd, yEnd)</code>
+                or <code>start(x, y)</code> and <code>end(x, y)</code>.
+                The start point is always the position of the line. So if you
+                set the position the start point gets set too.
+            </p>
+            <h4 id="prim-quad">Quads</h4>
+            <p>A quad shape. A rectangle with flexible edge points.</p>
+            <p>
+                The quad shape has four edge points named a, b, c and d.
+                Those can be set by calling
+                <code>points(ax, ay, bx, by, cx, cy, dx, dy)</code>.
+                The point a is always the position of the quad shape. So if
+                you set the position the point a gets set too.
+            </p>
+            <h4 id="prim-circle">Circles</h4>
+            <p>A circle shape.</p>
+            <p>
+                A circle has a radius. It can be specified by
+                calling <code>radius(radius)</code>. The default
+                radius is 10 if the function is not called.
+                The origin of the circle is always in the middle.
+            </p>
+            <h4 id="prim-arc">Arcs</h4>
+            <p>An arc shape.</p>
+            <p>
+                An arc has a radius which can be specified with
+                <code>radius(radius)</code>.
+                It also has a start and end angle which can be
+                set by calling <code>start(angle)</code> for the
+                start angle and <code>end(angle)</code> for the end
+                angle. It expects the angles to be in radians.
+                The origin is always in the middle of the arc.
+            </p>
+            <h4 id="prim-tri">Triangles</h4>
+            <p>A triangle shape, the most important in computer graphics.</p>
+            <p>
+                A triangle has three edge points called a, b and c.
+                Those can be set by calling <code>abc(ax, ay, bx, by, cx, cy)</code> or
+                seperatly by calling <code>a(x, y)</code>, <code>b(x, y)</code> and
+                <code>c(x, y)</code>.
+            </p>
+            <h4 id="prim-text">Text</h4>
+            <p>Just some text.</p>
+            <p>
+                Text needs a... well... text! It is specified
+                by calling <code>text(text)</code> and passing it
+                the text you want it to say. By default it's empty.
+                The font of the text can also be specified by
+                calling <code>font(fontName)</code> with the name
+                of the font you want it to use. By default it's
+                Arial. You can also specify the font size with
+                <code>size(fontSize)</code> which expects the font
+                size in pixels. The default font size is 12 pixels.
+            </p>
+            <p>
+                The text primitive also has the ability to measure
+                the width of the text using <code>measureWidth()</code>.
+                It returns the width of the text in pixels when rendered
+                with the currently assigned properties.
+            </p>
+            <h4 id="prim-point">Points</h4>
+            <p>A single dot.</p>
+            <p>
+                A Point primitive is a single point at its specified
+                position. Internally it's drawn as an ellipse with a
+                radius of <code>0.4px</code>.
+            </p>
+            <h4 id="prim-poly">Polygons</h4>
+            <p>A polygon, like a quad but with a flexible number of edges.</p>
+            <p>
+                A polygon needs edge points. Those can be added with
+                <code>vertex(x, y)</code> which adds a new edge (vertex)
+                to the polygon at the given x and y coordinate.
+            </p>
+        </section>
+        <section id="drawer-state">
+            <h2>Changing the Drawer state</h2>
+            <p>
+                The <code>Drawer</code> class is the <em>pen</em>
+                of our app. It is accessed by calling <code>app.draw()</code>
+                in the view loop which gives us the apps drawer instance.
+                This drawer gives us functions to draw the primitives we
+                just talked about but it also has a state that can be changed.
+            </p>
+            <h3>Blend Mode</h3>
+            <p>
+                The blend mode is changed by calling <code>Drawer.blendMode(mode)</code>
+                with the <code>BlendMode</code> you want. The default blend mode
+                overwrites the bottom layer with the top layer colors (source-over).
+            </p>
+            <h4>BlendMode.SourceOver</h4>
+            <p>
+                The color of the bottom layer is overwritten with the color of
+                the top layer.
+            </p>
+            <h4>BlendMode.Multiply</h4>
+            <p>
+                The color of the top layer is multiplied with the pixel of the layer under it.
+            </p>
+            <h4>BlendMode.Xor</h4>
+            <p>
+                Colors are made transparent where they overlap with another
+                color and drawn normal everywhere else.
+            </p>
+        </section>
+    </main>
+    <footer>
+        <small>birdboat00 (me 🌲) | Made with 💚</small>
+    </footer>
+</body>
+</html>

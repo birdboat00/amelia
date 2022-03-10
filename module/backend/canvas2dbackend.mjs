@@ -6,17 +6,11 @@ export class Canvas2DBackend extends Backend {
     constructor(context) {
         super();
         this.ctx = context;
-        // anti-alias fix
-        this.ctx.translate(0.5, 0.5);
     }
 
-    beginCmd() {
-        // this.ctx.save();
-    }
+    beginCmd() {}
 
-    endCmd() {
-        // this.ctx.restore();
-    }
+    endCmd() {}
 
     setBlendMode(blendMode) {
         this.ctx.globalCompositeOperation = blendMode.mode;

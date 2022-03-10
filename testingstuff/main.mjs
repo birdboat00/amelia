@@ -1,4 +1,5 @@
 import { app, Color, BlendMode, randomRange, map, Size } from "../module/mod.mjs";
+// import { app, Color, BlendMode, randomRange, map, Size } from "https://cdn.jsdelivr.net/gh/birdboat00/amelia/module/mod.mjs";
 
 const organic_view = (app, model) => {
     let drawer = app.draw();

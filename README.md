@@ -87,3 +87,10 @@ a lot of work to be done. Feel free to help out!
 
 ## License
 amelia is licensed under the [MIT license](LICENSE).
+
+## Building the reference to json
+```bat
+buildref.bat
+or
+npx jsdoc -c jsdoc.config.json -X -r > ref.json
+```
