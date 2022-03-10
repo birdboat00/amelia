@@ -189,6 +189,13 @@ export class Color {
     static get Cornflower() { return new Color(100, 149, 237); }
     static get Crimson() { return new Color(220, 20, 60); }
     static get Dandelion() { return new Color(240, 225, 48); }
+    static get Eggplant() { return new Color(97, 64, 81); }
+    static get Emerald() { return new Color(80, 200, 120); }
+    static get FrenchRose() { return new Color(246, 74, 138); }
+    static get FuchsiaRose() { return new Color(199, 67, 117); }
+    static get Fuchsia() { return new Color(204, 57, 123); }
+    static get Mango() { return new Color(253, 190, 2); }
+    static get Mint() { return new Color(62, 180, 137); }
 
     static get OldPaper() { return new Color(255, 255, 248); }
 }

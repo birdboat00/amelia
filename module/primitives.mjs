@@ -40,7 +40,8 @@ export class SetColor extends DrawCommand {
 
 export const BlendMode = {
     SourceOver: "source-over",
-    Multiply: "multiply"
+    Multiply: "multiply",
+    Xor: "xor"
 }
 
 export class SetBlendMode extends DrawCommand {
