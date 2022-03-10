@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>organic | examples | amelia</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Open+Sans+Condensed:300&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Open+Sans+Condensed:300&amp;display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../guide/style.css">
 
     <script type="module" id="script">
@@ -19,7 +21,6 @@
 
             let x = app.width / randomRange(70, 1000);
 
-
             for (let i = 0; i < app.height * 2; i += x) {
                 let xp = app.width / 2 + (Math.tan(i) * i) / (x * 2);
                 let yp = app.height - i;
@@ -28,7 +29,7 @@
                     .rect()
                     .xy(xp, yp)
                     .wh(x, x)
-                    .color(Color.fromHsl8(hue, 50 / 1.5, 65 / 1.5));
+                    .color(Color.fromHsl8(hue, 33, 45));
 
             }
 
@@ -53,14 +54,16 @@
             .run();
     </script>
 </head>
+
 <body>
     <div class="container center">
         <h1>Organic | <a href="./index.html">amelia examples</a></h1>
         <p><strong>Credits: </strong> <a href="https://openprocessing.org/sketch/1461272
             ">https://openprocessing.org/sketch/1461272
-        </a></p>
+            </a></p>
         <div id="example"></div>
     </div>
     <script src="injectcode.js" defer></script>
 </body>
+
 </html>
