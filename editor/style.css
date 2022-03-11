@@ -5,15 +5,9 @@ iframe {
 
 }
 
-textarea {
-    font-family: monospace;
-    appearance: none;
-    color: #333;
-    background: #fff;
-    border-radius: 3px;
-    border: 1px solid #333;
-    width: 100%;
-    height: 100%;
+.CodeMirror {
+    min-height: 500px;
+    font-size: 14px;
 }
 
 .row {
@@ -22,3 +16,33 @@ textarea {
     grid-auto-rows: minmax(100px, auto);
     grid-template-columns: repeat(2, 1fr);
 }
+
+main {
+    width: 90%;
+    margin: auto;
+    padding: 0;
+}
+
+nav.toolbar {
+    height: 64px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    vertical-align: middle;
+}
+
+.toolbar li {
+    display: inline;
+    float: right;
+}
+
+.toolbar ul {
+    list-style-type: none;
+}
+
+.toolbar ul:first-child {
+    float: left;
+}
+
+.cm-s-amelia .cm-keyword { color: #099; }
+.cm-s-amelia .cm-string { color: goldenrod; }
+.cm-s-amelia .cm-number { color: darkred; }

@@ -151,6 +151,7 @@ blockquote {
     margin-bottom: 1rem;
     display: inline-block;
     height: 38px;
+    max-height: 38px;
     padding: 0 30px;
     text-align: center;
     letter-spacing: .1rem;

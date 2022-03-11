@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +12,7 @@
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"></script>
     <script defer>hljs.highlightAll();</script>
 </head>
+
 <body>
     <header>
         <div id="title">
@@ -19,6 +21,7 @@
         <div id="menu">
             <a href="./guide/">guide</a>
             <a href="./examples/">examples</a>
+            <a href="./editor/">editor (WIP)</a>
             <a href="https://github.com/birdboat00/amelia/">github</a>
         </div>
     </header>
@@ -36,33 +39,37 @@
                 <img src="./guide/organic2.png">
                 <div class="cc">
                     <a href="./guide/" class="btn">Get started</a>
-                    <a href="./examples/" class="btn">Examples</a>
+                    <a href="./editor/" class="btn">Open editor</a>
                 </div>
             </div>
             <div>
                 <h1>Get amelia</h1>
-            <p>
-                Amelia is lightweight and modular and is written in modern
-                JavaScript.
-            </p>
-            <p>
-                Use it directly by downloading from <a href="https://github.com/birdboat00/amelia">GitHub</a>:
+                <p>
+                    Amelia is lightweight and modular and is written in modern
+                    JavaScript.
+                </p>
+                <p>
+                    Use it directly by downloading from <a href="https://github.com/birdboat00/amelia">GitHub</a>:
                 <pre>
                     <code class="language-js">
 import { app } from "/path/to/amelia/mod.mjs";
                     </code>
                 </pre>
-            </p>
-            <p>
-                Or import it from <a href="https://cdn.jsdelivr.net/gh/birdboat00/amelia/module/mod.mjs">jsDelivr</a>:
+                </p>
+                <p>
+                    Or import it from <a
+                        href="https://cdn.jsdelivr.net/gh/birdboat00/amelia/module/mod.mjs">jsDelivr</a>:
                 <pre>
                     <code class="language-js">
 import { app } from "https://cdn.jsdelivr.net/gh/birdboat00/amelia/module/mod.mjs";
                     </code>
                 </pre>
-            </p>
-            <p>
-                Draw a rectangle in 7 lines of code:
+                </p>
+                <p>
+                    You can also use the editor at <a href="./editor/">https://birdboat00.github.io/amelia/editor/</a>
+                </p>
+                <p>
+                    Draw a rectangle in 7 lines of code:
                 <pre>
                     <code class="language-js">
 import { app, Color } from "/path/to/amelia/mod.mjs";
@@ -77,12 +84,14 @@ app().view((app) => {
     pen.plot();
 }).run();</code>
                 </pre>
-            </p>
+                </p>
             </div>
         </div>
     </main>
     <footer>
-        <a href="../">amelia</a> by <a href="https://github.com/birdboat00">birdboat00</a> and contributors in 2022 licensed under the MIT license.
+        <a href="../">amelia</a> by <a href="https://github.com/birdboat00">birdboat00</a> and contributors in 2022
+        licensed under the MIT license.
     </footer>
 </body>
+
 </html>

@@ -11,3 +11,6 @@ export const shcircle = () => {
 
     app().size(200, 200).view(view).parent("shcircle-ex").once().run();
 };
+
+// To run the the code in the editor uncomment the next line
+// shcircle();

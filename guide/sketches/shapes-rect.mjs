@@ -12,3 +12,6 @@ export const shrect = () => {
 
     app().size(200, 200).view(view).parent("shrect-ex").once().run();
 };
+
+// To run the the code in the editor uncomment the next line
+// shrect();

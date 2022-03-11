@@ -274,7 +274,13 @@ export class App {
             });
 
             if(this.parentElemId) {
-                document.getElementById(this.parentElemId).appendChild(this.canvas);
+                let parentElem = document.getElementById(this.parentElemId);
+                if(parentElem) {
+                    parentElem.appendChild(this.canvas);
+                } else {
+                    console.warn(`The HTMLElement with id ${this.parentElemId} does not exist. Appending the canvas directly to the body.`);
+                    document.body.appendChild(this.canvas);
+                }
             } else {
                 document.body.appendChild(this.canvas);
             }

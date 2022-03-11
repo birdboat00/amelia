@@ -28,3 +28,14 @@ export const map = (n, start1, stop1, start2, stop2, bounds) => {
         return constrain(newval, stop2, start2);
     }
 }
+
+export const pingpong = (t, length) => {
+    const min = 0;
+    const max = length;
+    const range = max - min;
+    const mult = t / range;
+    const asc = mult % 2 == 0;
+    const mod = t % range;
+
+    return asc ? mod + max : max - mod;
+};

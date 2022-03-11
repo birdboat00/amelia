@@ -6,15 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>editor | amelia</title>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js" integrity="sha512-IS1FyxQkiJHT1SAvLXBaJu1UTFSIw0GT/DuzxHl69djqyLoEwGmR2davcZUnB8M7ppi9nfTGZR/vdfqmWt+i6A==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/javascript-hint.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/show-hint.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/show-hint.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/javascript-hint.min.js" defer></script>
+
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="./style.css">
 
     <script src="./editor.mjs"></script>
 </head>
 <body>
-    <header>
-        <p>editor | <a href="../">amelia</a></p>
-        <a href="javascript:runCode()">run code</a>
-    </header>
+    <nav class="toolbar">
+        <div id="title">
+            <p>editor | <a href="../">amelia</a></p>
+        </div>
+        <div id="menu">
+            <a href="javascript:runCode()" class="btn">run code</a>
+        </div>
+    </nav>
     <main class="row">
         <div>
             <iframe id="previewframe"></iframe>
@@ -23,5 +38,12 @@
             <textarea id="editortext" value="" placeholder="Your amelia sketch code in JavaScript."></textarea>
         </div>
     </main>
+    <div id="console">
+        <h5>Console Output:</h5>
+        <div id="content"></div>
+    </div>
+    <footer>
+
+    </footer>
 </body>
 </html>

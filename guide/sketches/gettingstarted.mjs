@@ -10,3 +10,6 @@ export const gse = () => {
 
     app().size(200, 200).view(view).parent("gs-ex").once().run();
 };
+
+// To run the the code in the editor uncomment the next line
+// gse();

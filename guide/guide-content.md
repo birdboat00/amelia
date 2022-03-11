@@ -1,7 +1,13 @@
 # Guide
 
+> You can find the old guide [here](../oldguide/).
+
 This guide walks you through setting up and using amelia for you generative-art
 projects.
+
+All examples in this guide are editable in the [amelia web editor](../editor/). Just hover click
+on the **Look at code** link on the bottom right on examples and it opens the code
+in the web editor.
 
 ![](./organic2.png)
 
@@ -9,19 +15,19 @@ projects.
 
 1. [What is amelia?](#what-is-amelia)
 1. [Getting started](#getting-started)
-   - [Using it as an ESM module](#using-it-as-an-esm-module)
-   - [Using it in the web editor](#using-it-in-the-web-editor)
-   - [The first sketch](#the-first-sketch)
-     - [Creating an app](#creating-an-app)
-     - [The model](#the-model)
-     - [The view](#the-view)
-     - [Drawing a rectangle](#drawing-a-rectangle)
+    - [Using it as an ESM module](#using-it-as-an-esm-module)
+    - [Using it in the web editor](#using-it-in-the-web-editor)
+    - [The first sketch](#the-first-sketch)
+        - [Creating an app](#creating-an-app)
+        - [The model](#the-model)
+        - [The view](#the-view)
+        - [Drawing a rectangle](#drawing-a-rectangle)
 1. [Drawing shapes](#drawing-shapes)
 1. [Going more advanced]()
-  - [The App and AppBuilder](#the-app-and-appbuilder)
-  - [The Drawer](#the-drawer)
-  - [Sizes](#sizes)
-  - [Loop modes](#loop-modes)
+    - [The App and AppBuilder](#the-app-and-appbuilder)
+    - [The Drawer](#the-drawer)
+    - [Sizes](#sizes)
+    - [Loop modes](#loop-modes)
 1. [Technical information](#technical-infomation)
 
 ## What is amelia?
@@ -74,10 +80,10 @@ import { app } from "https://cdn.jsdelivr.net/gh/birdboat00/amelia/module/mod.mj
 ```
 
 ### Using it in the web editor
-> The web editor is still very work-in-progress and barely functional!
+> The web editor is still very work-in-progress!
 
 Go to [the editor site](../editor/index.html) and enter the code into the
-text area on the right and click `run code`.
+editor on the right and click the **Run Code** button on the top right.
 
 You have to import the module from `../module/mod.mjs` like this:
 ```js
@@ -200,7 +206,7 @@ pen.plot();
 This should give us the following image:
 
 <div class="cc"><div class="example" id="gs-ex">
-    <a class="sclink" href="./sketches/gettingstarted.mjs">Look at code</a>
+    <a class="sclink" href="../editor/?source=../guide/sketches/gettingstarted.mjs">Look at code</a>
 </div></div>
 
 ## Drawing shapes
@@ -229,7 +235,7 @@ color.
 A simple rectangle shape with a width and height.
 
 <div class="cc"><div class="example" id="shrect-ex">
-    <a class="sclink" href="./sketches/shapes-rect.mjs">Look at code</a>
+    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-rect.mjs">Look at code</a>
 </div></div>
 
 A rectangle has a position which is the top left corner of the
@@ -241,7 +247,7 @@ rectangle and it has a width and height which can be set using
 A circle shape with a radius and a center point.
 
 <div class="cc"><div class="example" id="shcircle-ex">
-    <a class="sclink" href="./sketches/shapes-circle.mjs">Look at code</a>
+    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-circle.mjs">Look at code</a>
 </div></div>
 
 The position of the circle is used as the center point of the circle.
