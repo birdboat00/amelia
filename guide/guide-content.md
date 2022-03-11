@@ -266,36 +266,254 @@ A circle also has a radius which is set using
 
 ### Quads
 Quads are rectangles with flexible corner positions.
-> Guide work-in-progress
+
+<div class="cc"><div class="example" id="shquad-ex">
+    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-quad.mjs">Look at code</a>
+</div></div>
+
+Quads have edge four edge points: **a**, **b**, **c** and **d**. They can be set using
+- `points(ax, ay, bx, by, cx, cy, dx, dy)` with the four edges x and y coordinates
+
+If you set the position of the quad it sets the edge **a** to that
+coordinate, same the other way round, if you set the edge **a** you
+set the positon of the quad to that coordinate.
 
 ### Lines
 Lines have a start and end point and draw a line between those.
-> Guide work-in-progress
+
+<div class="cc"><div class="example" id="shline-ex">
+    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-line.mjs">Look at code</a>
+</div></div>
+
+The start and end points of a line are set with
+- `start(x, y)` and `end(x, y)` to set the start and end coordinates seperately
+- `points(startX, startY, endX, endY)` to set both start and end points
+The start point is always the position of the line, so when you set the
+position of the line you also set the start point.
+
+
 ### Arcs
 Arcs are lines that curve like a circle with an end and start radius.
-You can make cake slices with those!
-> Guide work-in-progress
+You can make cake slices or smiley faces with those!
+
+<div class="cc"><div class="example" id="sharc-ex">
+    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-arc.mjs">Look at code</a>
+</div></div>
+
 ### Triangles
 Triangles might be the most important primitive in computer graphics.
 They have, like their name suggests, three corners.
-> Guide work-in-progress
+
+<div class="cc"><div class="example" id="shtri-ex">
+    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-tri.mjs">Look at code</a>
+</div></div>
+
+Triangles have three edge points: **a**, **b** and **c**. Those can be set by calling
+- `abc(ax, ay, bx, by, cx, by)` to set them all at once or
+- `a(ax, ay)`, `b(bx, by)` and `c(cx, cy)` to set them seperatly
+
+The position of the rectangle is always point **a**.
+
 ### Points
 Points are single pixels!
-> Guide work-in-progress
+
+<div class="cc"><div class="example" id="shpts-ex">
+    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-pts.mjs">Look at code</a>
+</div></div>
+
+Points have no special properties. They are just where they are in the color they are.
+
 ### Polygons
 Polygons are shapes with a number of edges you can define and set
 everywhere you want. This allows drawing more complex shapes or maybe
 even meshes you load from somewhere.
-> Guide work-in-progress
+
+<div class="cc"><div class="example" id="shpoly-ex">
+    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-poly.mjs">Look at code</a>
+</div></div>
+
 ### Text
 Text is another way to express your words with art. Write anything
 you want on your canvas.
-> Guide work-in-progress
+
+<div class="cc"><div class="example" id="shtext-ex">
+    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-text.mjs">Look at code</a>
+</div></div>
+
+Text has some text, a font and a font size. Those are set using
+- `text(string)` to set the text
+- `font(fontName)` to set the font name
+- `size(fontSize)` to set the font size
+
+Text also has a handy function called `measureWidth()`. It measures the width in pixels of the text with its
+current settings and returns it.
+```js
+let text = pen.text().text("I am amelia!");
+console.log(text.measureWidth()); // output: 65
+```
 
 ## Going more advanced
-> Guide work-in-progress
+We learned how to do basic drawing in amelia and what different primitives can do.
+
+But the amelia has a lot more functionality than what you have seen yet!
+
+Lets see at what parts of amelia we will look at:
+- [The App and AppBuilder](#the-app-and-appbuilder)
+- [The Drawer](#the-drawer)
+- [Sizes](#sizes)
+- [Loop modes](#loop-modes)
+
 ### The App and AppBuilder
+
 > Guide work-in-progress
+
+When we launch amelia using the `app()` function, amelia actually
+creates an `AppBuilder` instance.
+
+This class has some handy functions that help us to easily create and
+amelia `App` using the [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern).
+Almost every function of the `AppBuilder` returns the instance itself
+so you can chain the function calls like this:
+
+```js
+app()
+  .size(400, 400)
+  .model(model)
+  .view(view)
+  .once()
+  .run();
+```
+
+Lets look at what the `AppBuilder` can do for us.
+
+#### Setting the canvas size
+Amelia creates a canvas for us, which has to have a size. By default
+that size is set to 100x100 pixels but you can make it every size you
+want. Even paper format sizes!
+
+There are two ways to set the size:
+- `size(width, height)` which sets the size in pixels to width and height
+- `sizeSz(size)` which sets the size using the [`Size`](#sizes) type
+
+```js
+// Set the size to 300 x 300 pixels
+app().size(300, 300);
+// Set the size to the DIN-A4 format
+app().sizeSz(Size.paperA4);
+```
+
+#### Setting the view and model functions
+We talked about the view and model function earlier in the guide.
+To set them you call:
+- `view(viewFunction)` to set the view function
+- `model(modelFunction)` to set the model function
+
+If you dont set a view or model function an empty one is used that
+does nothing.
+
+#### Setting the parent of the canvas
+If you already have some HTML element in your page that you want
+your canvas to be added to you can give the `AppBuilder` the ID
+of the element that should be used as the parent. You do that by calling
+- `parent(parentElementId)` with the ID of the element.
+
+```
+// Sets the parent to some-fancy-div
+app().parent("some-fancy-div");
+```
+
+#### Setting the loop mode of the application
+Amelia apps can have different [loop modes](#loop-modes). They
+determine how often your app gets rendered per second or how of the
+view function getscalled before the app stops calling it. But more on
+that later.
+
+This is done by calling `loopmode(loopMode)` with the loop mode you want.
+If you want your app to render the canvas just once (which is done for
+most of the examples on this page) you can call the shorthand function
+`once()` which is a shorthand to calling `loopmode(LoopMode.Once())`.
+
+The default loop mode if none is set is `LoopMode.RefreshSync()` which
+uses `requestAnimationFrame`. This renders the app usually at about 60
+frames per second on a 60hz monitor.
+
+```
+// Runs the app at 10 frames per second
+app().loopmode(LoopMode.FrameRate(10));
+// Calls the app view function 5 times and then stops
+app().loopmode(LoopMode.NTimes(5));
+// Calls the app view function only once
+app().once();
+```
+
+#### Starting the app!
+Last but not least we can launch the app!
+
+This is either done by calling
+- `run()` which runs the app with the settings you specified
+or with
+- `quickstart(viewFn, width, height)` which is a shortcut to quickly
+start an app!
+
+The `quickstart` function accepts a view function and a width and height which are both set to 400 if no size is given to it. It also runs your app!
+
+```
+// Run the app normally
+app().size(400, 400).view(view).run();
+// Or using the quick start function
+app().quickstart(view);
+// which also accepts a canvas size
+app().quickstart(view, 400, 400);
+```
+
+#### The App
+After we run the app using the `AppBuilder` first the model function
+is called with the app instance.
+
+After that, depending on the loop mode, the view function is called
+once or more. The function signature of the view function looks like this:
+```
+function view(app: App, model: Model) : void
+```
+The app instance and model is passed to the view function.
+
+The `App` type contains the state of the app and its [Drawer](#the-drawer) which is *the pen* of our app.
+
+The `Drawer` is accessed by calling `pen()` on the app. That returns
+the `Drawer` instance you can use to draw stuff onto the canvas.
+
+You can also change the loop mode of the app while it is running by calling
+- `loopmode(mode)` with the new mode you want it to use.
+The new loop mode is applied at the next frame.
+
+A lot of times you may actually want to get the size of the canvas
+or even change the size of the canvas.
+To get the size you can access the properties `width` and `height` which
+contain the size in pixels.
+To set the size of the canvas you can set the properties with the
+size in pixels.
+
+```js
+// Get the app width and print it to the console
+console.log(app.width) // 400
+// Set the app height to 500 pixels
+app.height = 500;
+```
+
+You can also set the size using the [Size](#sizes) type like by calling
+- `size(size)` with the size you want.
+
+```
+// Set the size to the postcard format.
+app.size(Size.paperPostcard)
+```
+
+Sometimes you may want to get the number of times the view function
+was already called. This is done by calling `iterations()`.
+
+If you want to get the frames per second your app is running at, you
+can access the property `fps`.
+
 ### The Drawer
 > Guide work-in-progress
 ### Sizes
