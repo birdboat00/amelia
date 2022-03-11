@@ -19,6 +19,7 @@ in the web editor.
     - [Using it in the web editor](#using-it-in-the-web-editor)
     - [The first sketch](#the-first-sketch)
         - [Creating an app](#creating-an-app)
+          - [Quickstart](#quickstart)
         - [The model](#the-model)
         - [The view](#the-view)
         - [Drawing a rectangle](#drawing-a-rectangle)
@@ -111,6 +112,14 @@ app()
 This will create an empty canvas in your html and start running the app. If you
 want your canvas added as a child to some HTML element you can pass its ID to
 `.parent(id)`.
+
+##### Quickstart
+You can also quickly create an `App` using the `quickstart` function. It defaults the
+size to 400x400 pixels if you don't give it a width and height and accepts only a
+view function and automatically runs the `App`.
+```js
+app().quickstart(view);
+```
 
 #### The model
 

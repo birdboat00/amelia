@@ -8,9 +8,9 @@ export class Canvas2DBackend extends Backend {
         this.ctx = context;
     }
 
-    beginCmd() {}
+    beginCmd() { }
 
-    endCmd() {}
+    endCmd() { }
 
     setBlendMode(blendMode) {
         this.ctx.globalCompositeOperation = blendMode.mode;
@@ -107,7 +107,7 @@ export class Canvas2DBackend extends Backend {
     drawPolygon(poly) {
         this.ctx.beginPath();
         this.ctx.moveTo(poly.vertices[0].x, poly.vertices[0].y);
-        for(let i = 1; i < poly.vertices.length; i++) {
+        for (let i = 1; i < poly.vertices.length; i++) {
             this.ctx.lineTo(poly.vertices[i].x, poly.vertices[i].y);
         }
         this.ctx.closePath();

@@ -2,6 +2,36 @@ let textarea;
 let previewFrame;
 let editor;
 
+const AppStates = {
+    Stopped: 0,
+    Running: 1,
+    Error: 2
+};
+
+let appState;
+
+let setAppState = (state) => {
+
+    appState = state;
+    let str = "N / A";
+    switch(state) {
+        case AppStates.Stopped:
+            str = "■ Not running";
+            break;
+        case AppStates.Running:
+            str = "▶ Running";
+            break;
+        case AppStates.Error:
+            str = "⚠ App Error";
+            break;
+        default:
+            str = "N / A";
+            break;
+    }
+    document.getElementById("app-state").textContent = str;
+};
+
+
 const exampleCode = `import { app, Color, Size } from "../module/mod.mjs";
 
 const view = (app) => {
@@ -15,14 +45,7 @@ const view = (app) => {
     pen.plot();
 };
 
-app().size(300, 300).view(view).run();`;
-
-const logToConsole = (msg) => {
-    /*const console = document.getElementById("content");
-    let text = document.createElement("p");
-    text.innerText = msg;
-    console.appendChild(text);*/
-};
+app().quickstart(view, 300, 300);`;
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -55,14 +78,23 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    logToConsole("loaded editor.");
-})
+
+    window.addEventListener("message", (ev) => {
+        let msg = JSON.parse(ev.data);
+        if(msg.cmd == "err") {
+            setAppState(AppStates.Error);
+        }
+    });
+
+    setAppState(AppStates.Stopped);
+});
 
 let runningScript;
 let previewFrameDocument;
 
 function runCode() {
-    clearCanvas();
+    stopCode();
+
     if(previewFrame && previewFrame.contentWindow) {
         previewFrameDocument = previewFrame.contentWindow.document;
         let errScript = previewFrameDocument.createElement("script");
@@ -72,6 +104,7 @@ function runCode() {
             errText.style = "color: #900;";
             errText.innerHTML = e.message + " (line: " + e.lineno + ", column: " + e.colno + ")";
             document.body.appendChild(errText);
+            parent.postMessage(JSON.stringify({ cmd: "err", err: e }));
         });
         `;
         previewFrameDocument.body.appendChild(errScript);
@@ -79,7 +112,14 @@ function runCode() {
         runningScript.type = "module";
         runningScript.innerHTML = editor.getValue();
         previewFrameDocument.body.appendChild(runningScript);
+        setAppState(AppStates.Running);
+
     }
+}
+
+function stopCode() {
+    clearCanvas();
+    setAppState(AppStates.Stopped);
 }
 
 function clearCanvas() {

@@ -16,17 +16,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/show-hint.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/javascript-hint.min.js" defer></script>
 
-    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="./style.css">
 
     <script src="./editor.mjs"></script>
 </head>
 <body>
     <nav class="toolbar">
-        <a href="javascript:history.back()" class="toolbar-item">&lt; Back</a>
-        <a href="../guide/" target="_blank" rel="noopener noreferrer" class="toolbar-item pull-r">Guide</a>
-        <a href="javascript:clearCanvas()" class="toolbar-item pull-r">Stop</a>
-        <a href="javascript:runCode()" class="toolbar-item pull-r">Run</a>
+        <a href="javascript:history.back()" class="toolbar-item">◀ Back</a>
+        <a href="../guide/" target="_blank" rel="noopener noreferrer" class="toolbar-item pull-r">📕 Guide ↗</a>
+        <a href="javascript:stopCode()" class="toolbar-item pull-r">■ Stop</a>
+        <a href="javascript:runCode()" class="toolbar-item pull-r">▶ Run</a>
+        <p class="toolbar-item pull-r as-normal" id="app-state"></p>
     </nav>
     <div>
         <div class="canvas" id="previewframediv">

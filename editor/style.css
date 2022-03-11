@@ -3,6 +3,11 @@ body {
     margin: 0;
     font-size: 16px;
     line-height: 1.35;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
 }
 
 iframe {
@@ -31,13 +36,13 @@ div.canvas {
     width: 49vw;
     height: calc(90vh - 20px);
     position: absolute;
-    top: calc(10vh + 20px);
+    top: calc(7vh + 20px);
 }
 
 div.editor {
     width: 49vw;
     position: absolute;
-    top: calc(10vh + 20px);
+    top: calc(7vh + 20px);
     left: 50vw;
     bottom: 0;
     overflow: hidden;
@@ -48,27 +53,38 @@ nav.toolbar {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 10vh;
+    height: 7vh;
     margin-bottom: 20px;
     border-bottom: 1px solid #333;
+}
+
+.toolbar-item:first-child {
+    border-right: 1px solid #3333;
 }
 
 .toolbar-item {
     display: inline-block;
     font-size: 1.2rem;
     font-weight: 600;
-    height: 10vh;
-    line-height: 10vh;
+    height: 7vh;
+    line-height: 7vh;
     padding: 0 20px;
     color: #099;
     cursor: pointer;
+    border-left: 1px solid #3333;
+}
+
+#app-state {
+    margin: 0;
+    font-size: 1rem;
+    color: #555;
 }
 
 .pull-r {
     float: right;
 }
 
-.toolbar-item:hover, .toolbar-item:focus {
+a.toolbar-item:hover, a.toolbar-item:focus {
     background-color: #099;
     color: #fff;
 }

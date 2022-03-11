@@ -178,7 +178,7 @@ blockquote {
 @media(min-width: 1000px) {
     .twocolumn {
         display: grid;
-        gap: 10px;
+        gap: 50px;
         grid-auto-rows: minmax(100px, auto);
         grid-template-columns: repeat(2, 1fr);
     }

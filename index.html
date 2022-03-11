@@ -74,7 +74,7 @@ import { app } from "https://cdn.jsdelivr.net/gh/birdboat00/amelia/module/mod.mj
                     <code class="language-js">
 import { app, Color } from "/path/to/amelia/mod.mjs";
 
-app().view((app) => {
+app().quickstart((app) => {
     let pen = app.pen();
 
     pen.background().color(Color.Plum);
@@ -82,7 +82,7 @@ app().view((app) => {
     pen.rect().xy(20, 20).wh(60, 60).color(Color.Amber);
 
     pen.plot();
-}).run();</code>
+});</code>
                 </pre>
                 </p>
             </div>

@@ -1,5 +1,15 @@
-import { getBackendInstance } from "./backend/backends.mjs";
-import { ArcPrimitive, Background, CirclePrimitive, LinePrimitive, PointPrimitive, PolygonPrimitive, QuadPrimitive, RectPrimitive, SetBlendMode, SetColor, SetOrigin, TextPrimitive, TrianglePrimitive } from "./primitives.mjs";
+import { getBackendInstance } from "../backend/backends.mjs";
+import { ArcPrimitive } from "./arcprimitive.mjs";
+import { Background } from "./background.mjs";
+import { CirclePrimitive } from "./circleprimitive.mjs";
+import { LinePrimitive } from "./lineprimitive.mjs";
+import { PointPrimitive } from "./pointprimitive.mjs";
+import { PolygonPrimitive } from "./polyprimitive.mjs";
+import { QuadPrimitive } from "./quadprimitive.mjs";
+import { RectPrimitive } from "./rectprimitive.mjs";
+import { SetBlendMode, SetColor, SetOrigin } from "./state.mjs";
+import { TextPrimitive } from "./textprimitive.mjs";
+import { TrianglePrimitive } from "./triprimitive.mjs";
 
 export class Drawer {
     canvas;
@@ -143,8 +153,8 @@ export class Drawer {
      * Finish the frame and draw it.
      */
     finish() {
-        const processCmd = (cmd) => {
-            this.backend.beginCmd();
+        const processCmd = (cmd, isSub = false) => {
+            if (!isSub) this.backend.beginCmd();
             if (cmd instanceof SetOrigin) {
                 this.backend.setOrigin(cmd);
             } else if (cmd instanceof SetColor) {
@@ -172,12 +182,12 @@ export class Drawer {
             } else if (cmd instanceof PolygonPrimitive) {
                 this.backend.drawPolygon(cmd);
             }
-            this.backend.endCmd();
+            if (!isSub) this.backend.endCmd();
         };
 
         this.queue.forEach(cmd => {
             cmd.preCommands.forEach(preCmd => {
-                processCmd(preCmd);
+                processCmd(preCmd, true);
             });
             processCmd(cmd);
         });

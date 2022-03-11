@@ -1,5 +1,5 @@
 import { Backends } from "./backend/backends.mjs";
-import { Drawer } from "./draw.mjs";
+import { Drawer } from "./draw/drawer.mjs";
 
 /**
  * The type describing the loop mode of the app.
@@ -45,14 +45,6 @@ export class LoopMode {
     get isNTimes() { return this.nTimes != null; }
     get isFrameRate() { return this.frameRate != null; }
 }
-
-/**
- * Begin building the @type {App}
- * @returns {AppBuilder} - the app builder
- */
-export const app = () => {
-    return new AppBuilder();
-};
 
 /**
  * An amelia @type {App} builder.
@@ -218,6 +210,21 @@ export class AppBuilder {
         };
         new App(fns, this.parentElemId, this.canvasSize, null, this.backend, this.loopMode).run();
     }
+
+    /**
+     * Quickly start an app.
+     * Short-hand for .view(viewfn).size(w, h).run();
+     * If no width and height are passed the size of the
+     * canvas is set to 400x400 pixels.
+     * @param {*} viewFn - the view function to use
+     * @param {number} w - the width of the app, default is 400
+     * @param {number} h - the height of the app, default is 400
+     */
+    quickstart(viewFn, w = 400, h = 400) {
+        this.view(viewFn);
+        this.size(w, h);
+        this.run();
+    }
 }
 
 export class App {
@@ -273,9 +280,9 @@ export class App {
                 this.keyPressFn(this, this.model, ev);
             });
 
-            if(this.parentElemId) {
+            if (this.parentElemId) {
                 let parentElem = document.getElementById(this.parentElemId);
-                if(parentElem) {
+                if (parentElem) {
                     parentElem.appendChild(this.canvas);
                 } else {
                     console.warn(`The HTMLElement with id ${this.parentElemId} does not exist. Appending the canvas directly to the body.`);
@@ -290,11 +297,11 @@ export class App {
 
         this.model = this.modelFn(this);
 
-        if(this.loopMode.isRefreshSync) {
+        if (this.loopMode.isRefreshSync) {
             requestAnimationFrame(this.#loop.bind(this));
         } else if (this.loopMode.isFrameRate) {
             setTimeout(this.#loop.bind(this), 1000 / this.loopMode.frameRate);
-        } else if(this.loopMode.isNTimes && this.loopMode.nTimes > 0) {
+        } else if (this.loopMode.isNTimes && this.loopMode.nTimes > 0) {
             requestAnimationFrame(this.#loop.bind(this));
         }
     }
@@ -311,7 +318,7 @@ export class App {
 
         this.frames++;
 
-        if(this.loopMode.isRefreshSync) {
+        if (this.loopMode.isRefreshSync) {
             requestAnimationFrame(this.#loop.bind(this));
         } else if (this.loopMode.isFrameRate) {
             setTimeout(this.#loop.bind(this), 1000 / this.loopMode.frameRate);
