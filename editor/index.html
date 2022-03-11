@@ -23,27 +23,16 @@
 </head>
 <body>
     <nav class="toolbar">
-        <div id="title">
-            <p>editor | <a href="../">amelia</a></p>
-        </div>
-        <div id="menu">
-            <a href="javascript:runCode()" class="btn">run code</a>
-        </div>
+        <a href="javascript:history.back()" class="toolbar-item">&lt; Back</a>
+        <a href="javascript:clearCanvas()" class="toolbar-item pull-r">Stop</a>
+        <a href="javascript:runCode()" class="toolbar-item pull-r">Run</a>
     </nav>
-    <main class="row">
-        <div>
-            <iframe id="previewframe"></iframe>
+    <div>
+        <div class="canvas" id="previewframediv">
         </div>
-        <div id="codeeditor">
+        <div id="codeeditor" class="editor">
             <textarea id="editortext" value="" placeholder="Your amelia sketch code in JavaScript."></textarea>
         </div>
-    </main>
-    <div id="console">
-        <h5>Console Output:</h5>
-        <div id="content"></div>
     </div>
-    <footer>
-
-    </footer>
 </body>
 </html>

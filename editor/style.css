@@ -1,13 +1,23 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.35;
+}
+
 iframe {
     width: 100%;
-    border: 1px solid #333;
     min-height: 500px;
-
+    height: calc(100% - 20px);
+    padding: 0;
+    margin: 0;
+    border: none;
 }
 
 .CodeMirror {
     min-height: 500px;
     font-size: 14px;
+    height: calc(100% - 20px);
 }
 
 .row {
@@ -17,30 +27,50 @@ iframe {
     grid-template-columns: repeat(2, 1fr);
 }
 
-main {
-    width: 90%;
-    margin: auto;
-    padding: 0;
+div.canvas {
+    width: 49vw;
+    height: calc(90vh - 20px);
+    position: absolute;
+    top: calc(10vh + 20px);
+}
+
+div.editor {
+    width: 49vw;
+    position: absolute;
+    top: calc(10vh + 20px);
+    left: 50vw;
+    bottom: 0;
+    overflow: hidden;
 }
 
 nav.toolbar {
-    height: 64px;
-    border-bottom: 1px solid #ccc;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 10vh;
     margin-bottom: 20px;
-    vertical-align: middle;
+    border-bottom: 1px solid #333;
 }
 
-.toolbar li {
-    display: inline;
+.toolbar-item {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    height: 10vh;
+    line-height: 10vh;
+    padding: 0 20px;
+    color: #099;
+    cursor: pointer;
+}
+
+.pull-r {
     float: right;
 }
 
-.toolbar ul {
-    list-style-type: none;
-}
-
-.toolbar ul:first-child {
-    float: left;
+.toolbar-item:hover, .toolbar-item:focus {
+    background-color: #099;
+    color: #fff;
 }
 
 .cm-s-amelia .cm-keyword { color: #099; }

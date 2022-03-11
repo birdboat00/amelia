@@ -18,10 +18,10 @@ const view = (app) => {
 app().size(300, 300).view(view).run();`;
 
 const logToConsole = (msg) => {
-    const console = document.getElementById("content");
+    /*const console = document.getElementById("content");
     let text = document.createElement("p");
     text.innerText = msg;
-    console.appendChild(text);
+    console.appendChild(text);*/
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -58,15 +58,38 @@ document.addEventListener("DOMContentLoaded", () => {
     logToConsole("loaded editor.");
 })
 
+let runningScript;
+let previewFrameDocument;
+
 function runCode() {
+    clearCanvas();
     if(previewFrame && previewFrame.contentWindow) {
-        console.log("submitting code");
-        console.log(editor.getValue());
-        let pfd = previewFrame.contentWindow.document;
-        pfd.body.innerHTML = '';
-        let script = pfd.createElement("script");
-        script.type = "module";
-        script.innerHTML = editor.getValue();
-        pfd.body.appendChild(script);
+        previewFrameDocument = previewFrame.contentWindow.document;
+        let errScript = previewFrameDocument.createElement("script");
+        errScript.innerHTML = `
+        window.addEventListener("error", (e) => {
+            let errText = document.createElement("p");
+            errText.style = "color: #900;";
+            errText.innerHTML = e.message + " (line: " + e.lineno + ", column: " + e.colno + ")";
+            document.body.appendChild(errText);
+        });
+        `;
+        previewFrameDocument.body.appendChild(errScript);
+        runningScript = previewFrameDocument.createElement("script");
+        runningScript.type = "module";
+        runningScript.innerHTML = editor.getValue();
+        previewFrameDocument.body.appendChild(runningScript);
     }
+}
+
+function clearCanvas() {
+    if(previewFrame && previewFrame.contentWindow && previewFrameDocument) {
+        previewFrameDocument.body.innerHTML = '';
+        previewFrame.remove();
+    }
+
+    let canvas = document.getElementById("previewframediv");
+    previewFrame = document.createElement("iframe");
+    previewFrame.id = "previewframe";
+    canvas.appendChild(previewFrame);
 }
