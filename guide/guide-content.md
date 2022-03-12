@@ -27,8 +27,9 @@ in the web editor.
 1. [Going more advanced]()
     - [The App and AppBuilder](#the-app-and-appbuilder)
     - [The Drawer](#the-drawer)
-    - [Sizes](#sizes)
     - [Loop modes](#loop-modes)
+    - [Sizes](#sizes)
+    - [Colors](#colors)
 1. [Technical information](#technical-infomation)
 
 ## What is amelia?
@@ -215,7 +216,7 @@ pen.plot();
 This should give us the following image:
 
 <div class="cc"><div class="example" id="gs-ex">
-    <a class="sclink" href="../editor/?source=../guide/sketches/gettingstarted.mjs">Look at code</a>
+    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/gettingstarted.mjs">Look at code</a>
 </div></div>
 
 ## Drawing shapes
@@ -272,14 +273,14 @@ Here is a simple example of the Mandelbrot set plotted using the
 `pixelbuffer` function.
 
 <div class="cc"><div class="example" id="shpbmb-ex">
-    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-pb-mandelbrot.mjs">Look at code</a>
+    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-pb-mandelbrot.mjs">Look at code</a>
 </div></div>
 
 ### Rectangles
 A simple rectangle shape with a width and height.
 
 <div class="cc"><div class="example" id="shrect-ex">
-    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-rect.mjs">Look at code</a>
+    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-rect.mjs">Look at code</a>
 </div></div>
 
 A rectangle has a position which is the top left corner of the
@@ -291,7 +292,7 @@ rectangle and it has a width and height which can be set using
 A circle shape with a radius and a center point.
 
 <div class="cc"><div class="example" id="shcircle-ex">
-    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-circle.mjs">Look at code</a>
+    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-circle.mjs">Look at code</a>
 </div></div>
 
 The position of the circle is used as the center point of the circle.
@@ -303,7 +304,7 @@ A circle also has a radius which is set using
 Quads are rectangles with flexible corner positions.
 
 <div class="cc"><div class="example" id="shquad-ex">
-    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-quad.mjs">Look at code</a>
+    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-quad.mjs">Look at code</a>
 </div></div>
 
 Quads have edge four edge points: **a**, **b**, **c** and **d**. They can be set using
@@ -317,7 +318,7 @@ set the positon of the quad to that coordinate.
 Lines have a start and end point and draw a line between those.
 
 <div class="cc"><div class="example" id="shline-ex">
-    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-line.mjs">Look at code</a>
+    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-line.mjs">Look at code</a>
 </div></div>
 
 The start and end points of a line are set with
@@ -332,7 +333,7 @@ Arcs are lines that curve like a circle with an end and start radius.
 You can make cake slices or smiley faces with those!
 
 <div class="cc"><div class="example" id="sharc-ex">
-    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-arc.mjs">Look at code</a>
+    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-arc.mjs">Look at code</a>
 </div></div>
 
 ### Triangles
@@ -340,7 +341,7 @@ Triangles might be the most important primitive in computer graphics.
 They have, like their name suggests, three corners.
 
 <div class="cc"><div class="example" id="shtri-ex">
-    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-tri.mjs">Look at code</a>
+    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-tri.mjs">Look at code</a>
 </div></div>
 
 Triangles have three edge points: **a**, **b** and **c**. Those can be set by calling
@@ -353,7 +354,7 @@ The position of the rectangle is always point **a**.
 Points are single pixels!
 
 <div class="cc"><div class="example" id="shpts-ex">
-    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-pts.mjs">Look at code</a>
+    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-pts.mjs">Look at code</a>
 </div></div>
 
 Points have no special properties. They are just where they are in the color they are.
@@ -364,7 +365,7 @@ everywhere you want. This allows drawing more complex shapes or maybe
 even meshes you load from somewhere.
 
 <div class="cc"><div class="example" id="shpoly-ex">
-    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-poly.mjs">Look at code</a>
+    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-poly.mjs">Look at code</a>
 </div></div>
 
 ### Text
@@ -372,7 +373,7 @@ Text is another way to express your words with art. Write anything
 you want on your canvas.
 
 <div class="cc"><div class="example" id="shtext-ex">
-    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-text.mjs">Look at code</a>
+    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-text.mjs">Look at code</a>
 </div></div>
 
 Text has some text, a font and a font size. Those are set using
@@ -399,8 +400,6 @@ Lets see at what parts of amelia we will look at:
 - [Loop modes](#loop-modes)
 
 ### The App and AppBuilder
-
-> Guide work-in-progress
 
 When we launch amelia using the `app()` function, amelia actually
 creates an `AppBuilder` instance.
@@ -550,11 +549,134 @@ If you want to get the frames per second your app is running at, you
 can access the property `fps`.
 
 ### The Drawer
-> Guide work-in-progress
-### Sizes
-> Guide work-in-progress
+The drawer is what creates all your primitives and directs the
+draw commands to the backend. Imagine it like the pen of the amelia
+app (which is why its accessed through the `App.pen` function).
+
+The drawer does not only create all the primitives we talked about
+before and give us access to the pixel buffer, it also has a state
+which holds the following properties:
+- [Blend mode](#the-blend-modes)
+
+Lets look at all of them.
+
+#### The blend modes
+The blend mode is what determines how colors are mixed when
+you draw one pixel over another. The blend mode is kept until
+set to another blend mode.
+
+It is set using the `Drawer.blendMode(mode)` function which needs
+a `BlendMode`.
+
+There are the following blend modes:
+- `SourceOver` which is the default blend mode. This overwrites the older color with the newer one
+- `Multiply` multiplies the newer color with the older one and
+- `Xor` which makes colors transparent when they are overdrawn and
+draws the color normally otherwise.
+
+<div class="cc"><div class="example" id="penbm-ex">
+    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/pen-blendmodes.mjs">Look at code</a>
+</div></div>
+
 ### Loop modes
-> Guide work-in-progress
+Amelia apps can have different loop modes. They determine how the
+`view` function is looped and called.
+
+There are loop modes that loop continuously without ever stopping
+and ones that are called a number of times and then stop the app.
+
+The loop mode is set using the `AppBuilder.loopmode(mode)` function when
+building the app or at runtime using the `App.loopmode(mode)` function.
+
+The loop modes are defined in the `LoopMode` class.
+
+Lets look at them:
+- [RefreshSync](#refreshsync) (the default loop mode)
+- [FrameRate](#framerate)
+- [NTimes and Once](#ntimes-and-once)
+
+#### RefreshSync
+This loop mode is created by calling `LoopMode.RefreshSync()`. It uses
+the `requestAnimationFrame` function of your browser. This usually
+calls your view function at about the refresh rate of your monitor
+or when your browser is ready to draw the next frame.
+
+```js
+app().view(view).loopmode(LoopMode.RefreshSync()).run();
+```
+
+#### FrameRate
+The `LoopMode.FrameRate(frameRate)` calls your view function at a
+the `frameRate` you want it called. So for example if you want the
+view function to be called once per second you would do:
+
+```js
+app().view(view).loopmode(LoopMode.FrameRate(1)).run();
+```
+
+Internally this loop mode uses `setTimeout`.
+
+#### NTimes and Once
+The `LoopMode.NTimes(times)` loop mode calls your view function
+a number of times and then stops the app. It loops at the speed
+of `requestAnimationFrame`. If you want your view function to
+be only called once you can use `LoopMode.Once()` which is a
+shorthand to `LoopMode.NTimes(1)`.
+
+```js
+// This would call view 50 times.
+app().view(view).loopmode(LoopMode.NTimes(50)).run();
+// Call view only once and then stop:
+app().view(view).loopmode(LoopMode.Once()).run();
+```
+
+To make your app run only once you can also use the `AppBuilder.once()`
+shorthand which sets the `LoopMode` to `Once`.
+
+### Sizes
+Amelia has a handy utility type to create sizes. Its the `Size` type.
+
+A size has a width and height in pixels. To access the them you use
+- `Size.width` and `Size.height` on your size instance.
+
+There are builder functions to create a size from millimeters or inches.
+- `Size.fromPx(w, h)` to create a size from pixels
+- `Size.fromMillimeters(w, h)` to create a size from millimeters
+- `Size.fromInches(w, h)` to create a size from inches.
+
+You can also modify the sizes of an already created size by setting the
+`Size.width` and `Size.height` properties.
+
+Sizes can be turned either portrait or landscape using
+- `Size.portrait()` to make the longer side the height and shorter side the width
+- `Size.landscape()` to make the shorter side the height and longer side the width
+
+There are also some pre-defined sizes based on common paper sizes. They
+use the default CSS-spec DPI of 96 pixels-per-inch to calculate the
+pixel size of the size from millimeters or inches. They are:
+- DIN sizes: `paperA3 paperA4 paperA5 paperA6 paperA7`
+- American sizes: `paperLetter paperHalfLetter paperPostcard`
+- Other sizes: `paperCarreL`
+
+To compare sizes you can use the `Size.min` and `Size.max` functions.
+Those returns a size with the shortest or longest widths and height
+of the two supplied sizes.
+
+To create random size between zero and one you can use `Size.random`.
+To create size of zero you can use `Size.zero`.
+
+### Colors
+Colors are an important part of art. Amelia has the `Color` type to
+represent RGBA colors.
+The red, green, blue and alpha values are accessed using the
+`r`, `g`, `b` and `a` properties of the Color instance.
+
+You can create new colors using:
+- `Color.fromRgba8(r, g, b, a)` with values from 0 to 255
+- `Color.fromRgba(r, b, b, a)` with values from 0 to 1
+- `Color.fromHsl(hue, saturation, luminance)` with values from 0 to 1
+
+There is also a big number of pre-defined colors you can use.
 
 ## Technical information
 ### Where can i report issues?

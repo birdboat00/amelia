@@ -1,4 +1,5 @@
 import { gse } from "./sketches/gettingstarted.mjs";
+import { penbm } from "./sketches/pen-blendmodes.mjs";
 import { sharc } from "./sketches/shapes-arc.mjs";
 import { shcircle } from "./sketches/shapes-circle.mjs";
 import { shline } from "./sketches/shapes-line.mjs";
@@ -32,4 +33,5 @@ fetch("./guide-content.md")
         shpoly();
         shtext();
         shpbmb();
+        penbm();
     });

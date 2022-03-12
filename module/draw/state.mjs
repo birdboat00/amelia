@@ -1,5 +1,14 @@
 import { DrawCommand } from "./drawcommand.mjs";
 
+export class SetRotation extends DrawCommand {
+    rot;
+
+    constructor(rot) {
+        super();
+        this.rot = rot;
+    }
+}
+
 /**
  * Draw command to set the origin of the primitive.
  */
@@ -44,7 +53,7 @@ export class SetBlendMode extends DrawCommand {
     mode;
 
     constructor(mode) {
-        super();
+        super(true);
         this.mode = mode;
     }
 }

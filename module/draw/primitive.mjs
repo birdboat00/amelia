@@ -1,5 +1,5 @@
 import { DrawCommand } from "./drawcommand.mjs";
-import { SetColor } from "./state.mjs";
+import { SetColor, SetRotation } from "./state.mjs";
 import { Color } from "../color.mjs";
 
 export class Primitive extends DrawCommand {
@@ -61,13 +61,13 @@ export class Primitive extends DrawCommand {
     }
 
     /**
-     * Shorthand for xy()
-     * @param {number} x - the x coordinate
-     * @param {number} y - the y coordinate
-     * @returns {Primitive} - the primitive
+     * Specify the rotation of the primitive. It gets rotated
+     * around the point of the position.
+     * @param {number} rotation - the rotation in radians
+     * @returns {Primitive}
      */
-    pos(x, y) {
-        this.xy(x, y);
+    rotation(rotation) {
+        this.preCommands.push(new SetRotation(rotation));
         return this;
     }
 

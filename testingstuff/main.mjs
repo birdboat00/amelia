@@ -1,5 +1,46 @@
 import { app, Color, BlendMode, randomRange, map, Size, LoopMode, randomRangeInt } from "../module/mod.mjs";
-// import { app, Color, BlendMode, randomRange, map, Size } from "https://cdn.jsdelivr.net/gh/birdboat00/amelia/module/mod.mjs";
+
+const rot_test_view = (app, model) => {
+    let pen = app.pen();
+
+    pen.background().color(Color.Black);
+
+    pen.circle()
+        .xy(50, 50)
+        .color(Color.Amaranth)
+        .radius(25);
+
+    pen.rect()
+        .xy(100, 100)
+        .wh(300, 300)
+        .rotation(model.rot)
+        .color(Color.White);
+
+    pen.rect()
+        .xy(300, 300)
+        .wh(100, 100)
+        .color(Color.BitterLime);
+
+    model.rot += 0.01;
+
+    pen.plot();
+};
+
+const rot_test_model = (app) => {
+    return {
+        rot: 0
+    }
+};
+
+const start_rot_test = _ => {
+    app()
+        .size(500, 500)
+        .model(rot_test_model)
+        .view(rot_test_view)
+        .run();
+};
+
+start_rot_test();
 
 const autumncolors_view = (app, model) => {
     let pen = app.pen();
@@ -47,7 +88,7 @@ const start_autumncolors = () => {
         .run();
 };
 
-start_autumncolors();
+// start_autumncolors();
 
 const organic_view = (app, model) => {
     let drawer = app.draw();

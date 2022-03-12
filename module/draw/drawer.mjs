@@ -8,7 +8,7 @@ import { PointPrimitive } from "./pointprimitive.mjs";
 import { PolygonPrimitive } from "./polyprimitive.mjs";
 import { QuadPrimitive } from "./quadprimitive.mjs";
 import { RectPrimitive } from "./rectprimitive.mjs";
-import { SetBlendMode, SetColor, SetOrigin } from "./state.mjs";
+import { SetBlendMode, SetColor, SetOrigin, SetRotation } from "./state.mjs";
 import { TextPrimitive } from "./textprimitive.mjs";
 import { TrianglePrimitive } from "./triprimitive.mjs";
 
@@ -160,8 +160,8 @@ export class Drawer {
      * Finish the frame and draw it.
      */
     finish() {
-        const processCmd = (cmd, isSub = false) => {
-            if (!isSub) this.backend.beginCmd();
+        const processCmd = (cmd) => {
+
             if (cmd instanceof SetOrigin) {
                 this.backend.setOrigin(cmd);
             } else if (cmd instanceof SetColor) {
@@ -190,15 +190,18 @@ export class Drawer {
                 this.backend.drawPolygon(cmd);
             } else if (cmd instanceof ModifyPixelBuffer) {
                 this.backend.modifyPixelBuffer(cmd);
+            } else if (cmd instanceof SetRotation) {
+                this.backend.setRotation(cmd);
             }
-            if (!isSub) this.backend.endCmd();
         };
 
         this.queue.forEach(cmd => {
+            if(!cmd.dontSaveCtx) this.backend.beginCmd();
             cmd.preCommands.forEach(preCmd => {
-                processCmd(preCmd, true);
+                processCmd(preCmd);
             });
             processCmd(cmd);
+            if(!cmd.dontSaveCtx) this.backend.endCmd();
         });
 
         // clears the array

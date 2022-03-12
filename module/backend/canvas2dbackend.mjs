@@ -8,9 +8,15 @@ export class Canvas2DBackend extends Backend {
         this.ctx = context;
     }
 
-    beginCmd() { }
+    beginCmd() {
+        let blendmode = this.ctx.globalCompositeOperation;
+        this.ctx.save();
+        this.ctx.globalCompositeOperation = blendmode;
+    }
 
-    endCmd() { }
+    endCmd() {
+        this.ctx.restore();
+    }
 
     setBlendMode(blendMode) {
         this.ctx.globalCompositeOperation = blendMode.mode;
@@ -18,6 +24,10 @@ export class Canvas2DBackend extends Backend {
 
     setOrigin(origin) {
         this.ctx.translate(origin.x, origin.y);
+    }
+
+    setRotation(rotation) {
+        this.ctx.rotate(rotation.rot);
     }
 
     setColor(color) {

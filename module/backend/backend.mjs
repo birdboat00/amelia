@@ -3,6 +3,7 @@ export class Backend {
     endCmd() { }
     setOrigin(origin) { }
     setColor(color) { }
+    setRotation(rotation) { }
     setBlendMode(blendMode) { }
     drawRect(prim) { }
     drawLine(prim) { }

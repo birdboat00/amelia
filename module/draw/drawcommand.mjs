@@ -1,8 +1,9 @@
 export class DrawCommand {
     preCommands;
 
-    constructor() {
+    constructor(dontSaveCtx = false) {
         this.preCommands = [];
+        this.dontSaveCtx = dontSaveCtx;
     }
 
     pushPreCmd(cmd) {
