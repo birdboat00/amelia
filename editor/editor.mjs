@@ -1,37 +1,3 @@
-let textarea;
-let previewFrame;
-let editor;
-
-const AppStates = {
-    Stopped: 0,
-    Running: 1,
-    Error: 2
-};
-
-let appState;
-
-let setAppState = (state) => {
-
-    appState = state;
-    let str = "N / A";
-    switch(state) {
-        case AppStates.Stopped:
-            str = "■ Not running";
-            break;
-        case AppStates.Running:
-            str = "▶ Running";
-            break;
-        case AppStates.Error:
-            str = "⚠ App Error";
-            break;
-        default:
-            str = "N / A";
-            break;
-    }
-    document.getElementById("app-state").textContent = str;
-};
-
-
 const exampleCode = `import { app, Color, Size } from "../module/mod.mjs";
 
 const view = (app) => {
@@ -47,89 +13,112 @@ const view = (app) => {
 
 app().quickstart(view, 300, 300);`;
 
-document.addEventListener("DOMContentLoaded", () => {
+const AppStates = {
+    Stopped: "■ Not running",
+    Running: "▶ Running",
+    Error: "⚠ App Error",
+    None: "N / A"
+};
 
-    textarea = document.getElementById("editortext");
-    previewFrame = document.getElementById("previewframe");
+class AmeliaEditor {
+    appState;
+    appStateDisplay;
+    previewFrame;
+    editor;
+    editorFrame;
+    previewFrameDocument;
 
-    editor = CodeMirror.fromTextArea(textarea, {
-        lineNumbers: true,
-        mode: "javascript",
-        theme: "amelia",
-        indentUnit: 4,
-        tabSize: 4,
-        matchBrackets: true,
-        autoCloseBrackets: true,
-        showHint: true
-    });
+    constructor(previewFrameId, codeEditorId, appStateId) {
+        this.previewFrame = document.createElement("iframe");
+        this.previewFrame.id = "previewframe";
+        document.getElementById("previewframediv").appendChild(this.previewFrame);
+        this.previewFrameDocument = this.previewFrame.contentWindow.document;
+        this.editorFrame = document.getElementById(codeEditorId);
+        this.appStateDisplay = document.getElementById(appStateId);
 
-    editor.setValue(exampleCode);
+        this.editor = CodeMirror(this.editorFrame, {
+            lineNumbers: true,
+            mode: "javascript",
+            theme: "amelia",
+            indentUnit: 4,
+            tabSize: 4,
+            matchBrackets: true,
+            autoCloseBrackets: true
+        });
 
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    if(urlParams.has("source")) {
-        const srcUrl = urlParams.get("source");
-        fetch(srcUrl)
-            .then(res => res.text())
-            .then(code => {
-                console.log(srcUrl);
-                console.log(code);
-                editor.setValue(code);
-            });
+        this.editor.setValue(exampleCode);
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        if (urlParams.has("source")) {
+            const srcUrl = urlParams.get("source");
+            fetch(srcUrl)
+                .then(res => res.text())
+                .then(code => {
+                    console.log(srcUrl);
+                    console.log(code);
+                    editor.setValue(code);
+                });
+        }
+
+        window.addEventListener("message", this.onAppError.bind(this), false);
+
+        this.setAppState(AppStates.Stopped);
     }
 
+    setAppState(newState) {
+        this.appState = newState;
+        this.appStateDisplay.textContent = this.appState;
+    }
 
-    window.addEventListener("message", (ev) => {
+    onAppError(ev) {
         let msg = JSON.parse(ev.data);
-        if(msg.cmd == "err") {
-            setAppState(AppStates.Error);
+        if (msg.cmd == "err") {
+            this.setAppState(AppStates.Error);
         }
-    });
+    }
 
-    setAppState(AppStates.Stopped);
-});
+    stopApp() {
+        this.clearCanvas();
+        this.setAppState(AppStates.Stopped);
+    }
 
-let runningScript;
-let previewFrameDocument;
+    runCode() {
+        this.stopApp();
 
-function runCode() {
-    stopCode();
-
-    if(previewFrame && previewFrame.contentWindow) {
-        previewFrameDocument = previewFrame.contentWindow.document;
-        let errScript = previewFrameDocument.createElement("script");
-        errScript.innerHTML = `
-        window.addEventListener("error", (e) => {
+        let errScript = this.previewFrameDocument.createElement("script");
+        errScript.innerHTML = `window.addEventListener("error", (e) => {
             let errText = document.createElement("p");
             errText.style = "color: #900;";
             errText.innerHTML = e.message + " (line: " + e.lineno + ", column: " + e.colno + ")";
             document.body.appendChild(errText);
             parent.postMessage(JSON.stringify({ cmd: "err", err: e }));
-        });
-        `;
-        previewFrameDocument.body.appendChild(errScript);
-        runningScript = previewFrameDocument.createElement("script");
-        runningScript.type = "module";
-        runningScript.innerHTML = editor.getValue();
-        previewFrameDocument.body.appendChild(runningScript);
-        setAppState(AppStates.Running);
+        });`;
 
+        this.previewFrameDocument.body.appendChild(errScript);
+
+        let sketchScript = this.previewFrameDocument.createElement("script");
+        sketchScript.type = "module";
+        sketchScript.innerHTML = this.editor.getValue();
+        this.previewFrameDocument.body.appendChild(sketchScript);
+        this.setAppState(AppStates.Running);
+    }
+
+    clearCanvas() {
+        this.previewFrameDocument.body.innerHTML = '';
+        this.previewFrame.remove();
+
+        let canvas = document.getElementById("previewframediv");
+        this.previewFrame = document.createElement("iframe");
+        this.previewFrame.id = "previewframe";
+        canvas.appendChild(this.previewFrame);
+        this.previewFrameDocument = this.previewFrame.contentWindow.document;
     }
 }
 
-function stopCode() {
-    clearCanvas();
-    setAppState(AppStates.Stopped);
-}
-
-function clearCanvas() {
-    if(previewFrame && previewFrame.contentWindow && previewFrameDocument) {
-        previewFrameDocument.body.innerHTML = '';
-        previewFrame.remove();
-    }
-
-    let canvas = document.getElementById("previewframediv");
-    previewFrame = document.createElement("iframe");
-    previewFrame.id = "previewframe";
-    canvas.appendChild(previewFrame);
-}
+let editor;
+function stopCode() { editor.stopApp(); }
+function runCode() { editor.runCode(); }
+document.addEventListener("DOMContentLoaded", () => {
+    editor = new AmeliaEditor("previewframe", "codeeditor", "app-state");
+});
