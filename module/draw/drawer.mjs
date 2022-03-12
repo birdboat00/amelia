@@ -3,6 +3,7 @@ import { ArcPrimitive } from "./arcprimitive.mjs";
 import { Background } from "./background.mjs";
 import { CirclePrimitive } from "./circleprimitive.mjs";
 import { LinePrimitive } from "./lineprimitive.mjs";
+import { ModifyPixelBuffer } from "./pixelbuffer.mjs";
 import { PointPrimitive } from "./pointprimitive.mjs";
 import { PolygonPrimitive } from "./polyprimitive.mjs";
 import { QuadPrimitive } from "./quadprimitive.mjs";
@@ -149,6 +150,12 @@ export class Drawer {
         return prim;
     }
 
+    pixelbuffer(bufferModifyFn) {
+        let cmd = new ModifyPixelBuffer(this.queue, bufferModifyFn);
+        this.queue.push(cmd);
+        return cmd;
+    }
+
     /**
      * Finish the frame and draw it.
      */
@@ -181,6 +188,8 @@ export class Drawer {
                 this.backend.drawPoint(cmd);
             } else if (cmd instanceof PolygonPrimitive) {
                 this.backend.drawPolygon(cmd);
+            } else if (cmd instanceof ModifyPixelBuffer) {
+                this.backend.modifyPixelBuffer(cmd);
             }
             if (!isSub) this.backend.endCmd();
         };

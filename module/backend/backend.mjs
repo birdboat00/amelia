@@ -14,4 +14,5 @@ export class Backend {
     drawPoint(point) { }
     drawPolygon(polygon) { }
     clearBackground(bg) { }
+    modifyPixelBuffer(pixelBuf) { }
 }

@@ -17,12 +17,10 @@ This is a list of planned functionality and API's for amelia.
 - square primitive (could be a function of the rect primitive)
 - curves and bezier curves
 - translation, rotation, scale
-- resize canvas
 - offscreen rendering
 - more mouse and keyboard functionality
 - touch functionality
 - saving canvas to image and gifs
-- timing
 - random functionality and noise functions
 
 

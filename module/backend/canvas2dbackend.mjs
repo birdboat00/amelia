@@ -114,4 +114,10 @@ export class Canvas2DBackend extends Backend {
         this.ctx.stroke();
         this.ctx.fill();
     }
+
+    modifyPixelBuffer(pb) {
+        let data = this.ctx.getImageData(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+        pb.bufferModifyFn(data.data);
+        this.ctx.putImageData(data, 0, 0);
+    }
 }

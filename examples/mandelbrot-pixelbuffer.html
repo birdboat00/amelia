@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandelbrot | examples | amelia</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <script type="module" id="script">
+        import { app, LoopMode, Color, dist, map } from "../module/mod.mjs";
+
+        const view = (app, model) => {
+            let pen = app.pen();
+
+            pen.background().color(Color.Black);
+
+            pen.pixelbuffer((pixels) => {
+                const w = 4;
+                const h = (w * app.height) / app.width;
+
+                const xmin = -w / 2;
+                const ymin = -h / 2;
+
+                const maxIter = model.lastMaxIter + 1;
+                model.lastMaxIter += 1;
+                const xmax = xmin + w;
+                const ymax = ymin + h;
+
+                const dx = (xmax - xmin) / (app.width);
+                const dy = (ymax - ymin) / (app.height);
+
+                let y = ymin;
+                for(let j = 0; j < app.height; j++) {
+                    let x = xmin;
+                    for(let i = 0; i < app.width; i++) {
+                        let a = x;
+                        let b = y;
+                        let n = 0;
+                        while(n < maxIter) {
+                            const aa = a * a;
+                            const bb = b * b;
+                            const twoab = 2 * a * b;
+                            a = aa - bb + x;
+                            b = twoab + y;
+
+                            if (dist(aa, bb, 0, 0) > 16) {
+                                break;
+                            }
+                            n++;
+                        }
+
+                        const pix = (i + j * app.width) * 4;
+                        const norm = map(n, 0, maxIter, 0, 1);
+                        let bright = map(Math.sqrt(norm), 0, 1, 0, 255);
+                        if(n == maxIter) {
+                            bright = 0;
+                        } else {
+                            pixels[pix + 0] = bright;
+                            pixels[pix + 1] = bright * 1.5;
+                            pixels[pix + 2] = bright;
+                            pixels[pix + 3] = 255;
+                        }
+                        x += dx;
+                    }
+                    y += dy;
+                }
+            });
+
+            pen.plot();
+        };
+
+        const model = (app) => {
+            return {
+                lastMaxIter: 0
+            }
+        };
+
+        app()
+            .size(700, 400)
+            .parent("example")
+            .view(view)
+            .model(model)
+            .loopmode(LoopMode.NTimes(200))
+            .run();
+    </script>
+</head>
+
+<body>
+    <main>
+        <h1>Mandelbrot | <a href="./index.html">amelia examples</a></h1>
+        <p>Credits for code: <a href="https://p5js.org/examples/simulate-the-mandelbrot-set.html">https://p5js.org/examples/simulate-the-mandelbrot-set.html</a></p>
+        <div id="example"></div>
+    </main>
+    <script src="injectcode.js" defer></script>
+</body>
+
+</html>

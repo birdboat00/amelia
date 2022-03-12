@@ -39,3 +39,7 @@ export const pingpong = (t, length) => {
 
     return asc ? mod + max : max - mod;
 };
+
+export const dist = (a, b, c, d) => {
+    return Math.hypot(a - c, b - d);
+};

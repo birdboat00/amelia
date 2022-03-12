@@ -240,6 +240,41 @@ position and setting the color.
 of the primitive. If no stroke color is passed it will use the fill
 color.
 
+You can also modify the pixels of the canvas directly using the
+`pixelbuffer(bufferModifyFn)` function on the apps pen.
+It takes a function with the signature `bufferModifyFn(pixels)`.
+The drawer calls that function and passes the pixel data of the canvas
+to it. The format is `[r, b, g, a, ...]` with the values in a range
+between 0 and 255.
+
+So for example:
+```js
+// supply the pixel buffer modification function to the drawer.
+app.pen().pixelbuffer((pixels) => {
+  for(let x = 0; x < app.width; x++) {
+    // get the pixel index using the formula x + y * app.height
+    let pix = x + 100 * app.height;
+    // red value
+    pixels[pix] = 255;
+    // green value
+    pixels[pix + 1] = 255;
+    // blue value
+    pixels[pix + 2] = 255;
+    // alpha value
+    pixels[pix + 3] = 255;
+  }
+});
+```
+which should draw a white line at the y coordinate `100` from all the
+left to all the right.
+
+Here is a simple example of the Mandelbrot set plotted using the
+`pixelbuffer` function.
+
+<div class="cc"><div class="example" id="shpbmb-ex">
+    <a class="sclink" href="../editor/?source=../guide/sketches/shapes-pb-mandelbrot.mjs">Look at code</a>
+</div></div>
+
 ### Rectangles
 A simple rectangle shape with a width and height.
 

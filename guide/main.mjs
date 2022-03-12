@@ -2,6 +2,7 @@ import { gse } from "./sketches/gettingstarted.mjs";
 import { sharc } from "./sketches/shapes-arc.mjs";
 import { shcircle } from "./sketches/shapes-circle.mjs";
 import { shline } from "./sketches/shapes-line.mjs";
+import { shpbmb } from "./sketches/shapes-pb-mandelbrot.mjs";
 import { shpoly } from "./sketches/shapes-poly.mjs";
 import { shpts } from "./sketches/shapes-pts.mjs";
 import { shquad } from "./sketches/shapes-quad.mjs";
@@ -30,4 +31,5 @@ fetch("./guide-content.md")
         shpts();
         shpoly();
         shtext();
+        shpbmb();
     });

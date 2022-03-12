@@ -12,3 +12,4 @@ export * from "./rectprimitive.mjs";
 export * from "./state.mjs";
 export * from "./textprimitive.mjs";
 export * from "./triprimitive.mjs";
+export * from "./pixelbuffer.mjs";

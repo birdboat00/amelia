@@ -84,7 +84,20 @@ nav.toolbar {
     float: right;
 }
 
-a.toolbar-item:hover, a.toolbar-item:focus {
+.pull-c {
+    text-align: center;
+}
+
+h5.toolbar-item {
+    margin: 0;
+    color: #555;
+}
+
+h5.toolbar-item>a {
+    color: #099;
+}
+
+a.toolbar-item:hover, a.toolbar-item:focus, h5.toolbar-item>a:hover {
     background-color: #099;
     color: #fff;
 }

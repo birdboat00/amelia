@@ -182,6 +182,10 @@ export class Color {
         return this.asCss();
     }
 
+    get array() {
+        return [this.r, this.g, this.b, this.a];
+    }
+
     static get Black() { return new Color(0, 0, 0); }
     static get White() { return new Color(255, 255, 255); }
     static get Red() { return new Color(255, 0, 0); }
