@@ -1,3 +1,4 @@
+// Change the import path to "../module/mod.mjs" to run the code in the editor
 import { app, Color } from "../../module/mod.mjs";
 
 export const shline = () => {
