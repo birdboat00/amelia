@@ -20,13 +20,13 @@ export const shpbmb = () => {
             const dy = (ymax - ymin) / (app.height);
 
             let y = ymin;
-            for(let j = 0; j < app.height; j++) {
+            for (let j = 0; j < app.height; j++) {
                 let x = xmin;
-                for(let i = 0; i < app.width; i++) {
+                for (let i = 0; i < app.width; i++) {
                     let a = x;
                     let b = y;
                     let n = 0;
-                    while(n < maxIter) {
+                    while (n < maxIter) {
                         const aa = a * a;
                         const bb = b * b;
                         const twoab = 2 * a * b;
@@ -42,7 +42,7 @@ export const shpbmb = () => {
                     const pix = (i + j * app.width) * 4;
                     const norm = map(n, 0, maxIter, 0, 1);
                     let bright = map(Math.sqrt(norm), 0, 1, 0, 255);
-                    if(n == maxIter) {
+                    if (n == maxIter) {
                         bright = 0;
                     } else {
                         pixels[pix + 0] = bright;

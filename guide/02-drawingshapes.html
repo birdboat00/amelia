@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing shapes | guide | amelia</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <header>
+        <div id="title">
+            <a href="../">amelia</a>
+        </div>
+        <div id="menu">
+            <a href="./">guide</a>
+            <a href="../examples/">examples</a>
+            <a href="../editor/">editor</a>
+            <a href="https://github.com/birdboat00/amelia/">github</a>
+        </div>
+    </header>
+    <main id="content">
+    </main>
+    <footer>
+        <a href="../">amelia</a> by <a href="https://github.com/birdboat00">birdboat00</a> and contributors in 2022
+        licensed under the MIT license.
+    </footer>
+
+    <script type="module">
+        import { loadContent } from "./contentloader.mjs";
+        import { sharc } from "./sketches/shapes-arc.mjs";
+        import { shcircle } from "./sketches/shapes-circle.mjs";
+        import { shline } from "./sketches/shapes-line.mjs";
+        import { shpbmb } from "./sketches/shapes-pb-mandelbrot.mjs";
+        import { shpoly } from "./sketches/shapes-poly.mjs";
+        import { shpts } from "./sketches/shapes-pts.mjs";
+        import { shquad } from "./sketches/shapes-quad.mjs";
+        import { shrect } from "./sketches/shapes-rect.mjs";
+        import { shtext } from "./sketches/shapes-text.mjs";
+        import { shtri } from "./sketches/shapes-tri.mjs";
+        loadContent("./md/02-drawingshapes-md.md", _ => {
+            shrect();
+            shcircle();
+            shquad();
+            shline();
+            sharc();
+            shtri();
+            shpts();
+            shpoly();
+            shtext();
+            shpbmb();
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"></script>
+</body>
+
+</html>

@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0.5rem;
 }
 
-h2, h3, h4, h5, h6 { margin-bottom: 20px; margin-top: 100px; }
+h2, h3, h4, h5, h6 { margin-bottom: 20px; margin-top: 50px; padding-top: 25px; border-top: 1px solid #eee; }
 
 a {
     text-decoration: underline;
@@ -182,6 +182,38 @@ blockquote {
         grid-auto-rows: minmax(100px, auto);
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .guide-grid {
+        display: grid;
+        gap: 50px;
+        grid-auto-rows: minmax(100px, auto);
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .guide-grid > a > div {
+        border: 1px solid #333;
+        min-height: 325px;
+    }
+}
+
+@media(max-width: 999px) {
+    .guide-grid > a > div {
+        margin-bottom: 50px;
+    }
+}
+
+
+.guide-grid > a > div {
+    text-align: center;
+}
+
+.guide-grid img {
+    width: 200px;
+    height: 200px;
+}
+
+.guide-grid h4 {
+    margin-top: 20px;
 }
 
 .hljs-keyword { color: #099; }

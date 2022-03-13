@@ -16,7 +16,7 @@ export const shpoly = () => {
             .vertex(20, 50)
             .color(Color.Amethyst);
 
-            // FIXME: wait??? is this buggy? is .vertex not working right?
+        // FIXME: wait??? is this buggy? is .vertex not working right?
         pen.poly()
             .vertex(100, 70)
             .vertex(170, 100)

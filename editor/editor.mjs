@@ -57,7 +57,7 @@ class AmeliaEditor {
                 .then(code => {
                     console.log(srcUrl);
                     console.log(code);
-                    editor.setValue(code);
+                    this.editor.setValue(code);
                 });
         }
 
@@ -122,3 +122,11 @@ function runCode() { editor.runCode(); }
 document.addEventListener("DOMContentLoaded", () => {
     editor = new AmeliaEditor("previewframe", "codeeditor", "app-state");
 });
+
+function goBack() {
+    if (history.length <= 1
+        && confirm("Do you want to close the amelia editor?")) {
+        close();
+    }
+    else history.back();
+}
