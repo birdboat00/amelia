@@ -31,6 +31,7 @@ class AmeliaEditor {
     constructor(previewFrameId, codeEditorId, appStateId) {
         this.previewFrame = document.createElement("iframe");
         this.previewFrame.id = "previewframe";
+        this.previewFrame.src = "previewframe.html";
         document.getElementById("previewframediv").appendChild(this.previewFrame);
         this.previewFrameDocument = this.previewFrame.contentWindow.document;
         this.editorFrame = document.getElementById(codeEditorId);
@@ -86,31 +87,21 @@ class AmeliaEditor {
     runCode() {
         this.stopApp();
 
-        let errScript = this.previewFrameDocument.createElement("script");
-        errScript.innerHTML = `window.addEventListener("error", (e) => {
-            let errText = document.createElement("p");
-            errText.style = "color: #900;";
-            errText.innerHTML = e.message + " (line: " + e.lineno + ", column: " + e.colno + ")";
-            document.body.appendChild(errText);
-            parent.postMessage(JSON.stringify({ cmd: "err", err: e }));
-        });`;
+        this.previewFrame.contentWindow.addEventListener("DOMContentLoaded", this.onPreviewContentLoaded.bind(this));
 
-        this.previewFrameDocument.body.appendChild(errScript);
-
-        let sketchScript = this.previewFrameDocument.createElement("script");
-        sketchScript.type = "module";
-        sketchScript.innerHTML = this.editor.getValue();
-        this.previewFrameDocument.body.appendChild(sketchScript);
         this.setAppState(AppStates.Running);
     }
 
-    clearCanvas() {
-        this.previewFrameDocument.body.innerHTML = '';
-        this.previewFrame.remove();
+    onPreviewContentLoaded() {
+        this.previewFrame.contentWindow.updateCode(this.editor.getValue());
+    }
 
+    clearCanvas() {
+        this.previewFrame.remove();
         let canvas = document.getElementById("previewframediv");
         this.previewFrame = document.createElement("iframe");
         this.previewFrame.id = "previewframe";
+        this.previewFrame.src = "previewframe.html";
         canvas.appendChild(this.previewFrame);
         this.previewFrameDocument = this.previewFrame.contentWindow.document;
     }
