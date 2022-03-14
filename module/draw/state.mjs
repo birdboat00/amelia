@@ -1,5 +1,8 @@
 import { DrawCommand } from "./drawcommand.mjs";
 
+/**
+ * Draw command to set the rotation.
+ */
 export class SetRotation extends DrawCommand {
     rot;
     aroundX;

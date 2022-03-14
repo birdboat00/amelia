@@ -227,6 +227,10 @@ export class AppBuilder {
     }
 }
 
+/**
+ * An amelia app instance usually created
+ * using the {@link app} function.
+ */
 export class App {
 
     viewFn;
@@ -243,6 +247,7 @@ export class App {
     parentElemId;
     loopMode;
 
+    /** The frames-per-second the app is running at. */
     fps;
     times;
 
@@ -392,8 +397,7 @@ export class App {
     }
 
     /**
-     * Set the size of the app canvas using the
-     * @type {Size} type.
+     * Set the size of the app canvas using the {@link Size} type.
      * @param {Size} size - the size that the canvas should be set to
      */
     size(size) {

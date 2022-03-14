@@ -1,5 +1,8 @@
 import { Primitive } from "./primitive.mjs";
 
+/**
+ * Primitive to render a circle.
+ */
 export class CirclePrimitive extends Primitive {
     _radius;
 

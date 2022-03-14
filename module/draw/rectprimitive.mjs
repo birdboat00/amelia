@@ -1,6 +1,9 @@
 import { Primitive } from "./primitive.mjs";
 import { Size } from "../size.mjs";
 
+/**
+ * Primitive that creates a rectangle.
+ */
 export class RectPrimitive extends Primitive {
 
     sz;

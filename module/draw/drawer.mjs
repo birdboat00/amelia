@@ -12,6 +12,10 @@ import { SetBlendMode, SetColor, SetOrigin, SetRotation } from "./state.mjs";
 import { TextPrimitive } from "./textprimitive.mjs";
 import { TrianglePrimitive } from "./triprimitive.mjs";
 
+/**
+ * The drawer (pen of the app). This handles creating draw commands
+ * and primitives and submits them to the backend.
+ */
 export class Drawer {
     canvas;
     backend;
@@ -155,9 +159,6 @@ export class Drawer {
         return cmd;
     }
 
-    /**
-     * Finish the frame and draw it.
-     */
     finish() {
         const processCmd = (cmd) => {
 
@@ -204,7 +205,10 @@ export class Drawer {
     }
 
     /**
-     * Finish the frame and draw it onto the canvas!
+     * Finish the frame and submit all the
+     * draw commands to the backend which
+     * handles all the drawing to the canvas
+     * or plotting to paper.
      */
     plot() {
         this.finish();

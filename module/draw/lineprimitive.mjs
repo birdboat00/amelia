@@ -1,5 +1,8 @@
 import { Primitive } from "./primitive.mjs";
 
+/**
+ * Primitive to create a line.
+ */
 export class LinePrimitive extends Primitive {
     endpoint;
 

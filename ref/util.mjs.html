@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: util.mjs</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: util.mjs</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Clamps the given number between the given
+ * minimum and maximum values.
+ * @param {number} num the number to clamp
+ * @param {number} min the minimum
+ * @param {number} max the maximum
+ * @returns {number} the result between the minimum and maximum values
+ */
+export const clamp = (num, min, max) => {
+    return Math.min(Math.max(num, min), max);
+};
+
+/**
+ * Contrains the given number between the given
+ * minimum and maximum values.
+ * Same as {@link clamp}
+ * @param {number} num the number to be contrained
+ * @param {number} low the minimum
+ * @param {number} high the maximum
+ * @returns {number}
+ */
+export const constrain = (num, low, high) => {
+    return clamp(num, low, high);
+};
+
+/**
+ * Generate a random number between the minimum and maximum
+ * @param {number} min minimum
+ * @param {number} max maximum
+ * @returns {number}
+ */
+export const randomRange = (min, max) => {
+    return Math.random() * (max - min) + min;
+};
+
+/**
+ * Generate random number between the minimum and maximum
+ * and round it to an integer value.
+ * @param {number} min minimum
+ * @param {number} max maximum
+ * @returns {number}
+ */
+export const randomRangeInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+};
+
+/**
+ * Maps a number from one range to another.
+ * @param {number} n the number to be converted
+ * @param {number} start1 lower bound of the values current range
+ * @param {number} stop1 upper bound of the values current range
+ * @param {number} start2 lower bound of the values new range
+ * @param {number} stop2 upper bound of the values new range
+ * @param {boolean} bounds contrain the value to the newly mapped range
+ * @returns {number}
+ */
+export const map = (n, start1, stop1, start2, stop2, bounds) => {
+    const newval = (n - start1) / (stop1 - start1) * (stop2 - start2) + start2;
+    if (!bounds) {
+        return newval;
+    }
+
+    if (start2 &lt; stop2) {
+        return constrain(newval, start2, stop2);
+    } else {
+        return constrain(newval, stop2, start2);
+    }
+}
+
+/**
+ * Returns a value that will increment and decrement
+ * between the range of 0 and the {@link length}.
+ *
+ * This requires the value {@link t} to be a
+ * self-incrementing value (for examples the
+ * app iterations)
+ * @param {number} t value
+ * @param {number} length maximum
+ * @returns {number}
+ */
+export const pingpong = (t, length) => {
+    const min = 0;
+    const max = length;
+    const range = max - min;
+    const mult = t / range;
+    const asc = mult % 2 == 0;
+    const mod = t % range;
+
+    return asc ? mod + max : max - mod;
+};
+
+/**
+ * Calculates the distance between two points in
+ * two dimensions.
+ * @param {number} a x coordiante of the first point
+ * @param {number} b y coordinate of the first point
+ * @param {number} c x coordinate of the second point
+ * @param {number} d y coordinate of the second point
+ * @returns {number} The distance between the two points.
+ */
+export const dist = (a, b, c, d) => {
+    return Math.hypot(a - c, b - d);
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="AppBuilder.html">AppBuilder</a></li><li><a href="ArcPrimitive.html">ArcPrimitive</a></li><li><a href="Background.html">Background</a></li><li><a href="CirclePrimitive.html">CirclePrimitive</a></li><li><a href="Color.html">Color</a></li><li><a href="DrawCommand.html">DrawCommand</a></li><li><a href="Drawer.html">Drawer</a></li><li><a href="LinePrimitive.html">LinePrimitive</a></li><li><a href="LoopMode.html">LoopMode</a></li><li><a href="ModifyPixelBuffer.html">ModifyPixelBuffer</a></li><li><a href="PointPrimitive.html">PointPrimitive</a></li><li><a href="PolygonPrimitive.html">PolygonPrimitive</a></li><li><a href="Primitive.html">Primitive</a></li><li><a href="QuadPrimitive.html">QuadPrimitive</a></li><li><a href="RectPrimitive.html">RectPrimitive</a></li><li><a href="SetBlendMode.html">SetBlendMode</a></li><li><a href="SetColor.html">SetColor</a></li><li><a href="SetOrigin.html">SetOrigin</a></li><li><a href="SetRotation.html">SetRotation</a></li><li><a href="Size.html">Size</a></li><li><a href="TextPrimitive.html">TextPrimitive</a></li><li><a href="TrianglePrimitive.html">TrianglePrimitive</a></li></ul><h3>Global</h3><ul><li><a href="global.html#app">app</a></li><li><a href="global.html#BlendMode">BlendMode</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#constrain">constrain</a></li><li><a href="global.html#dist">dist</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#pingpong">pingpong</a></li><li><a href="global.html#randomRange">randomRange</a></li><li><a href="global.html#randomRangeInt">randomRangeInt</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Mar 14 2022 15:40:13 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

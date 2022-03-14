@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: size.mjs</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: size.mjs</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const convertDimToPx = (dimensions, ppi = 96) => {
+    return {
+        w: convertDistance(dimensions.w, ppi),
+        h: convertDistance(dimensions.h, ppi)
+    }
+};
+
+const convertDistance = (millimeter, ppi = 96) => {
+    // mm = ( pixels * 25.4 ) / ppi;
+    // px = mm * ppi / 24.5;
+    // https://stackoverflow.com/a/16275262
+    return Math.round(millimeter * ppi / 24.5);
+};
+
+/**
+ * The Size type is used to describe the size
+ * of something.
+ * It has a height and width property which
+ * are the sizes in pixels.
+ */
+export class Size {
+    #w;
+    #h;
+
+    /**
+     * Create a size with pixel dimensions.
+     * Same as calling fromPx.
+     * @param {number} width - the width in pixels.
+     * @param {number} height - the height in pixels.
+     */
+    constructor(width, height) {
+        this.#w = width;
+        this.#h = height;
+    }
+
+    /**
+     * Create a size with pixel dimensions.
+     * Same as calling the constructor.
+     * @param {number} width - the width in pixels
+     * @param {number} height - the height in pixel
+     * @returns {Size}
+     */
+    static fromPx(width, height) {
+        return new Size(width, height);
+    }
+
+    /**
+     * Create a size with millimeter dimensions.
+     * Uses the default CSS spec 96 pixels-per-inch.
+     * @param {number} width - the width in millimeters
+     * @param {number} height - the height in millimeters
+     * @returns {Size}
+     */
+    static fromMillimeters(width, height) {
+        const dim = convertDimToPx({
+            w: width,
+            h: height
+        });
+        return new Size(dim.w, dim.h);
+    }
+
+    /**
+     * Create a new size with inch dimensions.
+     * Uses the default CSS spec 96 pixels-per-inch.
+     * @param {number} width - the width in inches
+     * @param {number} height - the height in inches
+     * @returns {Size}
+     */
+    static fromInches(width, height) {
+        return Size.fromMillimeters(
+            width * 25.4,
+            height * 25.4
+        );
+    }
+
+    /**
+     * The width in pixels.
+     */
+    get width() {
+        return this.#w;
+    }
+
+    /**
+     * The height in pixels.
+     */
+    get height() {
+        return this.#h;
+    }
+
+    /**
+     * Set the size in pixels.
+     */
+    set width(width) {
+        this.#w = width;
+    }
+
+    /**
+     * Set the height in pixels.
+     */
+    set height(height) {
+        this.#h = height;
+    }
+
+    /**
+     * Turn the size landscape.
+     * This makes the shorter dimensions the width and
+     * the longer dimensions the height.
+     * @returns {Size}
+     */
+    landscape() {
+        const newH = Math.min(this.#h, this.#w);
+        const newW = Math.max(this.#h, this.#w);
+        this.#h = newH;
+        this.#w = newW;
+        return this;
+    }
+
+    /**
+     * Turn the size portrait.
+     * This makes the longer dimension the height and
+     * the shorter dimension the width.
+     * @returns {Size}
+     */
+    portrait() {
+        const newH = Math.max(this.#h, this.#w);
+        const newW = Math.min(this.#h, this.#w);
+        this.#h = newH;
+        this.#w = newW;
+        return this;
+    }
+
+    /**
+     * Returns a new size with the smallest width
+     * and smallest height of the two supplied sizes.
+     * @param {Size} size1 - first size
+     * @param {Size} size2 - second size
+     * @returns {Size}
+     */
+    static min(size1, size2) {
+        return new Size(
+            Math.min(size1.width, size2.width),
+            Math.min(size1.height, size2.height)
+        );
+    }
+
+    /**
+     * Returns a new size with the largest width
+     * and largest height of the two supplied sizes.
+     * @param {Size} size1 - the first size
+     * @param {Size} size2 - the second size
+     * @returns {Size}
+     */
+    static max(size1, size2) {
+        return new Size(
+            Math.max(size1.width, size2.width),
+            Math.max(size1.height, size2.height)
+        );
+    }
+
+    /**
+     * Creates a new size with a random width and height
+     * between 0 and 1.
+     * @returns {Size}
+     */
+    static random() {
+        return new Size(Math.random(), Math.random());
+    }
+
+    /**
+     * North american postcard paper size.
+     * 101.6x152.4mm
+     */
+    static get paperPostcard() { return Size.fromMillimeters(101.6, 152.4); }
+    /**
+     * DIN-A3 paper size.
+     * 297x420mm
+     */
+    static get paperA3() { return Size.fromMillimeters(297, 420); }
+    /**
+     * DIN-A4 paper size.
+     * 210x297mm
+     */
+    static get paperA4() { return Size.fromMillimeters(210, 297); }
+    /**
+     * DIN-A5 paper size.
+     * 148x210mm
+     */
+    static get paperA5() { return Size.fromMillimeters(148, 210); }
+    /**
+     * DIN-A6 paper size.
+     * 105x148mm
+     */
+    static get paperA6() { return Size.fromMillimeters(105, 148); }
+    /**
+     * DIN-A7 paper size.
+     * 74x105mm
+     */
+    static get paperA7() { return Size.fromMillimeters(74, 105); }
+
+    /**
+     * North american letter size.
+     * 8.5x11in
+     */
+    static get paperLetter() { return Size.fromInches(8.5, 11); }
+    /**
+     * North american half letter size.
+     * 5.5x8.5in
+     */
+    static get paperHalfLetter() { return Size.fromInches(5.5, 8.5); }
+    /**
+     * Carre L - quadratic A4 paper size.
+     * 210x210mm
+     */
+    static get paperCarreL() { return Size.fromMillimeters(210, 210); }
+
+    /**
+     * Zero size.
+     * 0x0 pixels.
+     */
+    static get zero() { return new Size(0, 0); }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="AppBuilder.html">AppBuilder</a></li><li><a href="ArcPrimitive.html">ArcPrimitive</a></li><li><a href="Background.html">Background</a></li><li><a href="CirclePrimitive.html">CirclePrimitive</a></li><li><a href="Color.html">Color</a></li><li><a href="DrawCommand.html">DrawCommand</a></li><li><a href="Drawer.html">Drawer</a></li><li><a href="LinePrimitive.html">LinePrimitive</a></li><li><a href="LoopMode.html">LoopMode</a></li><li><a href="ModifyPixelBuffer.html">ModifyPixelBuffer</a></li><li><a href="PointPrimitive.html">PointPrimitive</a></li><li><a href="PolygonPrimitive.html">PolygonPrimitive</a></li><li><a href="Primitive.html">Primitive</a></li><li><a href="QuadPrimitive.html">QuadPrimitive</a></li><li><a href="RectPrimitive.html">RectPrimitive</a></li><li><a href="SetBlendMode.html">SetBlendMode</a></li><li><a href="SetColor.html">SetColor</a></li><li><a href="SetOrigin.html">SetOrigin</a></li><li><a href="SetRotation.html">SetRotation</a></li><li><a href="Size.html">Size</a></li><li><a href="TextPrimitive.html">TextPrimitive</a></li><li><a href="TrianglePrimitive.html">TrianglePrimitive</a></li></ul><h3>Global</h3><ul><li><a href="global.html#app">app</a></li><li><a href="global.html#BlendMode">BlendMode</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#constrain">constrain</a></li><li><a href="global.html#dist">dist</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#pingpong">pingpong</a></li><li><a href="global.html#randomRange">randomRange</a></li><li><a href="global.html#randomRangeInt">randomRangeInt</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Mar 14 2022 15:40:13 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

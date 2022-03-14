@@ -1,5 +1,8 @@
 import { Primitive } from "./primitive.mjs";
 
+/**
+ * Primitive to create a triangle.
+ */
 export class TrianglePrimitive extends Primitive {
     _a;
     _b;

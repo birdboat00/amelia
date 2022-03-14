@@ -1,6 +1,9 @@
 import { DrawCommand } from "./drawcommand.mjs";
 import { Color } from "../color.mjs";
 
+/**
+ * Draw command to clear and render the background.
+ */
 export class Background extends DrawCommand {
     col;
 

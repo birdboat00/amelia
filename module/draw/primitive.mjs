@@ -2,6 +2,11 @@ import { DrawCommand } from "./drawcommand.mjs";
 import { SetColor, SetRotation } from "./state.mjs";
 import { Color } from "../color.mjs";
 
+/**
+ * Base class of all primitives.
+ * Handles position, rotation, color and stroke weight.
+ * Creates the command list for those properties.
+ */
 export class Primitive extends DrawCommand {
     pos;
     weight;

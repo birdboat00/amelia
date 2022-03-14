@@ -1,4 +1,8 @@
 import { Primitive } from "./primitive.mjs";
+
+/**
+ * Primitive to draw a polygon shape.
+ */
 export class PolygonPrimitive extends Primitive {
     vertices;
     constructor() {

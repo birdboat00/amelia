@@ -1,6 +1,9 @@
 import { PolygonPrimitive } from "./polyprimitive.mjs";
 import { Primitive } from "./primitive.mjs";
 
+/**
+ * Primitive type to create a quad shape.
+ */
 export class QuadPrimitive extends Primitive {
     vertices;
 

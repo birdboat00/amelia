@@ -1,5 +1,8 @@
 import { Primitive } from "./primitive.mjs";
 
+/**
+ * Primitive to create text.
+ */
 export class TextPrimitive extends Primitive {
     displayString;
     fontName;

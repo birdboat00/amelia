@@ -1,5 +1,8 @@
 import { DrawCommand } from "./drawcommand.mjs";
 
+/**
+ * Draw command to modify the pixel buffer of the canvas directly.
+ */
 export class ModifyPixelBuffer extends DrawCommand {
 
     bufferModifyFn;

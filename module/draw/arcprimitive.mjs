@@ -1,5 +1,8 @@
 import { Primitive } from "./primitive.mjs";
 
+/**
+ * Primitive to render an arc.
+ */
 export class ArcPrimitive extends Primitive {
     rad;
     startAngle;
