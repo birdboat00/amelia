@@ -36,13 +36,13 @@ div.canvas {
     width: 49vw;
     height: calc(90vh - 20px);
     position: absolute;
-    top: calc(7vh + 20px);
+    top: calc(42px + 20px);
 }
 
 div.editor {
     width: 49vw;
     position: absolute;
-    top: calc(7vh + 20px);
+    top: calc(42px + 20px);
     left: 50vw;
     bottom: 0;
     overflow: hidden;
@@ -53,7 +53,7 @@ nav.toolbar {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 7vh;
+    height: 42px;
     margin-bottom: 20px;
     border-bottom: 1px solid #333;
 }
@@ -66,8 +66,8 @@ nav.toolbar {
     display: inline-block;
     font-size: 1.2rem;
     font-weight: 600;
-    height: 7vh;
-    line-height: 7vh;
+    height: 42px;
+    line-height: 42px;
     padding: 0 20px;
     color: #099;
     cursor: pointer;

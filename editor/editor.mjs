@@ -1,17 +1,4 @@
-const exampleCode = `import { app, Color, Size } from "../module/mod.mjs";
-
-const view = (app) => {
-    let pen = app.pen();
-
-    pen.background().color(Color.Plum);
-
-    pen.circle().xy(150, 150).radius(100).color(Color.Amber);
-    pen.rect().xy(100, 100).wh(100, 100).color(Color.Cornflower);
-
-    pen.plot();
-};
-
-app().quickstart(view, 300, 300);`;
+const exampleCode = "example.template.mjs";
 
 const AppStates = {
     Stopped: "■ Not running",
@@ -27,8 +14,9 @@ class AmeliaEditor {
     editor;
     editorFrame;
     previewFrameDocument;
+    execBtn;
 
-    constructor(previewFrameId, codeEditorId, appStateId) {
+    constructor(previewFrameId, codeEditorId, appStateId, btnExecId) {
         this.previewFrame = document.createElement("iframe");
         this.previewFrame.id = "previewframe";
         this.previewFrame.src = "previewframe.html";
@@ -36,6 +24,8 @@ class AmeliaEditor {
         this.previewFrameDocument = this.previewFrame.contentWindow.document;
         this.editorFrame = document.getElementById(codeEditorId);
         this.appStateDisplay = document.getElementById(appStateId);
+
+        this.execBtn = document.getElementById(btnExecId);
 
         this.editor = CodeMirror(this.editorFrame, {
             lineNumbers: true,
@@ -47,18 +37,18 @@ class AmeliaEditor {
             autoCloseBrackets: true
         });
 
-        this.editor.setValue(exampleCode);
-
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
+        let srcUrl = exampleCode;
         if (urlParams.has("source")) {
-            const srcUrl = urlParams.get("source");
-            fetch(srcUrl)
+            srcUrl = urlParams.get("source");
+        }
+
+        fetch(srcUrl)
                 .then(res => res.text())
                 .then(code => {
                     this.editor.setValue(code);
                 });
-        }
 
         window.addEventListener("message", this.onAppError.bind(this), false);
 
@@ -68,6 +58,17 @@ class AmeliaEditor {
     setAppState(newState) {
         this.appState = newState;
         this.appStateDisplay.textContent = this.appState;
+
+        if(this.appState == AppStates.Running) {
+            this.execBtn.innerText = "■ Stop";
+            this.execBtn.onclick = this.stopApp.bind(this);
+        } else if (this.appState == AppStates.Stopped) {
+            this.execBtn.innerText = "▶ Run";
+            this.execBtn.onclick = this.runCode.bind(this);
+        } else if (this.appState == AppStates.Error) {
+            this.execBtn.innerText = "⚠ Error";
+            this.execBtn.onclick = this.stopApp.bind(this);
+        }
     }
 
     onAppError(ev) {
@@ -109,13 +110,5 @@ let editor;
 function stopCode() { editor.stopApp(); }
 function runCode() { editor.runCode(); }
 document.addEventListener("DOMContentLoaded", () => {
-    editor = new AmeliaEditor("previewframe", "codeeditor", "app-state");
+    editor = new AmeliaEditor("previewframe", "codeeditor", "app-state", "btn-exec");
 });
-
-function goBack() {
-    if (history.length <= 1
-        && confirm("Do you want to close the amelia editor?")) {
-        close();
-    }
-    else history.back();
-}

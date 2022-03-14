@@ -30,12 +30,10 @@
 
 <body>
     <nav class="toolbar">
-        <a href="javascript:goBack()" class="toolbar-item">◀ Back</a>
-        <h5 class="toolbar-item"><a href="../">amelia</a> web editor 𝝰</h5>
+        <h5 class="toolbar-item"><a href="../">amelia web editor 𝝰</a></h5>
         <a href="../ref/" target="_blank" rel="noopener noreferrrer" class="toolbar-item pull-r">📕 Docs ↗</a>
         <a href="../guide/" target="_blank" rel="noopener noreferrer" class="toolbar-item pull-r">📕 Guide ↗</a>
-        <a href="javascript:stopCode()" class="toolbar-item pull-r">■ Stop</a>
-        <a href="javascript:runCode()" class="toolbar-item pull-r">▶ Run</a>
+        <a class="toolbar-item pull-r" id="btn-exec">■ Stop</a>
         <p class="toolbar-item pull-r as-normal" id="app-state"></p>
     </nav>
     <div>
@@ -44,6 +42,7 @@
         <div class="editor" id="codeeditor">
         </div>
     </div>
+
 </body>
 
 </html>
