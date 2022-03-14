@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spiral | examples | amelia</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <script type="module" id="script">
+        import { app, Color, randomRangeInt } from "../module/mod.mjs";
+
+        const view = (app, model) => {
+            let pen = app.pen();
+
+            // pen.background().color(Color.Black);
+
+            model.color.r = randomRangeInt(0, 200);
+            model.color.g = randomRangeInt(0, 250);
+            model.color.b = randomRangeInt(100, 250);
+
+            const x = model.offset + Math.cos(model.angle) * model.scalar;
+            const y = model.offset + Math.sin(model.angle) * model.scalar;
+
+            pen.circle()
+                .xy(x, y)
+                .radius(2)
+                .color(model.color);
+
+            model.angle += model.speed;
+            model.scalar += model.speed;
+
+            pen.plot();
+        }
+
+        const model = (app) => {
+
+            app.pen().background().color(Color.Black);
+
+            return {
+                color: Color.Red,
+                angle: 2.0,
+                scalar: 3.5,
+                speed: 0.1,
+                offset: 300
+            };
+        }
+
+        app()
+            .size(600, 600)
+            .parent("example")
+            .model(model)
+            .view(view)
+            .run();
+    </script>
+</head>
+
+<body>
+    <main>
+        <h1>Spiral | <a href="./index.html">amelia examples</a></h1>
+        <div id="example"></div>
+    </main>
+    <script src="injectcode.js" defer></script>
+</body>
+
+</html>
