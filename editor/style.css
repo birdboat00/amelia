@@ -1,9 +1,24 @@
+:root {
+    --l-text: #333;
+    --l-bg: #fff;
+    --accent: #099;
+    --d-text: #fff;
+    --d-bg: #222;
+}
+
 body {
     padding: 0;
     margin: 0;
     font-size: 16px;
     line-height: 1.35;
     font-family: Arial, Helvetica, sans-serif;
+    color: var(--l-text);
+    background-color: var(--l-bg);
+}
+
+body.dark {
+    color: var(--d-text);
+    background-color: var(--d-bg);
 }
 
 a {

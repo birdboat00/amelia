@@ -112,3 +112,7 @@ function runCode() { editor.runCode(); }
 document.addEventListener("DOMContentLoaded", () => {
     editor = new AmeliaEditor("previewframe", "codeeditor", "app-state", "btn-exec");
 });
+
+const toggleTheme = () => {
+    document.body.classList.toggle("dark");
+}
