@@ -17,9 +17,10 @@
 
             // pen.background().color(Color.Black);
 
-            model.color.r = randomRangeInt(0, 200);
+            /*model.color.r = randomRangeInt(0, 200);
             model.color.g = randomRangeInt(0, 250);
-            model.color.b = randomRangeInt(100, 250);
+            model.color.b = randomRangeInt(100, 250);*/
+            model.color = Color.random();
 
             const x = model.offset + Math.cos(model.angle) * model.scalar;
             const y = model.offset + Math.sin(model.angle) * model.scalar;
@@ -43,7 +44,7 @@
                 color: Color.Red,
                 angle: 2.0,
                 scalar: 3.5,
-                speed: 0.1,
+                speed: 0.2,
                 offset: 300
             };
         }

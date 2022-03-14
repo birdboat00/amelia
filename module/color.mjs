@@ -1,4 +1,4 @@
-import { clamp } from "./util.mjs";
+import { clamp, randomRange, randomRangeInt } from "./util.mjs";
 
 /**
  * Utility class for manipulating RGBA colors.
@@ -176,6 +176,18 @@ export class Color {
         }
 
         return Color.fromHsl(h / 359, s / 100, l / 100);
+    }
+
+    /**
+     * Generate a random color
+     * @returns {Color} the random color value.
+     */
+    static random() {
+        const r = randomRangeInt(0, 255);
+        const g = randomRangeInt(0, 255);
+        const b = randomRangeInt(0, 255);
+
+        return new Color(r, g, b);
     }
 
     /**
