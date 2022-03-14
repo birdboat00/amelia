@@ -5,8 +5,8 @@ export class TrianglePrimitive extends Primitive {
     _b;
     _c;
 
-    constructor(queue) {
-        super(queue);
+    constructor() {
+        super();
 
         this._a = { x: 0, y: 0 };
         this._b = { x: 0, y: 0 };
@@ -36,5 +36,11 @@ export class TrianglePrimitive extends Primitive {
         this.b(bx, by);
         this.c(cx, cy);
         return this;
+    }
+
+    genCmdList() {
+        let list = super.genCmdList();
+        list.push(this);
+        return list;
     }
 }

@@ -5,8 +5,8 @@ export class TextPrimitive extends Primitive {
     fontName;
     fontSize;
 
-    constructor(queue) {
-        super(queue);
+    constructor() {
+        super();
 
         this.displayString = "";
         this.fontName = "Arial";
@@ -55,5 +55,11 @@ export class TextPrimitive extends Primitive {
         let ctx = canvas.getContext("2d");
         ctx.font = `${this.fontSize}px ${this.fontName}`;
         return ctx.measureText(this.displayString).width;
+    }
+
+    genCmdList() {
+        let list = super.genCmdList();
+        list.push(this);
+        return list;
     }
 }

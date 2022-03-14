@@ -3,8 +3,8 @@ import { Primitive } from "./primitive.mjs";
 export class LinePrimitive extends Primitive {
     endpoint;
 
-    constructor(queue) {
-        super(queue);
+    constructor() {
+        super();
         this.endpoint = { x: 0, y: 0 };
     }
 
@@ -43,5 +43,11 @@ export class LinePrimitive extends Primitive {
         this.start(xs, ys);
         this.end(xe, ye);
         return this;
+    }
+
+    genCmdList() {
+        let list = super.genCmdList();
+        list.push(this);
+        return list;
     }
 }

@@ -3,8 +3,8 @@ import { Primitive } from "./primitive.mjs";
 export class CirclePrimitive extends Primitive {
     _radius;
 
-    constructor(queue) {
-        super(queue);
+    constructor() {
+        super();
         this._radius = 10;
     }
 
@@ -25,5 +25,11 @@ export class CirclePrimitive extends Primitive {
      */
     diameter(d) {
         return this.radius(d / 2);
+    }
+
+    genCmdList() {
+        let list = super.genCmdList();
+        list.push(this);
+        return list;
     }
 }

@@ -4,6 +4,11 @@ import { Color } from "../color.mjs";
 export class Background extends DrawCommand {
     col;
 
+    constructor() {
+        super();
+        this.col = Color.Transparent;
+    }
+
     /**
      * Clear the background with the given color.
      * @param {Color} color - the color
@@ -60,5 +65,11 @@ export class Background extends DrawCommand {
     hsl(h, s, l) {
         this.col = Color.fromHsl(h, s, l);
         return this;
+    }
+
+    genCmdList() {
+        let list = super.genCmdList();
+        list.push(this);
+        return list;
     }
 }

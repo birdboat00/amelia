@@ -5,15 +5,17 @@ import { Color } from "../color.mjs";
 export class Primitive extends DrawCommand {
     pos;
     weight;
-    queue;
+    rotation;
+    fillCol;
+    strokeCol;
 
-    constructor(queue) {
+    constructor() {
         super();
-        this.queue = queue;
         this.pos = { x: 0, y: 0 };
-        this.strokeCol = { r: 0, g: 0, b: 0, a: 0 };
-        this.fillCol = { r: 0, g: 0, b: 0, a: 0 };
+        this.strokeCol = Color.Black;
+        this.fillCol = Color.Black;
         this.weight = 1;
+        this.rotation = 0;
     }
 
     /**
@@ -23,8 +25,8 @@ export class Primitive extends DrawCommand {
      * @returns {Primitive} - the primitive
      */
     color(fillColor, strokeColor) {
-        // this.queue.splice(this.queue.length - 1, 0, new SetColor(fillColor, strokeColor));
-        this.preCommands.push(new SetColor(fillColor, strokeColor));
+        this.fillCol = fillColor;
+        this.strokeCol = strokeColor;
         return this;
     }
 
@@ -67,7 +69,7 @@ export class Primitive extends DrawCommand {
      * @returns {Primitive}
      */
     rotation(rotation) {
-        this.preCommands.push(new SetRotation(rotation));
+        this.rotation = rotation;
         return this;
     }
 
@@ -80,5 +82,17 @@ export class Primitive extends DrawCommand {
     strokeWeight(weight) {
         this.weight = weight;
         return this;
+    }
+
+    /**
+     * --- INTERNAL ---
+     * Generate the command list for the primitive
+     * @returns {Array}
+     */
+    genCmdList() {
+        return [
+            new SetColor(this.fillCol, this.strokeCol),
+            new SetRotation(this.rotation, this.pos.x, this.pos.y)
+        ];
     }
 }

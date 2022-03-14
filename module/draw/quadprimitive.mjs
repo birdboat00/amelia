@@ -1,10 +1,11 @@
+import { PolygonPrimitive } from "./polyprimitive.mjs";
 import { Primitive } from "./primitive.mjs";
 
 export class QuadPrimitive extends Primitive {
     vertices;
 
-    constructor(queue) {
-        super(queue);
+    constructor() {
+        super();
         this.vertices = [
             { x: 0, y: 0 },
             { x: 0, y: 0 },
@@ -56,5 +57,17 @@ export class QuadPrimitive extends Primitive {
         this.pos.y = y;
         this.vertices[0].y = y;
         return this;
+    }
+
+    genCmdList() {
+        let list = super.genCmdList();
+        let poly = new PolygonPrimitive();
+        poly.vertex(this.vertices[0].x, this.vertices[0].y);
+        poly.vertex(this.vertices[1].x, this.vertices[1].y);
+        poly.vertex(this.vertices[2].x, this.vertices[2].y);
+        poly.vertex(this.vertices[3].x, this.vertices[3].y);
+        list.push(poly);
+        // list.push(this);
+        return list;
     }
 }

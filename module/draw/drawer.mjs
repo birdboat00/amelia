@@ -39,7 +39,6 @@ export class Drawer {
      */
     origin(x, y) {
         this.queue.push(new SetOrigin(x, y));
-        return this;
     }
 
     /**
@@ -55,7 +54,7 @@ export class Drawer {
      * @returns {Background} - the background
      */
     background() {
-        let bg = new Background(this.queue);
+        let bg = new Background();
         this.queue.push(bg);
         return bg;
     }
@@ -65,7 +64,7 @@ export class Drawer {
      * @returns {RectPrimitive} - the rectangle
      */
     rect() {
-        let prim = new RectPrimitive(this.queue);
+        let prim = new RectPrimitive();
         this.queue.push(prim);
         return prim;
     }
@@ -75,7 +74,7 @@ export class Drawer {
      * @returns {LinePrimitive} - the line
      */
     line() {
-        let prim = new LinePrimitive(this.queue);
+        let prim = new LinePrimitive();
         this.queue.push(prim);
         return prim;
     }
@@ -85,7 +84,7 @@ export class Drawer {
      * @returns {QuadPrimitive} - the quad
      */
     quad() {
-        let prim = new QuadPrimitive(this.queue);
+        let prim = new QuadPrimitive();
         this.queue.push(prim);
         return prim;
     }
@@ -95,7 +94,7 @@ export class Drawer {
      * @returns {CirclePrimitive} - the circle
      */
     circle() {
-        let prim = new CirclePrimitive(this.queue);
+        let prim = new CirclePrimitive();
         this.queue.push(prim);
         return prim;
     }
@@ -105,7 +104,7 @@ export class Drawer {
      * @returns {ArcPrimitive} - the arc.
      */
     arc() {
-        let prim = new ArcPrimitive(this.queue);
+        let prim = new ArcPrimitive();
         this.queue.push(prim);
         return prim;
     }
@@ -115,7 +114,7 @@ export class Drawer {
      * @returns {TrianglePrimitive} - the triangle
      */
     tri() {
-        let prim = new TrianglePrimitive(this.queue);
+        let prim = new TrianglePrimitive();
         this.queue.push(prim);
         return prim;
     }
@@ -125,7 +124,7 @@ export class Drawer {
      * @returns {TextPrimitive}
      */
     text() {
-        let prim = new TextPrimitive(this.queue);
+        let prim = new TextPrimitive();
         this.queue.push(prim);
         return prim;
     }
@@ -135,7 +134,7 @@ export class Drawer {
      * @returns {PointPrimitive}
      */
     point() {
-        let prim = new PointPrimitive(this.queue);
+        let prim = new PointPrimitive();
         this.queue.push(prim);
         return prim;
     }
@@ -145,13 +144,13 @@ export class Drawer {
      * @returns {PolygonPrimitive}
      */
     poly() {
-        let prim = new PolygonPrimitive(this.queue);
+        let prim = new PolygonPrimitive();
         this.queue.push(prim);
         return prim;
     }
 
     pixelbuffer(bufferModifyFn) {
-        let cmd = new ModifyPixelBuffer(this.queue, bufferModifyFn);
+        let cmd = new ModifyPixelBuffer(bufferModifyFn);
         this.queue.push(cmd);
         return cmd;
     }
@@ -195,16 +194,12 @@ export class Drawer {
             }
         };
 
-        this.queue.forEach(cmd => {
+        this.queue.flatMap(cmd => cmd.genCmdList()).forEach(cmd => {
             if(!cmd.dontSaveCtx) this.backend.beginCmd();
-            cmd.preCommands.forEach(preCmd => {
-                processCmd(preCmd);
-            });
             processCmd(cmd);
             if(!cmd.dontSaveCtx) this.backend.endCmd();
         });
 
-        // clears the array
         this.queue.length = 0;
     }
 

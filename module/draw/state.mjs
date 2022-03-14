@@ -2,10 +2,20 @@ import { DrawCommand } from "./drawcommand.mjs";
 
 export class SetRotation extends DrawCommand {
     rot;
+    aroundX;
+    aroundY;
 
-    constructor(rot) {
+    constructor(rot, aroundX, aroundY) {
         super();
         this.rot = rot;
+        this.aroundX = aroundX;
+        this.aroundY = aroundY;
+    }
+
+    genCmdList() {
+        let list = super.genCmdList();
+        list.push(this);
+        return list;
     }
 }
 
@@ -17,9 +27,15 @@ export class SetOrigin extends DrawCommand {
     y;
 
     constructor(x, y) {
-        super();
+        super(true);
         this.x = x;
         this.y = y;
+    }
+
+    genCmdList() {
+        let list = super.genCmdList();
+        list.push(this);
+        return list;
     }
 }
 
@@ -31,9 +47,15 @@ export class SetColor extends DrawCommand {
     fillColor;
 
     constructor(color, strokeColor) {
-        super();
+        super(true);
         this.strokeColor = strokeColor || color;
         this.fillColor = color;
+    }
+
+    genCmdList() {
+        let list = super.genCmdList();
+        list.push(this);
+        return list;
     }
 }
 
@@ -55,5 +77,11 @@ export class SetBlendMode extends DrawCommand {
     constructor(mode) {
         super(true);
         this.mode = mode;
+    }
+
+    genCmdList() {
+        let list = super.genCmdList();
+        list.push(this);
+        return list;
     }
 }

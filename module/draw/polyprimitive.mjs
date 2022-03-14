@@ -1,8 +1,8 @@
 import { Primitive } from "./primitive.mjs";
 export class PolygonPrimitive extends Primitive {
     vertices;
-    constructor(queue) {
-        super(queue);
+    constructor() {
+        super();
 
         this.vertices = [];
     }
@@ -26,5 +26,11 @@ export class PolygonPrimitive extends Primitive {
     vertexList(list) {
         this.vertices.push(...list);
         return this;
+    }
+
+    genCmdList() {
+        let list = super.genCmdList();
+        list.push(this);
+        return list;
     }
 }

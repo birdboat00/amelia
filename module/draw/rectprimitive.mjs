@@ -5,8 +5,8 @@ export class RectPrimitive extends Primitive {
 
     sz;
 
-    constructor(queue) {
-        super(queue);
+    constructor() {
+        super();
         this.sz = Size.fromPx(0, 0);
     }
 
@@ -45,5 +45,11 @@ export class RectPrimitive extends Primitive {
     h(h) {
         this.sz.height = h;
         return this;
+    }
+
+    genCmdList() {
+        let list = super.genCmdList();
+        list.push(this);
+        return list;
     }
 }

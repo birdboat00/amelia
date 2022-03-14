@@ -5,8 +5,8 @@ export class ArcPrimitive extends Primitive {
     startAngle;
     endAngle;
 
-    constructor(queue) {
-        super(queue);
+    constructor() {
+        super();
     }
 
     /**
@@ -37,5 +37,11 @@ export class ArcPrimitive extends Primitive {
     radius(rad) {
         this.rad = rad;
         return this;
+    }
+
+    genCmdList() {
+        let list = super.genCmdList();
+        list.push(this);
+        return list;
     }
 }
