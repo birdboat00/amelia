@@ -56,8 +56,6 @@ class AmeliaEditor {
             fetch(srcUrl)
                 .then(res => res.text())
                 .then(code => {
-                    console.log(srcUrl);
-                    console.log(code);
                     this.editor.setValue(code);
                 });
         }
