@@ -4,11 +4,8 @@ you can use to create beautiful art.
 
 Here is a list:
 - [Rectangles](#rectangles)
-- [Circles](#circles)
-- [Quads](#quads)
 - [Lines](#lines)
 - [Arcs](#arcs)
-- [Triangles](#triangles)
 - [Points](#points)
 - [Polygons](#polygons)
 - [Text](#text)
@@ -67,32 +64,6 @@ rectangle and it has a width and height which can be set using
 - `wh(w, h)`, `w(w)` or `h(h)` to set it directly using pixel sizes
 - `size(size)` to set it using the `Size` type.
 
-## Circles
-A circle shape with a radius and a center point.
-
-<div class="cc"><div class="example" id="shcircle-ex">
-    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-circle.mjs">Look at code</a>
-</div></div>
-
-The position of the circle is used as the center point of the circle.
-A circle also has a radius which is set using
-- `radius(radius)` with a radius in pixels
-- `diameter(diameter)` with a diameter in pixels (shorthand for `radius / 2`)
-
-## Quads
-Quads are rectangles with flexible corner positions.
-
-<div class="cc"><div class="example" id="shquad-ex">
-    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-quad.mjs">Look at code</a>
-</div></div>
-
-Quads have edge four edge points: **a**, **b**, **c** and **d**. They can be set using
-- `points(ax, ay, bx, by, cx, cy, dx, dy)` with the four edges x and y coordinates
-
-If you set the position of the quad it sets the edge **a** to that
-coordinate, same the other way round, if you set the edge **a** you
-set the positon of the quad to that coordinate.
-
 ## Lines
 Lines have a start and end point and draw a line between those.
 
@@ -115,19 +86,10 @@ You can make cake slices or smiley faces with those!
     <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-arc.mjs">Look at code</a>
 </div></div>
 
-## Triangles
-Triangles might be the most important primitive in computer graphics.
-They have, like their name suggests, three corners.
-
-<div class="cc"><div class="example" id="shtri-ex">
-    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-tri.mjs">Look at code</a>
-</div></div>
-
-Triangles have three edge points: **a**, **b** and **c**. Those can be set by calling
-- `abc(ax, ay, bx, by, cx, by)` to set them all at once or
-- `a(ax, ay)`, `b(bx, by)` and `c(cx, cy)` to set them seperatly
-
-The position of the rectangle is always point **a**.
+- `start(startAngle)` and `end(endAngle)` to set the start and end angles
+- `circle()` to make the start angle 0 and end angle Math.PI * 2 and create a circle.
+- `radius(radius)` with a radius in pixels
+- `diameter(diameter)` with a diameter in pixels (shorthand for `radius / 2`)
 
 ## Points
 Points are single pixels!

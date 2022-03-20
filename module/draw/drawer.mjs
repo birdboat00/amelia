@@ -1,16 +1,13 @@
 import { getBackendInstance } from "../backend/backends.mjs";
 import { ArcPrimitive } from "./arcprimitive.mjs";
 import { Background } from "./background.mjs";
-import { CirclePrimitive } from "./circleprimitive.mjs";
 import { LinePrimitive } from "./lineprimitive.mjs";
 import { ModifyPixelBuffer } from "./pixelbuffer.mjs";
 import { PointPrimitive } from "./pointprimitive.mjs";
 import { PolygonPrimitive } from "./polyprimitive.mjs";
-import { QuadPrimitive } from "./quadprimitive.mjs";
 import { RectPrimitive } from "./rectprimitive.mjs";
 import { SetBlendMode, SetColor, SetOrigin, SetRotation } from "./state.mjs";
 import { TextPrimitive } from "./textprimitive.mjs";
-import { TrianglePrimitive } from "./triprimitive.mjs";
 
 /**
  * The drawer (pen of the app). This handles creating draw commands
@@ -84,41 +81,11 @@ export class Drawer {
     }
 
     /**
-     * Begin drawing a quad.
-     * @returns {QuadPrimitive} - the quad
-     */
-    quad() {
-        let prim = new QuadPrimitive();
-        this.queue.push(prim);
-        return prim;
-    }
-
-    /**
-     * Begin drawing a circle.
-     * @returns {CirclePrimitive} - the circle
-     */
-    circle() {
-        let prim = new CirclePrimitive();
-        this.queue.push(prim);
-        return prim;
-    }
-
-    /**
      * Begin drawing an arc.
      * @returns {ArcPrimitive} - the arc.
      */
     arc() {
         let prim = new ArcPrimitive();
-        this.queue.push(prim);
-        return prim;
-    }
-
-    /**
-     * Begin drawing a triangle.
-     * @returns {TrianglePrimitive} - the triangle
-     */
-    tri() {
-        let prim = new TrianglePrimitive();
         this.queue.push(prim);
         return prim;
     }
@@ -174,12 +141,6 @@ export class Drawer {
                 this.backend.drawRect(cmd);
             } else if (cmd instanceof LinePrimitive) {
                 this.backend.drawLine(cmd);
-            } else if (cmd instanceof QuadPrimitive) {
-                this.backend.drawQuad(cmd);
-            } else if (cmd instanceof CirclePrimitive) {
-                this.backend.drawCircle(cmd);
-            } else if (cmd instanceof TrianglePrimitive) {
-                this.backend.drawTriangle(cmd);
             } else if (cmd instanceof ArcPrimitive) {
                 this.backend.drawArc(cmd);
             } else if (cmd instanceof TextPrimitive) {

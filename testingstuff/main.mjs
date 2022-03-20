@@ -5,7 +5,8 @@ const rot_test_view = (app, model) => {
 
     pen.background().color(Color.Black);
 
-    pen.circle()
+    pen.arc()
+        .circle()
         .xy(50, 50)
         .color(Color.Amaranth)
         .radius(25);
@@ -53,7 +54,8 @@ const autumncolors_view = (app, model) => {
     let x = randomRangeInt(radius * 2 + 20, app.width - radius * 2 + 20);
     let y = randomRangeInt(radius * 2 + 20, app.height - radius * 2 + 20);
 
-    pen.circle()
+    pen.arc()
+        .circle()
         .xy(x, y)
         .radius(radius)
         .color(model.colors[randomRangeInt(0, model.colors.length)]);
@@ -170,17 +172,19 @@ const circleAndTriView = (app, model) => {
 
     draw.background().color(Color.Black);
 
-    draw.circle()
+    draw
+        .arc()
+        .circle()
         .xy(model.circlePos.x, model.circlePos.y)
         .radius(10)
         .color(Color.Yellow);
 
     const triCol = Color.Cyan;
     triCol.a = 0.8;
-    draw.tri()
+    /*draw.tri()
         .xy(100, 100)
         .abc(100, 100, 50, 200, 150, 200)
-        .color(triCol);
+        .color(triCol);*/
 
     draw.finish();
 };

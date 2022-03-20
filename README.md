@@ -11,9 +11,6 @@ emphasis on the following aspects:
 
 Currently it support the following primitives:
 - Rectangle (rect)
-- Circle (circle)
-- Triangle (tri)
-- Quad (quad)
 - Line (line)
 - Arc (arc)
 - Text (text)

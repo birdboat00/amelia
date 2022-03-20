@@ -18,7 +18,7 @@ export class PolygonPrimitive extends Primitive {
      * @returns {PolygonPrimitive}
      */
     vertex(x, y) {
-        this.vertices.push({ x: x, y: y });
+        this.vertices.push({ x, y });
         return this;
     }
 
@@ -29,6 +29,47 @@ export class PolygonPrimitive extends Primitive {
      */
     vertexList(list) {
         this.vertices.push(...list);
+        return this;
+    }
+
+    vertexIndex(index, x, y) {
+        this.vertices[index].x = { x, y };
+    }
+
+    /**
+     * Create a quad polygon.
+     * @param {number} ax a point x coord
+     * @param {number} ay a point y coord
+     * @param {number} bx b point x coord
+     * @param {number} by b point y coord
+     * @param {number} cx c point x coord
+     * @param {number} cy c point y coord
+     * @param {number} dx d point x coord
+     * @param {number} dy d point y coord
+     * @returns {PolygonPrimitive}
+     */
+    quad(ax, ay, bx, by, cx, cy, dx, dy) {
+        this.vertex(ax, ay);
+        this.vertex(bx, by);
+        this.vertex(cx, cy);
+        this.vertex(dx, dy);
+        return this;
+    }
+
+    /**
+     * Create a triangle polygon.
+     * @param {number} ax a point x coord
+     * @param {number} ay a point y coord
+     * @param {number} bx b point x coord
+     * @param {number} dy b point y coord
+     * @param {number} cx c point x coord
+     * @param {number} cy c point y coord
+     * @returns {PolygonPrimitive}
+     */
+    tri(ax, ay, bx, dy, cx, cy) {
+        this.vertex(ax, ay);
+        this.vertex(bx, by);
+        this.vertex(cx, cy);
         return this;
     }
 

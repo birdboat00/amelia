@@ -33,12 +33,32 @@ export class ArcPrimitive extends Primitive {
     }
 
     /**
+     * Create a full 360 degree arc (aka circle).
+     * @returns {ArcPrimitive}
+     */
+    circle() {
+        this.startAngle = 0;
+        this.endAngle = Math.PI * 2;
+        return this;
+    }
+
+    /**
      * Specify the radius of the arc.
      * @param {number} rad - the radius
      * @returns {ArcPrimitive}
      */
     radius(rad) {
         this.rad = rad;
+        return this;
+    }
+
+    /**
+     * Specify the diameter of the arc.
+     * @param {number} diameter the diamter
+     * @returns {ArcPrimitive}
+     */
+    diameter(diameter) {
+        this.rad = diameter / 2;
         return this;
     }
 

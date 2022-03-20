@@ -6,8 +6,8 @@ export const sharc = () => {
         let pen = app.pen();
         pen.background().color(Color.CherryBlossom);
 
-        pen.circle().xy(70, 70).radius(5).color(Color.PastellRed);
-        pen.circle().xy(125, 70).radius(5).color(Color.PastellRed);
+        pen.arc().circle().xy(70, 70).radius(5).color(Color.PastellRed);
+        pen.arc().circle().xy(125, 70).radius(5).color(Color.PastellRed);
 
         pen.arc().xy(100, 100).radius(40).start(0).end(Math.PI).color(Color.BlackCoffee);
 

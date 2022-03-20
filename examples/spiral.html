@@ -15,17 +15,13 @@
         const view = (app, model) => {
             let pen = app.pen();
 
-            // pen.background().color(Color.Black);
-
-            /*model.color.r = randomRangeInt(0, 200);
-            model.color.g = randomRangeInt(0, 250);
-            model.color.b = randomRangeInt(100, 250);*/
             model.color = Color.random();
 
             const x = model.offset + Math.cos(model.angle) * model.scalar;
             const y = model.offset + Math.sin(model.angle) * model.scalar;
 
-            pen.circle()
+            pen.arc()
+                .circle()
                 .xy(x, y)
                 .radius(2)
                 .color(model.color);
