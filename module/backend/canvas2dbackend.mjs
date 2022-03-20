@@ -3,19 +3,31 @@ import { Backend } from "./backend.mjs";
 export class Canvas2DBackend extends Backend {
     ctx;
 
+    globalRotation;
+
     constructor(context) {
         super();
         this.ctx = context;
+        this.globalRotation = 0;
     }
 
     beginCmd() {
         let blendmode = this.ctx.globalCompositeOperation;
+
         this.ctx.save();
+
         this.ctx.globalCompositeOperation = blendmode;
+        this.ctx.translate(this.ctx.canvas.width / 2, this.ctx.canvas.height / 2);
+        this.ctx.rotate(this.globalRotation);
+        this.ctx.translate(-this.ctx.canvas.width / 2, -this.ctx.canvas.height / 2);
     }
 
     endCmd() {
         this.ctx.restore();
+    }
+
+    globalRotate(rotation) {
+        this.globalRotation = rotation;
     }
 
     setBlendMode(blendMode) {
@@ -78,6 +90,8 @@ export class Canvas2DBackend extends Backend {
     }
 
     drawPolygon(poly) {
+        this.ctx.lineWidth = poly.weight;
+
         this.ctx.beginPath();
         this.ctx.moveTo(poly.vertices[0].x, poly.vertices[0].y);
         for (let i = 1; i < poly.vertices.length; i++) {

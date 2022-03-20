@@ -4,6 +4,7 @@ export class Backend {
     setOrigin(origin) { }
     setColor(color) { }
     setRotation(rotation) { }
+    globalRotate(rotation) { }
     setBlendMode(blendMode) { }
     drawRect(prim) { }
     drawLine(prim) { }

@@ -37,9 +37,21 @@ export class Drawer {
      * given coordinates.
      * @param {number} x - the origin x coordinate
      * @param {number} y - the origin y coordinate
+     * @returns {Drawer}
      */
     origin(x, y) {
         this.queue.push(new SetOrigin(x, y));
+        return this;
+    }
+
+    /**
+     * Rotate the canvas globally for all draw commands.
+     * @param {number} rotation the rotation
+     * @returns {Drawer}
+     */
+    rotate(rotation) {
+        this.backend.globalRotate(rotation);
+        return this;
     }
 
     /**

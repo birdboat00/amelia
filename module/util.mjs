@@ -36,6 +36,7 @@ export const randomRange = (min, max) => {
 /**
  * Generate random number between the minimum and maximum
  * and round it to an integer value.
+ * [min, max[
  * @param {number} min minimum
  * @param {number} max maximum
  * @returns {number}
@@ -103,3 +104,21 @@ export const pingpong = (t, length) => {
 export const dist = (a, b, c, d) => {
     return Math.hypot(a - c, b - d);
 };
+
+/**
+ * convert degrees to radians
+ * @param {number} deg degrees
+ * @returns {number}
+ */
+export const deg2rad = (deg) => {
+    return deg * Math.PI / 180;
+}
+
+/**
+ * convert radians to degrees
+ * @param {number} rad radians
+ * @returns {number}
+ */
+export const rad2deg = (rad) => {
+    return rad * 180 / Math.PI;
+}
