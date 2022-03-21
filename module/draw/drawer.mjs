@@ -104,6 +104,17 @@ export class Drawer {
     }
 
     /**
+     * Begin drawing a circle.
+     * Shorthand for app.pen().arc().circle()
+     * @returns {ArcPrimitive} the circle
+     */
+    circle() {
+        let c = new ArcPrimitive().circle();
+        this.queue.push(c);
+        return c;
+    }
+
+    /**
      * Begin drawing text.
      * @returns {TextPrimitive}
      */

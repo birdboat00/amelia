@@ -12,25 +12,21 @@ const shbzview = (app, _model) => {
         .color(Color.Amaranth);
 
     // Visualize the anchor points
-    pen.arc()
-        .circle()
+    pen.circle()
         .xy(50, 20)
         .radius(2)
         .color(Color.Blue);
-    pen.arc()
-        .circle()
+    pen.circle()
         .xy(180, 100)
         .radius(2)
         .color(Color.Blue);
 
     // Visualize the control points
-    pen.arc()
-        .circle()
+    pen.circle()
         .xy(80, 150)
         .radius(2)
         .color(Color.Amber);
-    pen.arc()
-        .circle()
+    pen.circle()
         .xy(150, 80)
         .radius(2)
         .color(Color.Amber);

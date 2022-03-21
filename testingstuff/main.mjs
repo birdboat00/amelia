@@ -5,8 +5,7 @@ const rot_test_view = (app, model) => {
 
     pen.background().color(Color.Black);
 
-    pen.arc()
-        .circle()
+    pen.circle()
         .xy(50, 50)
         .color(Color.Amaranth)
         .radius(25);
@@ -54,8 +53,7 @@ const autumncolors_view = (app, model) => {
     let x = randomRangeInt(radius * 2 + 20, app.width - radius * 2 + 20);
     let y = randomRangeInt(radius * 2 + 20, app.height - radius * 2 + 20);
 
-    pen.arc()
-        .circle()
+    pen.circle()
         .xy(x, y)
         .radius(radius)
         .color(model.colors[randomRangeInt(0, model.colors.length)]);
@@ -93,9 +91,9 @@ const start_autumncolors = () => {
 // start_autumncolors();
 
 const organic_view = (app, model) => {
-    let drawer = app.draw();
+    let pen = app.pen();
 
-    drawer.blendMode(BlendMode.Multiply);
+    pen.blendMode(BlendMode.Multiply);
 
     let x = app.width / randomRange(70, 1000);
 
@@ -104,7 +102,7 @@ const organic_view = (app, model) => {
         let xp = app.width / 2 + (Math.tan(i) * i) / (x * 2);
         let yp = app.height - i;
         let hue = map(x, app.width / 1000, app.width / 70, 130, 50);
-        drawer
+        pen
             .rect()
             .xy(xp, yp)
             .wh(x, x)
@@ -112,11 +110,11 @@ const organic_view = (app, model) => {
 
     }
 
-    drawer.finish();
+    pen.plot();
 };
 
 const organic_model = (app) => {
-    app.draw().background().color(Color.fromHex(0xfff7f0ff));
+    app.pen().background().color(Color.fromHex(0xfff7f0ff));
 
     setInterval(() => {
         console.log(app.fps);
@@ -126,39 +124,39 @@ const organic_model = (app) => {
 };
 
 const rainbow_view = (app) => {
-    const draw = app.draw();
+    const pen = app.pen();
 
-    draw.background().color(Color.White);
+    pen.background().color(Color.White);
 
-    draw.rect()
+    pen.rect()
         .xy(0, 0).wh(400, 60)
         .color(Color.fromBytes(255, 0, 0));
 
-    draw.rect()
+    pen.rect()
         .xy(0, 60).wh(400, 60)
         .color(Color.fromBytes(255, 165, 0));
 
-    draw.rect()
+    pen.rect()
         .xy(0, 120).wh(400, 60)
         .color(Color.fromBytes(255, 255, 0));
 
-    draw.rect()
+    pen.rect()
         .xy(0, 180).wh(400, 60)
         .color(Color.fromBytes(0, 255, 0));
 
-    draw.rect()
+    pen.rect()
         .xy(0, 240).wh(400, 60)
         .color(Color.fromBytes(0, 0, 255));
 
-    draw.rect()
+    pen.rect()
         .xy(0, 300).wh(400, 60)
         .color(Color.fromBytes(75, 0, 130));
 
-    draw.rect()
+    pen.rect()
         .xy(0, 360).wh(400, 60)
         .color(Color.fromBytes(148, 0, 211));
 
-    draw.finish();
+    pen.finish();
 };
 
 const rainbow_model = (app) => {
@@ -172,9 +170,7 @@ const circleAndTriView = (app, model) => {
 
     draw.background().color(Color.Black);
 
-    draw
-        .arc()
-        .circle()
+    draw.circle()
         .xy(model.circlePos.x, model.circlePos.y)
         .radius(10)
         .color(Color.Yellow);

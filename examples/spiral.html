@@ -20,8 +20,7 @@
             const x = model.offset + Math.cos(model.angle) * model.scalar;
             const y = model.offset + Math.sin(model.angle) * model.scalar;
 
-            pen.arc()
-                .circle()
+            pen.circle()
                 .xy(x, y)
                 .radius(2)
                 .color(model.color);
