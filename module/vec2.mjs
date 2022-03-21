@@ -114,4 +114,12 @@ export class Vec2 {
         this.y = 0;
         return this;
     }
+
+    /**
+     * Get the vec2 as an array [x, y].
+     * @returns {Array}
+     */
+    get array() {
+        return [this.x, this.y];
+    }
 }

@@ -102,6 +102,15 @@ export class Canvas2DBackend extends Backend {
         this.ctx.fill();
     }
 
+    drawBezier(cmd) {
+        this.ctx.lineWdith = cmd.weight;
+
+        this.ctx.beginPath();
+        this.ctx.moveTo(cmd.pos.x, cmd.pos.y);
+        this.ctx.bezierCurveTo(cmd.cp1x, cmd.cp1y, cmd.cp2x, cmd.cp2y, cmd.ap2x, cmd.ap2y);
+        this.ctx.stroke();
+    }
+
     modifyPixelBuffer(pb) {
         let data = this.ctx.getImageData(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
         pb.bufferModifyFn(data.data);

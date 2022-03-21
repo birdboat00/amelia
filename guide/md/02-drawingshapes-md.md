@@ -6,6 +6,7 @@ Here is a list:
 - [Rectangles](#rectangles)
 - [Lines](#lines)
 - [Arcs](#arcs)
+- [Bezier Curves](#bezier-curves)
 - [Points](#points)
 - [Polygons](#polygons)
 - [Text](#text)
@@ -77,7 +78,6 @@ The start and end points of a line are set with
 The start point is always the position of the line, so when you set the
 position of the line you also set the start point.
 
-
 ## Arcs
 Arcs are lines that curve like a circle with an end and start radius.
 You can make cake slices or smiley faces with those!
@@ -90,6 +90,17 @@ You can make cake slices or smiley faces with those!
 - `circle()` to make the start angle 0 and end angle Math.PI * 2 and create a circle.
 - `radius(radius)` with a radius in pixels
 - `diameter(diameter)` with a diameter in pixels (shorthand for `radius / 2`)
+
+## Bezier Curves
+This primitive creates cubic bezier curves.
+
+<div class="cc"><div class="example" id="shbz-ex">
+    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-bezier.mjs">Look at code</a>
+</div></div>
+
+- `controlpts(cp1x, cp1y, cp2x, cp2y)` and `anchorpts(ap1x, ap1y, ap2x, ap2y)` to set the control and anchor points.
+
+The first anchor point is always equal to the position of the primitive.
 
 ## Points
 Points are single pixels!

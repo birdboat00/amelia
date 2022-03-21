@@ -31,7 +31,7 @@ export class Primitive extends DrawCommand {
      */
     color(fillColor, strokeColor) {
         this.fillCol = fillColor;
-        this.strokeCol = strokeColor;
+        this.strokeCol = strokeColor || fillColor;
         return this;
     }
 

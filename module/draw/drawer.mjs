@@ -1,13 +1,14 @@
 import { getBackendInstance } from "../backend/backends.mjs";
-import { ArcPrimitive } from "./arcprimitive.mjs";
+import { ArcPrimitive } from "./arc.mjs";
 import { Background } from "./background.mjs";
-import { LinePrimitive } from "./lineprimitive.mjs";
+import { BezierPrimitive } from "./bezier.mjs";
+import { LinePrimitive } from "./line.mjs";
 import { ModifyPixelBuffer } from "./pixelbuffer.mjs";
-import { PointPrimitive } from "./pointprimitive.mjs";
-import { PolygonPrimitive } from "./polyprimitive.mjs";
-import { RectPrimitive } from "./rectprimitive.mjs";
+import { PointPrimitive } from "./point.mjs";
+import { PolygonPrimitive } from "./polygon.mjs";
+import { RectPrimitive } from "./rect.mjs";
 import { SetBlendMode, SetColor, SetOrigin, SetRotation } from "./state.mjs";
-import { TextPrimitive } from "./textprimitive.mjs";
+import { TextPrimitive } from "./text.mjs";
 
 /**
  * The drawer (pen of the app). This handles creating draw commands
@@ -132,10 +133,25 @@ export class Drawer {
         return prim;
     }
 
+    /**
+     * Modify the pixel buffer in a function.
+     * @param {*} bufferModifyFn the pixel buffer modify function
+     * @returns {ModifyPixelBuffer}
+     */
     pixelbuffer(bufferModifyFn) {
         let cmd = new ModifyPixelBuffer(bufferModifyFn);
         this.queue.push(cmd);
         return cmd;
+    }
+
+    /**
+     * Begin drawing a bezier curve.
+     * @returns {BezierPrimitive}
+     */
+    bezier() {
+        let b = new BezierPrimitive();
+        this.queue.push(b);
+        return b;
     }
 
     finish() {
@@ -165,6 +181,8 @@ export class Drawer {
                 this.backend.modifyPixelBuffer(cmd);
             } else if (cmd instanceof SetRotation) {
                 this.backend.setRotation(cmd);
+            } else if (cmd instanceof BezierPrimitive) {
+                this.backend.drawBezier(cmd);
             }
         };
 

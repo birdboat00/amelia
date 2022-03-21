@@ -12,6 +12,7 @@ export class Backend {
     drawText(text) { }
     drawPoint(point) { }
     drawPolygon(polygon) { }
+    drawBezier(bezier) { }
     clearBackground(bg) { }
     modifyPixelBuffer(pixelBuf) { }
 }
