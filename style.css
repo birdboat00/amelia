@@ -19,20 +19,14 @@ h1, h2, h3, h4, h5, h6 {
 
 h2, h3, h4, h5, h6 { margin-bottom: 20px; margin-top: 50px; padding-top: 25px; border-top: 1px solid #eee; }
 
-a {
+a, a:visited {
     text-decoration: underline;
     color: #333;
 }
 
-a:visited {
-    text-decoration: none;
-    color: #333;
-}
+a:visited, a:hover, a:focus { text-decoration: none; }
 
-a:hover, a:focus {
-    color: #099;
-    text-decoration: none;
-}
+a:hover, a:focus { color: #099; }
 
 header a {
     color: #333;

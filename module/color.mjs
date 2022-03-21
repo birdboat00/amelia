@@ -194,16 +194,8 @@ export class Color {
      * Returns the color as a CSS color string.
      * @returns {string} - the css rgba() color string
      */
-    asCss() {
-        return `rgb(${this.r},${this.g},${this.b},${this.a})`;
-    }
-
-    /**
-     * Returns the color as a CSS color string.
-     * @returns {string} - the css rgba() color string
-     */
     get css() {
-        return this.asCss();
+        return `rgb(${this.r},${this.g},${this.b},${this.a})`;
     }
 
     /**

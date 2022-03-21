@@ -12,7 +12,7 @@ export class Canvas2DBackend extends Backend {
     }
 
     beginCmd() {
-        let blendmode = this.ctx.globalCompositeOperation;
+        const blendmode = this.ctx.globalCompositeOperation;
 
         this.ctx.save();
 
@@ -43,14 +43,14 @@ export class Canvas2DBackend extends Backend {
     }
 
     setColor(color) {
-        this.ctx.fillStyle = color.fillColor.asCss();
-        this.ctx.strokeStyle = color.strokeColor.asCss();
+        this.ctx.fillStyle = color.fillColor.css;
+        this.ctx.strokeStyle = color.strokeColor.css;
     }
 
     clearBackground(background) {
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-        this.ctx.fillStyle = background.col.asCss();
-        this.ctx.strokeStyle = background.col.asCss();
+        this.ctx.fillStyle = background.col.css;
+        this.ctx.strokeStyle = background.col.css;
         this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     }
 
