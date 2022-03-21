@@ -66,7 +66,7 @@ export class PolygonPrimitive extends Primitive {
      * @param {number} cy c point y coord
      * @returns {PolygonPrimitive}
      */
-    tri(ax, ay, bx, dy, cx, cy) {
+    tri(ax, ay, bx, by, cx, cy) {
         this.vertex(ax, ay);
         this.vertex(bx, by);
         this.vertex(cx, cy);
