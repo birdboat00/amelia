@@ -91,14 +91,14 @@ export class Size {
      * Set the size in pixels.
      */
     set width(width) {
-        this.#w = width;
+        this.#w = width < 0 ? 0 : width;
     }
 
     /**
      * Set the height in pixels.
      */
     set height(height) {
-        this.#h = height;
+        this.#h = height < 0 ? 0 : height;
     }
 
     /**

@@ -1,6 +1,7 @@
 import { DrawCommand } from "./drawcommand.mjs";
 import { SetColor, SetRotation } from "./state.mjs";
 import { Color } from "../color.mjs";
+import { Vec2 } from "../vec2.mjs";
 
 /**
  * Base class of all primitives.
@@ -11,16 +12,17 @@ export class Primitive extends DrawCommand {
     pos;
     weight;
     rotation;
-    fillCol;
-    strokeCol;
+    style;
+    fillColor;
+    strokeColor;
     noFill;
     noStroke;
 
     constructor() {
         super();
-        this.pos = { x: 0, y: 0 };
-        this.strokeCol = Color.Black;
-        this.fillCol = Color.Black;
+        this.pos = new Vec2();
+        this.strokeColor = Color.Black;
+        this.fillColor = Color.Black;
         this.weight = 1;
         this.rotation = 0;
         this.noFill = false;
@@ -34,8 +36,8 @@ export class Primitive extends DrawCommand {
      * @returns {Primitive} - the primitive
      */
     color(fillColor, strokeColor) {
-        this.fillCol = fillColor;
-        this.strokeCol = strokeColor || fillColor;
+        this.fillColor = fillColor;
+        this.strokeColor = strokeColor || fillColor;
         return this;
     }
 
@@ -115,6 +117,16 @@ export class Primitive extends DrawCommand {
     }
 
     /**
+     * Fill the shape.
+     * Shorthand for dofill(true)
+     * @returns {Primitive}
+     */
+    fill() {
+        this.noFill = false;
+        return this;
+    }
+
+    /**
      * Specify if the primitive shape should be stroked with the
      * stroke color.
      * @param {boolean} stroke should stroke the shape
@@ -136,6 +148,16 @@ export class Primitive extends DrawCommand {
     }
 
     /**
+     * Stroke the shape.
+     * Shorthand for dostroke(true)
+     * @returns {Primitive}
+     */
+    stroke() {
+        this.noStroke = false;
+        return this;
+    }
+
+    /**
      * --- INTERNAL ---
      * Generate the command list for the primitive
      * @returns {Array}
@@ -143,7 +165,7 @@ export class Primitive extends DrawCommand {
     genCmdList() {
         let list = super.genCmdList();
         if(!(this.noStroke && this.noFill)) {
-            list.push(new SetColor(this.fillCol, this.strokeCol));
+            list.push(new SetColor(this.fillColor, this.strokeColor));
         }
         list.push(new SetRotation(this.rotation, this.pos.x, this.pos.y));
         return list;

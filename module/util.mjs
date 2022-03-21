@@ -19,12 +19,11 @@ export const clamp = (num, min, max) => {
  * @param {number} high the maximum
  * @returns {number}
  */
-export const constrain = (num, low, high) => {
-    return clamp(num, low, high);
-};
+export const constrain = clamp;
 
 /**
  * Generate a random number between the minimum and maximum
+ * [min, max[
  * @param {number} min minimum
  * @param {number} max maximum
  * @returns {number}
