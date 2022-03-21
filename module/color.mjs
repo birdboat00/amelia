@@ -214,28 +214,28 @@ export class Color {
         return [this.r, this.g, this.b, this.a];
     }
 
-    /** */
+    /** 0, 0, 0 */
     static get Black() { return new Color(0, 0, 0); }
-    /** */
+    /** 255, 255, 255 */
     static get White() { return new Color(255, 255, 255); }
-    /** */
+    /** 255, 0, 0 */
     static get Red() { return new Color(255, 0, 0); }
-    /** */
+    /** 0, 255, 0 */
     static get Green() { return new Color(0, 255, 0); }
-    /** */
+    /** 0, 0, 255 */
     static get Blue() { return new Color(0, 0, 255); }
-    /** */
+    /** 255, 255, 0 */
     static get Yellow() { return new Color(255, 255, 0); }
-    /** */
+    /** 255, 0, 255 */
     static get Magenta() { return new Color(255, 0, 255); }
-    /** */
+    /** 0, 255, 255 */
     static get Cyan() { return new Color(0, 255, 255); }
-    /** */
+    /** 0, 0, 0, 0 */
     static get Transparent() { return new Color(0, 0, 0, 0); }
 
-    /** */
+    /** 172, 51, 53 */
     static get PastellRed() { return new Color(172, 51, 53); }
-    /** */
+    /** 96, 117, 76 */
     static get GrassGreen() { return new Color(96, 117, 76); }
     /** */
     static get MetallicGold() { return new Color(211, 175, 55); }
