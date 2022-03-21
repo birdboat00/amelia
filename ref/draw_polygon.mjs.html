@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: draw/state.mjs</title>
+    <title>JSDoc: Source: draw/polygon.mjs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: draw/state.mjs</h1>
+    <h1 class="page-title">Source: draw/polygon.mjs</h1>
 
     
 
@@ -26,88 +26,79 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { DrawCommand } from "./drawcommand.mjs";
+            <pre class="prettyprint source linenums"><code>import { Primitive } from "./primitive.mjs";
 
 /**
- * Draw command to set the rotation.
+ * Primitive to draw a polygon shape.
  */
-export class SetRotation extends DrawCommand {
-    rot;
-    aroundX;
-    aroundY;
-
-    constructor(rot, aroundX, aroundY) {
+export class PolygonPrimitive extends Primitive {
+    vertices;
+    constructor() {
         super();
-        this.rot = rot;
-        this.aroundX = aroundX;
-        this.aroundY = aroundY;
+
+        this.vertices = [];
     }
 
-    genCmdList() {
-        let list = super.genCmdList();
-        list.push(this);
-        return list;
-    }
-}
-
-/**
- * Draw command to set the origin of the primitive.
- */
-export class SetOrigin extends DrawCommand {
-    x;
-    y;
-
-    constructor(x, y) {
-        super(true);
-        this.x = x;
-        this.y = y;
+    /**
+     * Push a vertex into the vertices list.
+     * @param {number} x - the x coordinate of the vertex
+     * @param {number} y - the y coordiante of the vertex
+     * @returns {PolygonPrimitive}
+     */
+    vertex(x, y) {
+        this.vertices.push({ x, y });
+        return this;
     }
 
-    genCmdList() {
-        let list = super.genCmdList();
-        list.push(this);
-        return list;
-    }
-}
-
-/**
- * Draw command to set the fill and stroke color.
- */
-export class SetColor extends DrawCommand {
-    strokeColor;
-    fillColor;
-
-    constructor(color, strokeColor) {
-        super(true);
-        this.strokeColor = strokeColor || color;
-        this.fillColor = color;
+    /**
+     * Push a list of vertices into the verticles list.
+     * @param {Array} list - the list of vertices
+     * @returns {PolygonPrimitive}
+     */
+    vertexList(list) {
+        this.vertices.push(...list);
+        return this;
     }
 
-    genCmdList() {
-        let list = super.genCmdList();
-        list.push(this);
-        return list;
+    vertexIndex(index, x, y) {
+        this.vertices[index].x = { x, y };
     }
-}
 
-/**
- * Blend modes.
- */
-export const BlendMode = {
-    SourceOver: "source-over",
-    Multiply: "multiply",
-    Xor: "xor"
-}
+    /**
+     * Create a quad polygon.
+     * @param {number} ax a point x coord
+     * @param {number} ay a point y coord
+     * @param {number} bx b point x coord
+     * @param {number} by b point y coord
+     * @param {number} cx c point x coord
+     * @param {number} cy c point y coord
+     * @param {number} dx d point x coord
+     * @param {number} dy d point y coord
+     * @returns {PolygonPrimitive}
+     */
+    quad(ax, ay, bx, by, cx, cy, dx, dy) {
+        this.vertex(ax, ay);
+        this.vertex(bx, by);
+        this.vertex(cx, cy);
+        this.vertex(dx, dy);
+        return this;
+    }
 
-/**
- * Draw command to set the renderer blend mode.
- */
-export class SetBlendMode extends DrawCommand {
-    mode;
-
-    constructor(mode) {
-        super(true);
-        this.mode = mode;
+    /**
+     * Create a triangle polygon.
+     * @param {number} ax a point x coord
+     * @param {number} ay a point y coord
+     * @param {number} bx b point x coord
+     * @param {number} dy b point y coord
+     * @param {number} cx c point x coord
+     * @param {number} cy c point y coord
+     * @returns {PolygonPrimitive}
+     */
+    tri(ax, ay, bx, dy, cx, cy) {
+        this.vertex(ax, ay);
+        this.vertex(bx, by);
+        this.vertex(cx, cy);
+        return this;
     }
 
     genCmdList() {

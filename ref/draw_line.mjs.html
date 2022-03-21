@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: draw/state.mjs</title>
+    <title>JSDoc: Source: draw/line.mjs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: draw/state.mjs</h1>
+    <h1 class="page-title">Source: draw/line.mjs</h1>
 
     
 
@@ -26,88 +26,54 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { DrawCommand } from "./drawcommand.mjs";
+            <pre class="prettyprint source linenums"><code>import { Primitive } from "./primitive.mjs";
 
 /**
- * Draw command to set the rotation.
+ * Primitive to create a line.
  */
-export class SetRotation extends DrawCommand {
-    rot;
-    aroundX;
-    aroundY;
+export class LinePrimitive extends Primitive {
+    endpoint;
 
-    constructor(rot, aroundX, aroundY) {
+    constructor() {
         super();
-        this.rot = rot;
-        this.aroundX = aroundX;
-        this.aroundY = aroundY;
+        this.endpoint = { x: 0, y: 0 };
     }
 
-    genCmdList() {
-        let list = super.genCmdList();
-        list.push(this);
-        return list;
-    }
-}
-
-/**
- * Draw command to set the origin of the primitive.
- */
-export class SetOrigin extends DrawCommand {
-    x;
-    y;
-
-    constructor(x, y) {
-        super(true);
-        this.x = x;
-        this.y = y;
+    /**
+     * The start point of the line, shorthand for xy()
+     * @param {number} x - the x coordiante
+     * @param {number} y - the y coordiante
+     * @returns {LinePrimitive} - itself
+     */
+    start(x, y) {
+        this.xy(x, y);
+        return this;
     }
 
-    genCmdList() {
-        let list = super.genCmdList();
-        list.push(this);
-        return list;
-    }
-}
-
-/**
- * Draw command to set the fill and stroke color.
- */
-export class SetColor extends DrawCommand {
-    strokeColor;
-    fillColor;
-
-    constructor(color, strokeColor) {
-        super(true);
-        this.strokeColor = strokeColor || color;
-        this.fillColor = color;
+    /**
+     * Sets the endpoint of the line.
+     * @param {number} x - the x coordinate
+     * @param {number} y - the y coordinate
+     * @returns {LinePrimitive} - itself
+     */
+    end(x, y) {
+        this.endpoint.x = x;
+        this.endpoint.y = y;
+        return this;
     }
 
-    genCmdList() {
-        let list = super.genCmdList();
-        list.push(this);
-        return list;
-    }
-}
-
-/**
- * Blend modes.
- */
-export const BlendMode = {
-    SourceOver: "source-over",
-    Multiply: "multiply",
-    Xor: "xor"
-}
-
-/**
- * Draw command to set the renderer blend mode.
- */
-export class SetBlendMode extends DrawCommand {
-    mode;
-
-    constructor(mode) {
-        super(true);
-        this.mode = mode;
+    /**
+     * Specify the start and end points of the line.
+     * @param {number} xs - start point x coordinate
+     * @param {number} ys - start point y coordinate
+     * @param {number} xe - end point x coordinate
+     * @param {number} ye - end point y coordinate
+     * @returns {LinePrimitive}
+     */
+    points(xs, ys, xe, ye) {
+        this.start(xs, ys);
+        this.end(xe, ye);
+        return this;
     }
 
     genCmdList() {

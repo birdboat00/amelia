@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: draw/state.mjs</title>
+    <title>JSDoc: Source: draw/text.mjs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: draw/state.mjs</h1>
+    <h1 class="page-title">Source: draw/text.mjs</h1>
 
     
 
@@ -26,88 +26,67 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { DrawCommand } from "./drawcommand.mjs";
+            <pre class="prettyprint source linenums"><code>import { Primitive } from "./primitive.mjs";
 
 /**
- * Draw command to set the rotation.
+ * Primitive to create text.
  */
-export class SetRotation extends DrawCommand {
-    rot;
-    aroundX;
-    aroundY;
+export class TextPrimitive extends Primitive {
+    displayString;
+    fontName;
+    fontSize;
 
-    constructor(rot, aroundX, aroundY) {
+    constructor() {
         super();
-        this.rot = rot;
-        this.aroundX = aroundX;
-        this.aroundY = aroundY;
+
+        this.displayString = "";
+        this.fontName = "Arial";
+        this.fontSize = 12;
+        this.noStroke = true;
     }
 
-    genCmdList() {
-        let list = super.genCmdList();
-        list.push(this);
-        return list;
-    }
-}
-
-/**
- * Draw command to set the origin of the primitive.
- */
-export class SetOrigin extends DrawCommand {
-    x;
-    y;
-
-    constructor(x, y) {
-        super(true);
-        this.x = x;
-        this.y = y;
+    /**
+     * Specify the string that the text displays.
+     * @param {string} text - the string to display
+     * @returns {TextPrimitive}
+     */
+    text(text) {
+        this.displayString = text;
+        return this;
     }
 
-    genCmdList() {
-        let list = super.genCmdList();
-        list.push(this);
-        return list;
-    }
-}
-
-/**
- * Draw command to set the fill and stroke color.
- */
-export class SetColor extends DrawCommand {
-    strokeColor;
-    fillColor;
-
-    constructor(color, strokeColor) {
-        super(true);
-        this.strokeColor = strokeColor || color;
-        this.fillColor = color;
+    /**
+     * Specify the name of the font used for the text.
+     * @param {string} fontName - the name of the font to use
+     * @returns {TextPrimitive}
+     */
+    font(fontName) {
+        this.fontName = fontName;
+        return this;
     }
 
-    genCmdList() {
-        let list = super.genCmdList();
-        list.push(this);
-        return list;
+    /**
+     * Specify the font size in pixels.
+     * @param {number} fontSize - the font size in pixels
+     * @returns {TextPrimitive}
+     */
+    size(fontSize) {
+        this.fontSize = fontSize;
+        return this;
     }
-}
 
-/**
- * Blend modes.
- */
-export const BlendMode = {
-    SourceOver: "source-over",
-    Multiply: "multiply",
-    Xor: "xor"
-}
-
-/**
- * Draw command to set the renderer blend mode.
- */
-export class SetBlendMode extends DrawCommand {
-    mode;
-
-    constructor(mode) {
-        super(true);
-        this.mode = mode;
+    /**
+     * Calculates the width of the text in pixels with
+     * the currently assigned properties.
+     * WARNING: can be slow and probably always is
+     * @returns {number} - the width of the text in pixels
+     */
+    measureWidth() {
+        // TODO: this must be very slow oooof
+        const canvas = document.createElement("canvas");
+        let ctx = canvas.getContext("2d");
+        ctx.font = `${this.fontSize}px ${this.fontName}`;
+        return ctx.measureText(this.displayString).width;
     }
 
     genCmdList() {

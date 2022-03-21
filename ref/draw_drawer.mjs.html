@@ -27,18 +27,16 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import { getBackendInstance } from "../backend/backends.mjs";
-import { ArcPrimitive } from "./arcprimitive.mjs";
+import { ArcPrimitive } from "./arc.mjs";
 import { Background } from "./background.mjs";
-import { CirclePrimitive } from "./circleprimitive.mjs";
-import { LinePrimitive } from "./lineprimitive.mjs";
+import { BezierPrimitive } from "./bezier.mjs";
+import { LinePrimitive } from "./line.mjs";
 import { ModifyPixelBuffer } from "./pixelbuffer.mjs";
-import { PointPrimitive } from "./pointprimitive.mjs";
-import { PolygonPrimitive } from "./polyprimitive.mjs";
-import { QuadPrimitive } from "./quadprimitive.mjs";
-import { RectPrimitive } from "./rectprimitive.mjs";
+import { PointPrimitive } from "./point.mjs";
+import { PolygonPrimitive } from "./polygon.mjs";
+import { RectPrimitive } from "./rect.mjs";
 import { SetBlendMode, SetColor, SetOrigin, SetRotation } from "./state.mjs";
-import { TextPrimitive } from "./textprimitive.mjs";
-import { TrianglePrimitive } from "./triprimitive.mjs";
+import { TextPrimitive } from "./text.mjs";
 
 /**
  * The drawer (pen of the app). This handles creating draw commands
@@ -68,9 +66,21 @@ export class Drawer {
      * given coordinates.
      * @param {number} x - the origin x coordinate
      * @param {number} y - the origin y coordinate
+     * @returns {Drawer}
      */
     origin(x, y) {
         this.queue.push(new SetOrigin(x, y));
+        return this;
+    }
+
+    /**
+     * Rotate the canvas globally for all draw commands.
+     * @param {number} rotation the rotation
+     * @returns {Drawer}
+     */
+    rotate(rotation) {
+        this.backend.globalRotate(rotation);
+        return this;
     }
 
     /**
@@ -112,26 +122,6 @@ export class Drawer {
     }
 
     /**
-     * Begin drawing a quad.
-     * @returns {QuadPrimitive} - the quad
-     */
-    quad() {
-        let prim = new QuadPrimitive();
-        this.queue.push(prim);
-        return prim;
-    }
-
-    /**
-     * Begin drawing a circle.
-     * @returns {CirclePrimitive} - the circle
-     */
-    circle() {
-        let prim = new CirclePrimitive();
-        this.queue.push(prim);
-        return prim;
-    }
-
-    /**
      * Begin drawing an arc.
      * @returns {ArcPrimitive} - the arc.
      */
@@ -142,13 +132,14 @@ export class Drawer {
     }
 
     /**
-     * Begin drawing a triangle.
-     * @returns {TrianglePrimitive} - the triangle
+     * Begin drawing a circle.
+     * Shorthand for app.pen().arc().circle()
+     * @returns {ArcPrimitive} the circle
      */
-    tri() {
-        let prim = new TrianglePrimitive();
-        this.queue.push(prim);
-        return prim;
+    circle() {
+        let c = new ArcPrimitive().circle();
+        this.queue.push(c);
+        return c;
     }
 
     /**
@@ -181,10 +172,25 @@ export class Drawer {
         return prim;
     }
 
+    /**
+     * Modify the pixel buffer in a function.
+     * @param {*} bufferModifyFn the pixel buffer modify function
+     * @returns {ModifyPixelBuffer}
+     */
     pixelbuffer(bufferModifyFn) {
         let cmd = new ModifyPixelBuffer(bufferModifyFn);
         this.queue.push(cmd);
         return cmd;
+    }
+
+    /**
+     * Begin drawing a bezier curve.
+     * @returns {BezierPrimitive}
+     */
+    bezier() {
+        let b = new BezierPrimitive();
+        this.queue.push(b);
+        return b;
     }
 
     finish() {
@@ -202,12 +208,6 @@ export class Drawer {
                 this.backend.drawRect(cmd);
             } else if (cmd instanceof LinePrimitive) {
                 this.backend.drawLine(cmd);
-            } else if (cmd instanceof QuadPrimitive) {
-                this.backend.drawQuad(cmd);
-            } else if (cmd instanceof CirclePrimitive) {
-                this.backend.drawCircle(cmd);
-            } else if (cmd instanceof TrianglePrimitive) {
-                this.backend.drawTriangle(cmd);
             } else if (cmd instanceof ArcPrimitive) {
                 this.backend.drawArc(cmd);
             } else if (cmd instanceof TextPrimitive) {
@@ -220,6 +220,8 @@ export class Drawer {
                 this.backend.modifyPixelBuffer(cmd);
             } else if (cmd instanceof SetRotation) {
                 this.backend.setRotation(cmd);
+            } else if (cmd instanceof BezierPrimitive) {
+                this.backend.drawBezier(cmd);
             }
         };
 
@@ -251,13 +253,13 @@ export class Drawer {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="AppBuilder.html">AppBuilder</a></li><li><a href="ArcPrimitive.html">ArcPrimitive</a></li><li><a href="Background.html">Background</a></li><li><a href="CirclePrimitive.html">CirclePrimitive</a></li><li><a href="Color.html">Color</a></li><li><a href="DrawCommand.html">DrawCommand</a></li><li><a href="Drawer.html">Drawer</a></li><li><a href="LinePrimitive.html">LinePrimitive</a></li><li><a href="LoopMode.html">LoopMode</a></li><li><a href="ModifyPixelBuffer.html">ModifyPixelBuffer</a></li><li><a href="PointPrimitive.html">PointPrimitive</a></li><li><a href="PolygonPrimitive.html">PolygonPrimitive</a></li><li><a href="Primitive.html">Primitive</a></li><li><a href="QuadPrimitive.html">QuadPrimitive</a></li><li><a href="RectPrimitive.html">RectPrimitive</a></li><li><a href="SetBlendMode.html">SetBlendMode</a></li><li><a href="SetColor.html">SetColor</a></li><li><a href="SetOrigin.html">SetOrigin</a></li><li><a href="SetRotation.html">SetRotation</a></li><li><a href="Size.html">Size</a></li><li><a href="TextPrimitive.html">TextPrimitive</a></li><li><a href="TrianglePrimitive.html">TrianglePrimitive</a></li></ul><h3>Global</h3><ul><li><a href="global.html#app">app</a></li><li><a href="global.html#BlendMode">BlendMode</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#constrain">constrain</a></li><li><a href="global.html#dist">dist</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#pingpong">pingpong</a></li><li><a href="global.html#randomRange">randomRange</a></li><li><a href="global.html#randomRangeInt">randomRangeInt</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="AppBuilder.html">AppBuilder</a></li><li><a href="ArcPrimitive.html">ArcPrimitive</a></li><li><a href="Background.html">Background</a></li><li><a href="BezierPrimitive.html">BezierPrimitive</a></li><li><a href="Color.html">Color</a></li><li><a href="DrawCommand.html">DrawCommand</a></li><li><a href="Drawer.html">Drawer</a></li><li><a href="LinePrimitive.html">LinePrimitive</a></li><li><a href="LoopMode.html">LoopMode</a></li><li><a href="ModifyPixelBuffer.html">ModifyPixelBuffer</a></li><li><a href="PointPrimitive.html">PointPrimitive</a></li><li><a href="PolygonPrimitive.html">PolygonPrimitive</a></li><li><a href="Primitive.html">Primitive</a></li><li><a href="RectPrimitive.html">RectPrimitive</a></li><li><a href="SetBlendMode.html">SetBlendMode</a></li><li><a href="SetColor.html">SetColor</a></li><li><a href="SetOrigin.html">SetOrigin</a></li><li><a href="SetRotation.html">SetRotation</a></li><li><a href="Size.html">Size</a></li><li><a href="TextPrimitive.html">TextPrimitive</a></li></ul><h3>Global</h3><ul><li><a href="global.html#app">app</a></li><li><a href="global.html#BlendMode">BlendMode</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#constrain">constrain</a></li><li><a href="global.html#deg2rad">deg2rad</a></li><li><a href="global.html#dist">dist</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#pingpong">pingpong</a></li><li><a href="global.html#rad2deg">rad2deg</a></li><li><a href="global.html#randomRange">randomRange</a></li><li><a href="global.html#randomRangeInt">randomRangeInt</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Mar 14 2022 17:05:40 GMT+0100 (Mitteleuropäische Normalzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Mar 21 2022 15:10:31 GMT+0100 (Mitteleuropäische Normalzeit)
 </footer>
 
 <script> prettyPrint(); </script>

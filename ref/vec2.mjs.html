@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: draw/background.mjs</title>
+    <title>JSDoc: Source: vec2.mjs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: draw/background.mjs</h1>
+    <h1 class="page-title">Source: vec2.mjs</h1>
 
     
 
@@ -26,82 +26,129 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { DrawCommand } from "./drawcommand.mjs";
-import { Color } from "../color.mjs";
-
-/**
- * Draw command to clear and render the background.
- */
-export class Background extends DrawCommand {
-    col;
-
-    constructor() {
-        super();
-        this.col = Color.Transparent;
+            <pre class="prettyprint source linenums"><code>export class Vec2 {
+    x;
+    y;
+    constructor(x = 0, y = 0) {
+        this.x = x;
+        this.y = y;
     }
 
     /**
-     * Clear the background with the given color.
-     * @param {Color} color - the color
-     * @returns {Background} - itself
+     * Add the value of another vec2 to this vec2.
+     * this = this + other
+     * @param {Vec2} otherVec the other vector
+     * @returns {Vec2}
      */
-    color(color) {
-        this.col = color;
+    add(otherVec) {
+        this.x += otherVec.x;
+        this.y += otherVec.y;
         return this;
     }
 
     /**
-     * Makes the background clear transparent.
-     * @returns {Background}
+     * Subtract the value of another vec2 from this vec2.
+     * this = this - other
+     * @param {Vec2} otherVec the other vector
+     * @returns {Vec2}
      */
-    transparent() {
-        this.col = Color.Transparent;
+    sub(otherVec) {
+        this.x -= otherVec.x;
+        this.y -= otherVec.y;
         return this;
     }
 
     /**
-     * Clear the background with the given color.
-     * The alpha value is set to 1.0.
-     * @param {number} r - the red value as float
-     * @param {number} g - the green value as float
-     * @param {number} b - the blue value as float
-     * @returns {Background} - itself
+     * Multiple the value of another vector with this vec2.
+     * this = this * other
+     * @param {Vec2} otherVec the other vector
+     * @returns {Vec2}
      */
-    rgb(r, g, b) {
-        this.col = Color.fromFloats(r, g, b, 1.0);
+    mul(otherVec) {
+        this.x *= otherVec.x;
+        this.y *= otherVec.y;
         return this;
     }
 
     /**
-     * Clear the background with the given color.
-     * @param {number} r - the red value as float
-     * @param {number} g - the green value as float
-     * @param {number} b - the blue value as float
-     * @param {number} a - the alpha value as float
-     * @returns {Background} - itself
+     * Divide the value of this vector by another vector.
+     * this = this / other
+     * @param {Vec2} otherVec the other vector
+     * @returns {Vec2}
      */
-    rgba(r, g, b, a) {
-        this.col = Color.fromFloats(r, g, b, a);
+    div(otherVec) {
+        this.x /= otherVec.x;
+        this.y /= otherVec.y;
         return this;
     }
 
     /**
-     * Clear the background with the given color.
-     * Expects float values in the range of 0 to 1.0.
-     * @param {number} h - the hue value as float
-     * @param {number} s - the saturation value as float
-     * @param {number} l - the luminance value as float
-     * @returns {Background} - itself
+     * Calculate the euclidian distance between this and another vec2.
+     * @param {Vec2} otherVec the other vector
+     * @returns {number}
      */
-    hsl(h, s, l) {
-        this.col = Color.fromHsl(h, s, l);
+    dist(otherVec) {
+        return Math.hypot(otherVec.x - this.x, otherVec.y - this.y);
+    }
+
+    /**
+     * Calculate the squared euclidian distance between this and
+     * another vec2.
+     * @param {Vec2} otherVec the other vector
+     * @returns {number}
+     */
+    sqdist(otherVec) {
+        const x = otherVec.x - this.x;
+        const y = otherVec.y - this.y;
+        return x * x + y * y;
+    }
+
+    /**
+     * Calculate the length of this vec2.
+     * @returns {number}
+     */
+    length() {
+        return Math.hypot(this.x, this.y);
+    }
+
+    /**
+     * Calculate the squared length of this vec2.
+     * @returns {number}
+     */
+    sqlength() {
+        return this.x * this.x + this.y * this.y;
+    }
+
+    /**
+     * Normalize the vector.
+     * @returns {Vec2}
+     */
+    normalize() {
+        const len = this.sqlength();
+        if(len > 0) {
+            len = 1 / Math.sqrt(len);
+        }
+        this.x = this.x * len;
+        this.y = this.y * len;
         return this;
     }
 
-    genCmdList() {
-        let list = super.genCmdList();
-        list.push(this);
-        return list;
+    /**
+     * Set the components of the vec2 to zero
+     * @returns {Vec2}
+     */
+    zero() {
+        this.x = 0;
+        this.y = 0;
+        return this;
+    }
+
+    /**
+     * Get the vec2 as an array [x, y].
+     * @returns {Array}
+     */
+    get array() {
+        return [this.x, this.y];
     }
 }</code></pre>
         </article>

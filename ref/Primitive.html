@@ -283,7 +283,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line32">line 32</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -465,7 +465,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line32">line 32</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -523,7 +523,7 @@
     
 
     
-    <h4 class="name" id="genCmdList"><span class="type-signature"></span>genCmdList<span class="signature">()</span><span class="type-signature"> &rarr; {Array}</span></h4>
+    <h4 class="name" id="dofill"><span class="type-signature"></span>dofill<span class="signature">(fill)</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
     
 
     
@@ -531,219 +531,7 @@
 
 
 <div class="description">
-    --- INTERNAL ---Generate the command list for the primitive
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line97">line 97</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="genCmdList"><span class="type-signature"></span>genCmdList<span class="signature">()</span><span class="type-signature"> &rarr; {Array}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    --- INTERNAL ---Generate the command list for the primitive
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line97">line 97</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="rotation"><span class="type-signature"></span>rotation<span class="signature">(rotation)</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Specify the rotation of the primitive. It gets rotatedaround the point of the position.
+    Specify if the primitive shape should be filled with thefill color.
 </div>
 
 
@@ -769,6 +557,8 @@
         
 
         
+        <th>Default</th>
+        
 
         <th class="last">Description</th>
     </tr>
@@ -779,13 +569,13 @@
 
         <tr>
             
-                <td class="name"><code>rotation</code></td>
+                <td class="name"><code>fill</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -794,8 +584,14 @@
             
 
             
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
 
-            <td class="description last">the rotation in radians</td>
+            <td class="description last">should fill the shape</td>
         </tr>
 
     
@@ -836,7 +632,1132 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line76">line 76</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line102">line 102</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="dofill"><span class="type-signature"></span>dofill<span class="signature">(fill)</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Specify if the primitive shape should be filled with thefill color.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fill</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last">should fill the shape</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line102">line 102</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="dostroke"><span class="type-signature"></span>dostroke<span class="signature">(stroke)</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Specify if the primitive shape should be stroked with thestroke color.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>stroke</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last">should stroke the shape</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line123">line 123</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="dostroke"><span class="type-signature"></span>dostroke<span class="signature">(stroke)</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Specify if the primitive shape should be stroked with thestroke color.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>stroke</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last">should stroke the shape</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line123">line 123</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="genCmdList"><span class="type-signature"></span>genCmdList<span class="signature">()</span><span class="type-signature"> &rarr; {Array}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    --- INTERNAL ---Generate the command list for the primitive
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line143">line 143</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="genCmdList"><span class="type-signature"></span>genCmdList<span class="signature">()</span><span class="type-signature"> &rarr; {Array}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    --- INTERNAL ---Generate the command list for the primitive
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line143">line 143</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="nofill"><span class="type-signature"></span>nofill<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Don't fill the shape.Shorthand for dofill(false)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line112">line 112</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="nofill"><span class="type-signature"></span>nofill<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Don't fill the shape.Shorthand for dofill(false)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line112">line 112</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="nostroke"><span class="type-signature"></span>nostroke<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Don't stroke the shape.Shorthand for dostroke(false)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line133">line 133</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="nostroke"><span class="type-signature"></span>nostroke<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Don't stroke the shape.Shorthand for dostroke(false)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line133">line 133</a>
     </li></ul></dd>
     
 
@@ -991,7 +1912,162 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line76">line 76</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line80">line 80</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="rotation"><span class="type-signature"></span>rotation<span class="signature">(rotation)</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Specify the rotation of the primitive. It gets rotatedaround the point of the position.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>rotation</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the rotation in radians</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line80">line 80</a>
     </li></ul></dd>
     
 
@@ -1146,7 +2222,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line87">line 87</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -1305,7 +2381,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line87">line 87</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -1464,7 +2540,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line43">line 43</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line47">line 47</a>
     </li></ul></dd>
     
 
@@ -1623,7 +2699,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line43">line 43</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line47">line 47</a>
     </li></ul></dd>
     
 
@@ -1805,7 +2881,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line64">line 64</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line68">line 68</a>
     </li></ul></dd>
     
 
@@ -1987,7 +3063,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line64">line 64</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line68">line 68</a>
     </li></ul></dd>
     
 
@@ -2146,7 +3222,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line53">line 53</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line57">line 57</a>
     </li></ul></dd>
     
 
@@ -2305,7 +3381,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line53">line 53</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line57">line 57</a>
     </li></ul></dd>
     
 
@@ -2633,7 +3709,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line32">line 32</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -2815,7 +3891,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line32">line 32</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -2873,7 +3949,7 @@
     
 
     
-    <h4 class="name" id="genCmdList"><span class="type-signature"></span>genCmdList<span class="signature">()</span><span class="type-signature"> &rarr; {Array}</span></h4>
+    <h4 class="name" id="dofill"><span class="type-signature"></span>dofill<span class="signature">(fill)</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
     
 
     
@@ -2881,219 +3957,7 @@
 
 
 <div class="description">
-    --- INTERNAL ---Generate the command list for the primitive
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line97">line 97</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="genCmdList"><span class="type-signature"></span>genCmdList<span class="signature">()</span><span class="type-signature"> &rarr; {Array}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    --- INTERNAL ---Generate the command list for the primitive
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line97">line 97</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="rotation"><span class="type-signature"></span>rotation<span class="signature">(rotation)</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Specify the rotation of the primitive. It gets rotatedaround the point of the position.
+    Specify if the primitive shape should be filled with thefill color.
 </div>
 
 
@@ -3119,6 +3983,8 @@
         
 
         
+        <th>Default</th>
+        
 
         <th class="last">Description</th>
     </tr>
@@ -3129,13 +3995,13 @@
 
         <tr>
             
-                <td class="name"><code>rotation</code></td>
+                <td class="name"><code>fill</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -3144,8 +4010,14 @@
             
 
             
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
 
-            <td class="description last">the rotation in radians</td>
+            <td class="description last">should fill the shape</td>
         </tr>
 
     
@@ -3186,7 +4058,1132 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line76">line 76</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line102">line 102</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="dofill"><span class="type-signature"></span>dofill<span class="signature">(fill)</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Specify if the primitive shape should be filled with thefill color.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fill</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last">should fill the shape</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line102">line 102</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="dostroke"><span class="type-signature"></span>dostroke<span class="signature">(stroke)</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Specify if the primitive shape should be stroked with thestroke color.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>stroke</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last">should stroke the shape</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line123">line 123</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="dostroke"><span class="type-signature"></span>dostroke<span class="signature">(stroke)</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Specify if the primitive shape should be stroked with thestroke color.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>stroke</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last">should stroke the shape</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line123">line 123</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="genCmdList"><span class="type-signature"></span>genCmdList<span class="signature">()</span><span class="type-signature"> &rarr; {Array}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    --- INTERNAL ---Generate the command list for the primitive
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line143">line 143</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="genCmdList"><span class="type-signature"></span>genCmdList<span class="signature">()</span><span class="type-signature"> &rarr; {Array}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    --- INTERNAL ---Generate the command list for the primitive
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line143">line 143</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="nofill"><span class="type-signature"></span>nofill<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Don't fill the shape.Shorthand for dofill(false)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line112">line 112</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="nofill"><span class="type-signature"></span>nofill<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Don't fill the shape.Shorthand for dofill(false)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line112">line 112</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="nostroke"><span class="type-signature"></span>nostroke<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Don't stroke the shape.Shorthand for dostroke(false)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line133">line 133</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="nostroke"><span class="type-signature"></span>nostroke<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Don't stroke the shape.Shorthand for dostroke(false)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line133">line 133</a>
     </li></ul></dd>
     
 
@@ -3341,7 +5338,162 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line76">line 76</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line80">line 80</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Primitive.html">Primitive</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="rotation"><span class="type-signature"></span>rotation<span class="signature">(rotation)</span><span class="type-signature"> &rarr; {<a href="Primitive.html">Primitive</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Specify the rotation of the primitive. It gets rotatedaround the point of the position.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>rotation</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the rotation in radians</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line80">line 80</a>
     </li></ul></dd>
     
 
@@ -3496,7 +5648,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line87">line 87</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -3655,7 +5807,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line87">line 87</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -3814,7 +5966,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line43">line 43</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line47">line 47</a>
     </li></ul></dd>
     
 
@@ -3973,7 +6125,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line43">line 43</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line47">line 47</a>
     </li></ul></dd>
     
 
@@ -4155,7 +6307,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line64">line 64</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line68">line 68</a>
     </li></ul></dd>
     
 
@@ -4337,7 +6489,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line64">line 64</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line68">line 68</a>
     </li></ul></dd>
     
 
@@ -4496,7 +6648,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line53">line 53</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line57">line 57</a>
     </li></ul></dd>
     
 
@@ -4655,7 +6807,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line53">line 53</a>
+        <a href="draw_primitive.mjs.html">draw/primitive.mjs</a>, <a href="draw_primitive.mjs.html#line57">line 57</a>
     </li></ul></dd>
     
 
@@ -4723,13 +6875,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="AppBuilder.html">AppBuilder</a></li><li><a href="ArcPrimitive.html">ArcPrimitive</a></li><li><a href="Background.html">Background</a></li><li><a href="CirclePrimitive.html">CirclePrimitive</a></li><li><a href="Color.html">Color</a></li><li><a href="DrawCommand.html">DrawCommand</a></li><li><a href="Drawer.html">Drawer</a></li><li><a href="LinePrimitive.html">LinePrimitive</a></li><li><a href="LoopMode.html">LoopMode</a></li><li><a href="ModifyPixelBuffer.html">ModifyPixelBuffer</a></li><li><a href="PointPrimitive.html">PointPrimitive</a></li><li><a href="PolygonPrimitive.html">PolygonPrimitive</a></li><li><a href="Primitive.html">Primitive</a></li><li><a href="QuadPrimitive.html">QuadPrimitive</a></li><li><a href="RectPrimitive.html">RectPrimitive</a></li><li><a href="SetBlendMode.html">SetBlendMode</a></li><li><a href="SetColor.html">SetColor</a></li><li><a href="SetOrigin.html">SetOrigin</a></li><li><a href="SetRotation.html">SetRotation</a></li><li><a href="Size.html">Size</a></li><li><a href="TextPrimitive.html">TextPrimitive</a></li><li><a href="TrianglePrimitive.html">TrianglePrimitive</a></li></ul><h3>Global</h3><ul><li><a href="global.html#app">app</a></li><li><a href="global.html#BlendMode">BlendMode</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#constrain">constrain</a></li><li><a href="global.html#dist">dist</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#pingpong">pingpong</a></li><li><a href="global.html#randomRange">randomRange</a></li><li><a href="global.html#randomRangeInt">randomRangeInt</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="AppBuilder.html">AppBuilder</a></li><li><a href="ArcPrimitive.html">ArcPrimitive</a></li><li><a href="Background.html">Background</a></li><li><a href="BezierPrimitive.html">BezierPrimitive</a></li><li><a href="Color.html">Color</a></li><li><a href="DrawCommand.html">DrawCommand</a></li><li><a href="Drawer.html">Drawer</a></li><li><a href="LinePrimitive.html">LinePrimitive</a></li><li><a href="LoopMode.html">LoopMode</a></li><li><a href="ModifyPixelBuffer.html">ModifyPixelBuffer</a></li><li><a href="PointPrimitive.html">PointPrimitive</a></li><li><a href="PolygonPrimitive.html">PolygonPrimitive</a></li><li><a href="Primitive.html">Primitive</a></li><li><a href="RectPrimitive.html">RectPrimitive</a></li><li><a href="SetBlendMode.html">SetBlendMode</a></li><li><a href="SetColor.html">SetColor</a></li><li><a href="SetOrigin.html">SetOrigin</a></li><li><a href="SetRotation.html">SetRotation</a></li><li><a href="Size.html">Size</a></li><li><a href="TextPrimitive.html">TextPrimitive</a></li></ul><h3>Global</h3><ul><li><a href="global.html#app">app</a></li><li><a href="global.html#BlendMode">BlendMode</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#constrain">constrain</a></li><li><a href="global.html#deg2rad">deg2rad</a></li><li><a href="global.html#dist">dist</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#pingpong">pingpong</a></li><li><a href="global.html#rad2deg">rad2deg</a></li><li><a href="global.html#randomRange">randomRange</a></li><li><a href="global.html#randomRangeInt">randomRangeInt</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Mar 14 2022 17:05:40 GMT+0100 (Mitteleuropäische Normalzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Mar 21 2022 15:10:31 GMT+0100 (Mitteleuropäische Normalzeit)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: draw/state.mjs</title>
+    <title>JSDoc: Source: draw/rect.mjs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: draw/state.mjs</h1>
+    <h1 class="page-title">Source: draw/rect.mjs</h1>
 
     
 
@@ -26,88 +26,56 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { DrawCommand } from "./drawcommand.mjs";
+            <pre class="prettyprint source linenums"><code>import { Primitive } from "./primitive.mjs";
+import { Size } from "../size.mjs";
 
 /**
- * Draw command to set the rotation.
+ * Primitive that creates a rectangle.
  */
-export class SetRotation extends DrawCommand {
-    rot;
-    aroundX;
-    aroundY;
+export class RectPrimitive extends Primitive {
 
-    constructor(rot, aroundX, aroundY) {
+    sz;
+
+    constructor() {
         super();
-        this.rot = rot;
-        this.aroundX = aroundX;
-        this.aroundY = aroundY;
+        this.sz = Size.fromPx(0, 0);
     }
 
-    genCmdList() {
-        let list = super.genCmdList();
-        list.push(this);
-        return list;
-    }
-}
-
-/**
- * Draw command to set the origin of the primitive.
- */
-export class SetOrigin extends DrawCommand {
-    x;
-    y;
-
-    constructor(x, y) {
-        super(true);
-        this.x = x;
-        this.y = y;
+    size(size) {
+        this.sz = size;
+        return this;
     }
 
-    genCmdList() {
-        let list = super.genCmdList();
-        list.push(this);
-        return list;
-    }
-}
-
-/**
- * Draw command to set the fill and stroke color.
- */
-export class SetColor extends DrawCommand {
-    strokeColor;
-    fillColor;
-
-    constructor(color, strokeColor) {
-        super(true);
-        this.strokeColor = strokeColor || color;
-        this.fillColor = color;
+    /**
+     * Sets the width and height of the rectangle.
+     * @param {number} w - the width
+     * @param {number} h - the height
+     * @returns {RectPrimitive} - itself
+     */
+    wh(w, h) {
+        this.sz.width = w;
+        this.sz.height = h;
+        return this;
     }
 
-    genCmdList() {
-        let list = super.genCmdList();
-        list.push(this);
-        return list;
+    /**
+     * Sets the width of the rectangle.
+     * @param {number} w - the width
+     * @returns {RectPrimitive} - itself
+     */
+    w(w) {
+        this.sz.width = w;
+        return this;
     }
-}
 
-/**
- * Blend modes.
- */
-export const BlendMode = {
-    SourceOver: "source-over",
-    Multiply: "multiply",
-    Xor: "xor"
-}
-
-/**
- * Draw command to set the renderer blend mode.
- */
-export class SetBlendMode extends DrawCommand {
-    mode;
-
-    constructor(mode) {
-        super(true);
-        this.mode = mode;
+    /**
+     * Sets the height of the rectangle.
+     * @param {number} h - the height
+     * @returns {RectPrimitive}
+     */
+    h(h) {
+        this.sz.height = h;
+        return this;
     }
 
     genCmdList() {

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: PolygonPrimitive</title>
+    <title>JSDoc: Class: BezierPrimitive</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: PolygonPrimitive</h1>
+    <h1 class="page-title">Class: BezierPrimitive</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>PolygonPrimitive<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>BezierPrimitive<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Primitive to draw a polygon shape.</div>
+            <div class="class-description">Primitive that defines a cubic bezier curve.</div>
         
     
 </header>
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="PolygonPrimitive"><span class="type-signature"></span>new PolygonPrimitive<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="BezierPrimitive"><span class="type-signature"></span>new BezierPrimitive<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -93,7 +93,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line6">line 6</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -134,10 +134,10 @@
         <h3 class="subsection-title">Classes</h3>
 
         <dl>
-            <dt><a href="PolygonPrimitive.html">PolygonPrimitive</a></dt>
+            <dt><a href="BezierPrimitive.html">BezierPrimitive</a></dt>
             <dd></dd>
         
-            <dt><a href="PolygonPrimitive.html">PolygonPrimitive</a></dt>
+            <dt><a href="BezierPrimitive.html">BezierPrimitive</a></dt>
             <dd></dd>
         </dl>
     
@@ -159,7 +159,7 @@
     
 
     
-    <h4 class="name" id="quad"><span class="type-signature"></span>quad<span class="signature">(ax, ay, bx, by, cx, cy, dx, dy)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="anchorpts"><span class="type-signature"></span>anchorpts<span class="signature">(ap1x, ap1y, ap2x, ap2y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -167,7 +167,7 @@
 
 
 <div class="description">
-    Create a quad polygon.
+    Specify the anchor points.The position is always equal to the first anchor point.
 </div>
 
 
@@ -203,7 +203,7 @@
 
         <tr>
             
-                <td class="name"><code>ax</code></td>
+                <td class="name"><code>ap1x</code></td>
             
 
             <td class="type">
@@ -219,14 +219,14 @@
 
             
 
-            <td class="description last">a point x coord</td>
+            <td class="description last">first anchor point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ay</code></td>
+                <td class="name"><code>ap1y</code></td>
             
 
             <td class="type">
@@ -242,14 +242,14 @@
 
             
 
-            <td class="description last">a point y coord</td>
+            <td class="description last">first anchor point y coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>bx</code></td>
+                <td class="name"><code>ap2x</code></td>
             
 
             <td class="type">
@@ -265,14 +265,14 @@
 
             
 
-            <td class="description last">b point x coord</td>
+            <td class="description last">second anchor point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>by</code></td>
+                <td class="name"><code>ap2y</code></td>
             
 
             <td class="type">
@@ -288,99 +288,7 @@
 
             
 
-            <td class="description last">b point y coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cx</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point x coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point y coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dx</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">d point x coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">d point y coord</td>
+            <td class="description last">second anchor point y coord</td>
         </tr>
 
     
@@ -421,7 +329,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line51">line 51</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -457,7 +365,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -475,7 +383,7 @@
     
 
     
-    <h4 class="name" id="quad"><span class="type-signature"></span>quad<span class="signature">(ax, ay, bx, by, cx, cy, dx, dy)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="anchorpts"><span class="type-signature"></span>anchorpts<span class="signature">(ap1x, ap1y, ap2x, ap2y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -483,7 +391,7 @@
 
 
 <div class="description">
-    Create a quad polygon.
+    Specify the anchor points.The position is always equal to the first anchor point.
 </div>
 
 
@@ -519,7 +427,7 @@
 
         <tr>
             
-                <td class="name"><code>ax</code></td>
+                <td class="name"><code>ap1x</code></td>
             
 
             <td class="type">
@@ -535,14 +443,14 @@
 
             
 
-            <td class="description last">a point x coord</td>
+            <td class="description last">first anchor point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ay</code></td>
+                <td class="name"><code>ap1y</code></td>
             
 
             <td class="type">
@@ -558,14 +466,14 @@
 
             
 
-            <td class="description last">a point y coord</td>
+            <td class="description last">first anchor point y coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>bx</code></td>
+                <td class="name"><code>ap2x</code></td>
             
 
             <td class="type">
@@ -581,14 +489,14 @@
 
             
 
-            <td class="description last">b point x coord</td>
+            <td class="description last">second anchor point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>by</code></td>
+                <td class="name"><code>ap2y</code></td>
             
 
             <td class="type">
@@ -604,99 +512,7 @@
 
             
 
-            <td class="description last">b point y coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cx</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point x coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point y coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dx</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">d point x coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">d point y coord</td>
+            <td class="description last">second anchor point y coord</td>
         </tr>
 
     
@@ -737,7 +553,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line51">line 51</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -773,7 +589,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -791,7 +607,7 @@
     
 
     
-    <h4 class="name" id="tri"><span class="type-signature"></span>tri<span class="signature">(ax, ay, bx, dy, cx, cy)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="controlpts"><span class="type-signature"></span>controlpts<span class="signature">(cp1x, cp1y, cp2x, cp2y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -799,7 +615,7 @@
 
 
 <div class="description">
-    Create a triangle polygon.
+    Specify the control points
 </div>
 
 
@@ -835,7 +651,7 @@
 
         <tr>
             
-                <td class="name"><code>ax</code></td>
+                <td class="name"><code>cp1x</code></td>
             
 
             <td class="type">
@@ -851,14 +667,14 @@
 
             
 
-            <td class="description last">a point x coord</td>
+            <td class="description last">first control point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ay</code></td>
+                <td class="name"><code>cp1y</code></td>
             
 
             <td class="type">
@@ -874,14 +690,14 @@
 
             
 
-            <td class="description last">a point y coord</td>
+            <td class="description last">first control point y coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>bx</code></td>
+                <td class="name"><code>cp2x</code></td>
             
 
             <td class="type">
@@ -897,14 +713,14 @@
 
             
 
-            <td class="description last">b point x coord</td>
+            <td class="description last">second control point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>dy</code></td>
+                <td class="name"><code>cp2y</code></td>
             
 
             <td class="type">
@@ -920,53 +736,7 @@
 
             
 
-            <td class="description last">b point y coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cx</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point x coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point y coord</td>
+            <td class="description last">second control point y coord</td>
         </tr>
 
     
@@ -1007,7 +777,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line69">line 69</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -1043,7 +813,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -1061,7 +831,7 @@
     
 
     
-    <h4 class="name" id="tri"><span class="type-signature"></span>tri<span class="signature">(ax, ay, bx, dy, cx, cy)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="controlpts"><span class="type-signature"></span>controlpts<span class="signature">(cp1x, cp1y, cp2x, cp2y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -1069,7 +839,7 @@
 
 
 <div class="description">
-    Create a triangle polygon.
+    Specify the control points
 </div>
 
 
@@ -1105,7 +875,7 @@
 
         <tr>
             
-                <td class="name"><code>ax</code></td>
+                <td class="name"><code>cp1x</code></td>
             
 
             <td class="type">
@@ -1121,14 +891,14 @@
 
             
 
-            <td class="description last">a point x coord</td>
+            <td class="description last">first control point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ay</code></td>
+                <td class="name"><code>cp1y</code></td>
             
 
             <td class="type">
@@ -1144,14 +914,14 @@
 
             
 
-            <td class="description last">a point y coord</td>
+            <td class="description last">first control point y coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>bx</code></td>
+                <td class="name"><code>cp2x</code></td>
             
 
             <td class="type">
@@ -1167,14 +937,14 @@
 
             
 
-            <td class="description last">b point x coord</td>
+            <td class="description last">second control point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>dy</code></td>
+                <td class="name"><code>cp2y</code></td>
             
 
             <td class="type">
@@ -1190,53 +960,7 @@
 
             
 
-            <td class="description last">b point y coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cx</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point x coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point y coord</td>
+            <td class="description last">second control point y coord</td>
         </tr>
 
     
@@ -1277,7 +1001,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line69">line 69</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -1313,7 +1037,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -1331,7 +1055,7 @@
     
 
     
-    <h4 class="name" id="vertex"><span class="type-signature"></span>vertex<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="end"><span class="type-signature"></span>end<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -1339,7 +1063,7 @@
 
 
 <div class="description">
-    Push a vertex into the vertices list.
+    Specify the second anchor point
 </div>
 
 
@@ -1391,7 +1115,7 @@
 
             
 
-            <td class="description last">the x coordinate of the vertex</td>
+            <td class="description last">second anchor point x coord</td>
         </tr>
 
     
@@ -1414,7 +1138,7 @@
 
             
 
-            <td class="description last">the y coordiante of the vertex</td>
+            <td class="description last">second anchor point y coord</td>
         </tr>
 
     
@@ -1455,7 +1179,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line20">line 20</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line67">line 67</a>
     </li></ul></dd>
     
 
@@ -1491,7 +1215,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -1509,7 +1233,7 @@
     
 
     
-    <h4 class="name" id="vertex"><span class="type-signature"></span>vertex<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="end"><span class="type-signature"></span>end<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -1517,7 +1241,7 @@
 
 
 <div class="description">
-    Push a vertex into the vertices list.
+    Specify the second anchor point
 </div>
 
 
@@ -1569,7 +1293,7 @@
 
             
 
-            <td class="description last">the x coordinate of the vertex</td>
+            <td class="description last">second anchor point x coord</td>
         </tr>
 
     
@@ -1592,7 +1316,7 @@
 
             
 
-            <td class="description last">the y coordiante of the vertex</td>
+            <td class="description last">second anchor point y coord</td>
         </tr>
 
     
@@ -1633,7 +1357,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line20">line 20</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line67">line 67</a>
     </li></ul></dd>
     
 
@@ -1669,7 +1393,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -1687,7 +1411,7 @@
     
 
     
-    <h4 class="name" id="vertexList"><span class="type-signature"></span>vertexList<span class="signature">(list)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="start"><span class="type-signature"></span>start<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -1695,7 +1419,7 @@
 
 
 <div class="description">
-    Push a list of vertices into the verticles list.
+    Specify the first anchor point.
 </div>
 
 
@@ -1731,13 +1455,13 @@
 
         <tr>
             
-                <td class="name"><code>list</code></td>
+                <td class="name"><code>x</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array</span>
+<span class="param-type">number</span>
 
 
             
@@ -1747,7 +1471,30 @@
 
             
 
-            <td class="description last">the list of vertices</td>
+            <td class="description last">first anchor point x coord</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">first anchor point y coord</td>
         </tr>
 
     
@@ -1788,7 +1535,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line30">line 30</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -1824,7 +1571,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -1842,7 +1589,7 @@
     
 
     
-    <h4 class="name" id="vertexList"><span class="type-signature"></span>vertexList<span class="signature">(list)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="start"><span class="type-signature"></span>start<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -1850,7 +1597,7 @@
 
 
 <div class="description">
-    Push a list of vertices into the verticles list.
+    Specify the first anchor point.
 </div>
 
 
@@ -1886,13 +1633,13 @@
 
         <tr>
             
-                <td class="name"><code>list</code></td>
+                <td class="name"><code>x</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array</span>
+<span class="param-type">number</span>
 
 
             
@@ -1902,7 +1649,30 @@
 
             
 
-            <td class="description last">the list of vertices</td>
+            <td class="description last">first anchor point x coord</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">first anchor point y coord</td>
         </tr>
 
     
@@ -1943,7 +1713,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line30">line 30</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -1979,7 +1749,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -2012,9 +1782,9 @@
 <header>
     
         <h2><span class="attribs"><span class="type-signature"></span></span>
-            <span class="ancestors"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>PolygonPrimitive<span class="signature">()</span><span class="type-signature"></span></h2>
+            <span class="ancestors"><a href="BezierPrimitive.html">BezierPrimitive</a></span>BezierPrimitive<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Primitive to draw a polygon shape.</div>
+            <div class="class-description">Primitive that defines a cubic bezier curve.</div>
         
     
 </header>
@@ -2029,7 +1799,7 @@
     
 
     
-    <h4 class="name" id="PolygonPrimitive"><span class="type-signature"></span>new PolygonPrimitive<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="BezierPrimitive"><span class="type-signature"></span>new BezierPrimitive<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -2077,7 +1847,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line6">line 6</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -2118,10 +1888,10 @@
         <h3 class="subsection-title">Classes</h3>
 
         <dl>
-            <dt><a href="PolygonPrimitive.html">PolygonPrimitive</a></dt>
+            <dt><a href="BezierPrimitive.html">BezierPrimitive</a></dt>
             <dd></dd>
         
-            <dt><a href="PolygonPrimitive.html">PolygonPrimitive</a></dt>
+            <dt><a href="BezierPrimitive.html">BezierPrimitive</a></dt>
             <dd></dd>
         </dl>
     
@@ -2143,7 +1913,7 @@
     
 
     
-    <h4 class="name" id="quad"><span class="type-signature"></span>quad<span class="signature">(ax, ay, bx, by, cx, cy, dx, dy)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="anchorpts"><span class="type-signature"></span>anchorpts<span class="signature">(ap1x, ap1y, ap2x, ap2y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -2151,7 +1921,7 @@
 
 
 <div class="description">
-    Create a quad polygon.
+    Specify the anchor points.The position is always equal to the first anchor point.
 </div>
 
 
@@ -2187,7 +1957,7 @@
 
         <tr>
             
-                <td class="name"><code>ax</code></td>
+                <td class="name"><code>ap1x</code></td>
             
 
             <td class="type">
@@ -2203,14 +1973,14 @@
 
             
 
-            <td class="description last">a point x coord</td>
+            <td class="description last">first anchor point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ay</code></td>
+                <td class="name"><code>ap1y</code></td>
             
 
             <td class="type">
@@ -2226,14 +1996,14 @@
 
             
 
-            <td class="description last">a point y coord</td>
+            <td class="description last">first anchor point y coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>bx</code></td>
+                <td class="name"><code>ap2x</code></td>
             
 
             <td class="type">
@@ -2249,14 +2019,14 @@
 
             
 
-            <td class="description last">b point x coord</td>
+            <td class="description last">second anchor point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>by</code></td>
+                <td class="name"><code>ap2y</code></td>
             
 
             <td class="type">
@@ -2272,99 +2042,7 @@
 
             
 
-            <td class="description last">b point y coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cx</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point x coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point y coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dx</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">d point x coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">d point y coord</td>
+            <td class="description last">second anchor point y coord</td>
         </tr>
 
     
@@ -2405,7 +2083,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line51">line 51</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -2441,7 +2119,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -2459,7 +2137,7 @@
     
 
     
-    <h4 class="name" id="quad"><span class="type-signature"></span>quad<span class="signature">(ax, ay, bx, by, cx, cy, dx, dy)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="anchorpts"><span class="type-signature"></span>anchorpts<span class="signature">(ap1x, ap1y, ap2x, ap2y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -2467,7 +2145,7 @@
 
 
 <div class="description">
-    Create a quad polygon.
+    Specify the anchor points.The position is always equal to the first anchor point.
 </div>
 
 
@@ -2503,7 +2181,7 @@
 
         <tr>
             
-                <td class="name"><code>ax</code></td>
+                <td class="name"><code>ap1x</code></td>
             
 
             <td class="type">
@@ -2519,14 +2197,14 @@
 
             
 
-            <td class="description last">a point x coord</td>
+            <td class="description last">first anchor point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ay</code></td>
+                <td class="name"><code>ap1y</code></td>
             
 
             <td class="type">
@@ -2542,14 +2220,14 @@
 
             
 
-            <td class="description last">a point y coord</td>
+            <td class="description last">first anchor point y coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>bx</code></td>
+                <td class="name"><code>ap2x</code></td>
             
 
             <td class="type">
@@ -2565,14 +2243,14 @@
 
             
 
-            <td class="description last">b point x coord</td>
+            <td class="description last">second anchor point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>by</code></td>
+                <td class="name"><code>ap2y</code></td>
             
 
             <td class="type">
@@ -2588,99 +2266,7 @@
 
             
 
-            <td class="description last">b point y coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cx</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point x coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point y coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dx</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">d point x coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">d point y coord</td>
+            <td class="description last">second anchor point y coord</td>
         </tr>
 
     
@@ -2721,7 +2307,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line51">line 51</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -2757,7 +2343,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -2775,7 +2361,7 @@
     
 
     
-    <h4 class="name" id="tri"><span class="type-signature"></span>tri<span class="signature">(ax, ay, bx, dy, cx, cy)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="controlpts"><span class="type-signature"></span>controlpts<span class="signature">(cp1x, cp1y, cp2x, cp2y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -2783,7 +2369,7 @@
 
 
 <div class="description">
-    Create a triangle polygon.
+    Specify the control points
 </div>
 
 
@@ -2819,7 +2405,7 @@
 
         <tr>
             
-                <td class="name"><code>ax</code></td>
+                <td class="name"><code>cp1x</code></td>
             
 
             <td class="type">
@@ -2835,14 +2421,14 @@
 
             
 
-            <td class="description last">a point x coord</td>
+            <td class="description last">first control point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ay</code></td>
+                <td class="name"><code>cp1y</code></td>
             
 
             <td class="type">
@@ -2858,14 +2444,14 @@
 
             
 
-            <td class="description last">a point y coord</td>
+            <td class="description last">first control point y coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>bx</code></td>
+                <td class="name"><code>cp2x</code></td>
             
 
             <td class="type">
@@ -2881,14 +2467,14 @@
 
             
 
-            <td class="description last">b point x coord</td>
+            <td class="description last">second control point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>dy</code></td>
+                <td class="name"><code>cp2y</code></td>
             
 
             <td class="type">
@@ -2904,53 +2490,7 @@
 
             
 
-            <td class="description last">b point y coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cx</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point x coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point y coord</td>
+            <td class="description last">second control point y coord</td>
         </tr>
 
     
@@ -2991,7 +2531,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line69">line 69</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -3027,7 +2567,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -3045,7 +2585,7 @@
     
 
     
-    <h4 class="name" id="tri"><span class="type-signature"></span>tri<span class="signature">(ax, ay, bx, dy, cx, cy)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="controlpts"><span class="type-signature"></span>controlpts<span class="signature">(cp1x, cp1y, cp2x, cp2y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -3053,7 +2593,7 @@
 
 
 <div class="description">
-    Create a triangle polygon.
+    Specify the control points
 </div>
 
 
@@ -3089,7 +2629,7 @@
 
         <tr>
             
-                <td class="name"><code>ax</code></td>
+                <td class="name"><code>cp1x</code></td>
             
 
             <td class="type">
@@ -3105,14 +2645,14 @@
 
             
 
-            <td class="description last">a point x coord</td>
+            <td class="description last">first control point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ay</code></td>
+                <td class="name"><code>cp1y</code></td>
             
 
             <td class="type">
@@ -3128,14 +2668,14 @@
 
             
 
-            <td class="description last">a point y coord</td>
+            <td class="description last">first control point y coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>bx</code></td>
+                <td class="name"><code>cp2x</code></td>
             
 
             <td class="type">
@@ -3151,14 +2691,14 @@
 
             
 
-            <td class="description last">b point x coord</td>
+            <td class="description last">second control point x coord</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>dy</code></td>
+                <td class="name"><code>cp2y</code></td>
             
 
             <td class="type">
@@ -3174,53 +2714,7 @@
 
             
 
-            <td class="description last">b point y coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cx</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point x coord</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">c point y coord</td>
+            <td class="description last">second control point y coord</td>
         </tr>
 
     
@@ -3261,7 +2755,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line69">line 69</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -3297,7 +2791,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -3315,7 +2809,7 @@
     
 
     
-    <h4 class="name" id="vertex"><span class="type-signature"></span>vertex<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="end"><span class="type-signature"></span>end<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -3323,7 +2817,7 @@
 
 
 <div class="description">
-    Push a vertex into the vertices list.
+    Specify the second anchor point
 </div>
 
 
@@ -3375,7 +2869,7 @@
 
             
 
-            <td class="description last">the x coordinate of the vertex</td>
+            <td class="description last">second anchor point x coord</td>
         </tr>
 
     
@@ -3398,7 +2892,7 @@
 
             
 
-            <td class="description last">the y coordiante of the vertex</td>
+            <td class="description last">second anchor point y coord</td>
         </tr>
 
     
@@ -3439,7 +2933,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line20">line 20</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line67">line 67</a>
     </li></ul></dd>
     
 
@@ -3475,7 +2969,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -3493,7 +2987,7 @@
     
 
     
-    <h4 class="name" id="vertex"><span class="type-signature"></span>vertex<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="end"><span class="type-signature"></span>end<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -3501,7 +2995,7 @@
 
 
 <div class="description">
-    Push a vertex into the vertices list.
+    Specify the second anchor point
 </div>
 
 
@@ -3553,7 +3047,7 @@
 
             
 
-            <td class="description last">the x coordinate of the vertex</td>
+            <td class="description last">second anchor point x coord</td>
         </tr>
 
     
@@ -3576,7 +3070,7 @@
 
             
 
-            <td class="description last">the y coordiante of the vertex</td>
+            <td class="description last">second anchor point y coord</td>
         </tr>
 
     
@@ -3617,7 +3111,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line20">line 20</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line67">line 67</a>
     </li></ul></dd>
     
 
@@ -3653,7 +3147,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -3671,7 +3165,7 @@
     
 
     
-    <h4 class="name" id="vertexList"><span class="type-signature"></span>vertexList<span class="signature">(list)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="start"><span class="type-signature"></span>start<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -3679,7 +3173,7 @@
 
 
 <div class="description">
-    Push a list of vertices into the verticles list.
+    Specify the first anchor point.
 </div>
 
 
@@ -3715,13 +3209,13 @@
 
         <tr>
             
-                <td class="name"><code>list</code></td>
+                <td class="name"><code>x</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array</span>
+<span class="param-type">number</span>
 
 
             
@@ -3731,7 +3225,30 @@
 
             
 
-            <td class="description last">the list of vertices</td>
+            <td class="description last">first anchor point x coord</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">first anchor point y coord</td>
         </tr>
 
     
@@ -3772,7 +3289,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line30">line 30</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -3808,7 +3325,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
@@ -3826,7 +3343,7 @@
     
 
     
-    <h4 class="name" id="vertexList"><span class="type-signature"></span>vertexList<span class="signature">(list)</span><span class="type-signature"> &rarr; {<a href="PolygonPrimitive.html">PolygonPrimitive</a>}</span></h4>
+    <h4 class="name" id="start"><span class="type-signature"></span>start<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="BezierPrimitive.html">BezierPrimitive</a>}</span></h4>
     
 
     
@@ -3834,7 +3351,7 @@
 
 
 <div class="description">
-    Push a list of vertices into the verticles list.
+    Specify the first anchor point.
 </div>
 
 
@@ -3870,13 +3387,13 @@
 
         <tr>
             
-                <td class="name"><code>list</code></td>
+                <td class="name"><code>x</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array</span>
+<span class="param-type">number</span>
 
 
             
@@ -3886,7 +3403,30 @@
 
             
 
-            <td class="description last">the list of vertices</td>
+            <td class="description last">first anchor point x coord</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">first anchor point y coord</td>
         </tr>
 
     
@@ -3927,7 +3467,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="draw_polygon.mjs.html">draw/polygon.mjs</a>, <a href="draw_polygon.mjs.html#line30">line 30</a>
+        <a href="draw_bezier.mjs.html">draw/bezier.mjs</a>, <a href="draw_bezier.mjs.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -3963,7 +3503,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="PolygonPrimitive.html">PolygonPrimitive</a></span>
+<span class="param-type"><a href="BezierPrimitive.html">BezierPrimitive</a></span>
 
 
     </dd>
