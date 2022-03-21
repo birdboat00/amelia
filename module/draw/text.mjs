@@ -14,6 +14,7 @@ export class TextPrimitive extends Primitive {
         this.displayString = "";
         this.fontName = "Arial";
         this.fontSize = 12;
+        this.noStroke = true;
     }
 
     /**

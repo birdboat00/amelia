@@ -55,10 +55,13 @@ export class Canvas2DBackend extends Backend {
     }
 
     drawRect(rect) {
-        this.ctx.fillRect(rect.pos.x, rect.pos.y, rect.sz.width, rect.sz.height);
+        if (!rect.noFill) this.ctx.fillRect(rect.pos.x, rect.pos.y, rect.sz.width, rect.sz.height);
+        if (!rect.noStroke) this.ctx.strokeRect(rect.pos.x, rect.pos.y, rect.sz.width, rect.sz.height);
     }
 
     drawLine(line) {
+        if (line.noStroke) return;
+
         this.ctx.lineWidth = line.weight;
 
         this.ctx.beginPath();
@@ -72,18 +75,20 @@ export class Canvas2DBackend extends Backend {
 
         this.ctx.beginPath();
         this.ctx.arc(arc.pos.x, arc.pos.y, arc.rad, arc.startAngle, arc.endAngle);
-        this.ctx.stroke();
-        this.ctx.fill();
+
+        if (!arc.noStroke) this.ctx.stroke();
+        if (!arc.noFill) this.ctx.fill();
     }
 
     drawText(text) {
         this.ctx.font = `${text.fontSize}px ${text.fontName}`;
 
-        this.ctx.fillText(text.displayString, text.pos.x, text.pos.y);
-        this.ctx.strokeText(text.displayString, text.pos.x, text.pos.y);
+        if (!text.noStroke) this.ctx.strokeText(text.displayString, text.pos.x, text.pos.y);
+        if (!text.noFill) this.ctx.fillText(text.displayString, text.pos.x, text.pos.y);
     }
 
     drawPoint(point) {
+        if (point.noStroke) return;
         this.ctx.beginPath();
         this.ctx.ellipse(point.pos.x, point.pos.y, 0.4, 0.4, 0, 0, Math.PI * 2);
         this.ctx.stroke();
@@ -98,11 +103,13 @@ export class Canvas2DBackend extends Backend {
             this.ctx.lineTo(poly.vertices[i].x, poly.vertices[i].y);
         }
         this.ctx.closePath();
-        this.ctx.stroke();
-        this.ctx.fill();
+
+        if (!poly.noStroke) this.ctx.stroke();
+        if (!poly.noFill) this.ctx.fill();
     }
 
     drawBezier(cmd) {
+        if (cmd.noStroke) return;
         this.ctx.lineWdith = cmd.weight;
 
         this.ctx.beginPath();

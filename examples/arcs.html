@@ -26,20 +26,20 @@
                     .radius(20 * i / 2)
                     .start(0)
                     .end(Math.PI * (2 - i / model.iteration))
-                    .color(Color.Transparent,
-                        Color.fromBytes(255, 255, i * 20));
+                    .nofill()
+                    .color(Color.fromBytes(255, 255, i * 20));
             }
 
             let titleText = pen.text()
                 .size(16)
                 .text("Forest Chamomile")
-                .color(Color.Yellow, Color.Transparent);
+                .color(Color.Yellow);
             titleText.xy(300 - titleText.measureWidth() / 2, 540);
 
             let text = pen.text()
                 .size(14)
                 .text("made with amelia by birdboat00")
-                .color(Color.White, Color.Transparent);
+                .color(Color.White);
             text.xy(300 - text.measureWidth() / 2, 560);
 
             pen.plot();

@@ -13,6 +13,8 @@ export class Primitive extends DrawCommand {
     rotation;
     fillCol;
     strokeCol;
+    noFill;
+    noStroke;
 
     constructor() {
         super();
@@ -21,6 +23,8 @@ export class Primitive extends DrawCommand {
         this.fillCol = Color.Black;
         this.weight = 1;
         this.rotation = 0;
+        this.noFill = false;
+        this.noStroke = false;
     }
 
     /**
@@ -90,14 +94,58 @@ export class Primitive extends DrawCommand {
     }
 
     /**
+     * Specify if the primitive shape should be filled with the
+     * fill color.
+     * @param {boolean} fill should fill the shape
+     * @returns {Primitive}
+     */
+    dofill(fill = true) {
+        this.noFill = !fill;
+        return this;
+    }
+
+    /**
+     * Don't fill the shape.
+     * Shorthand for dofill(false)
+     * @returns {Primitive}
+     */
+    nofill() {
+        this.noFill = true;
+        return this;
+    }
+
+    /**
+     * Specify if the primitive shape should be stroked with the
+     * stroke color.
+     * @param {boolean} stroke should stroke the shape
+     * @returns {Primitive}
+     */
+    dostroke(stroke = true) {
+        this.noStroke = !stroke;
+        return this;
+    }
+
+    /**
+     * Don't stroke the shape.
+     * Shorthand for dostroke(false)
+     * @returns {Primitive}
+     */
+    nostroke() {
+        this.noStroke = true;
+        return this;
+    }
+
+    /**
      * --- INTERNAL ---
      * Generate the command list for the primitive
      * @returns {Array}
      */
     genCmdList() {
-        return [
-            new SetColor(this.fillCol, this.strokeCol),
-            new SetRotation(this.rotation, this.pos.x, this.pos.y)
-        ];
+        let list = super.genCmdList();
+        if(!(this.noStroke && this.noFill)) {
+            list.push(new SetColor(this.fillCol, this.strokeCol));
+        }
+        list.push(new SetRotation(this.rotation, this.pos.x, this.pos.y));
+        return list;
     }
 }

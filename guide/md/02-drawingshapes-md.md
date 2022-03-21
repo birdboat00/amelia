@@ -17,6 +17,8 @@ position and setting the color.
 - `color(fillColor, strokeColor)` to set the fill and stroke colors
 of the primitive. If no stroke color is passed it will use the fill
 color.
+- `dostroke(stroke)` and `nostroke()` to set if the shape should be stroked
+- `dofill(fill)` and `nofill()` to set if the shape should be filled
 
 You can also modify the pixels of the canvas directly using the
 `pixelbuffer(bufferModifyFn)` function on the apps pen.
@@ -132,6 +134,8 @@ Text has some text, a font and a font size. Those are set using
 - `text(string)` to set the text
 - `font(fontName)` to set the font name
 - `size(fontSize)` to set the font size
+
+By default `noStroke` is set to true on text.
 
 Text also has a handy function called `measureWidth()`. It measures the width in pixels of the text with its
 current settings and returns it.
