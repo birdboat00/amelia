@@ -197,6 +197,28 @@ export class AppBuilder {
     }
 
     /**
+     * Set the loop mode to LoopMode.FrameRate(frameRate).
+     * Shorthand for loopmode(LoopMode.FrameRate(frameRate))
+     * @param {number} frameRate the framerate the app should run at
+     * @returns {AppBuilder}
+     */
+    framerate(frameRate) {
+        this.loopMode = LoopMode.FrameRate(frameRate);
+        return this;
+    }
+
+    /**
+     * Set the loop mode to LoopMode.NTimes(times).
+     * Shorthand for loopmode(LoopMode.NTimes(times))
+     * @param {number} times iterations the app should run
+     * @returns {AppBuilder}
+     */
+    ntimes(times) {
+        this.loopMode = LoopMode.NTimes(times);
+        return this;
+    }
+
+    /**
      * Build and run an @type {App} with the specified parameters.
      * This function will not return until the app has exited.
      */

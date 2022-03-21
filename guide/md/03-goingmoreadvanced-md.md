@@ -72,7 +72,8 @@ determine how often your app gets rendered per second or how of the
 view function getscalled before the app stops calling it. But more on
 that later.
 
-This is done by calling `loopmode(loopMode)` with the loop mode you want.
+This is done by calling `loopmode(loopMode)`, `framerate(frameRate)` or
+`ntimes(times)`.
 If you want your app to render the canvas just once (which is done for
 most of the examples on this page) you can call the shorthand function
 `once()` which is a shorthand to calling `loopmode(LoopMode.Once())`.
@@ -84,8 +85,10 @@ frames per second on a 60hz monitor.
 ```
 // Runs the app at 10 frames per second
 app().loopmode(LoopMode.FrameRate(10));
+app().framerate(10);
 // Calls the app view function 5 times and then stops
 app().loopmode(LoopMode.NTimes(5));
+app().ntimes(5);
 // Calls the app view function only once
 app().once();
 ```
