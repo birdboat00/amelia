@@ -9,6 +9,7 @@ import { PolygonPrimitive } from "./polygon.mjs";
 import { RectPrimitive } from "./rect.mjs";
 import { SetBlendMode, SetColor, SetOrigin, SetRotation } from "./state.mjs";
 import { TextPrimitive } from "./text.mjs";
+import { QuadraticCurve } from "./quadratic.mjs";
 
 /**
  * The drawer (pen of the app). This handles creating draw commands
@@ -165,6 +166,16 @@ export class Drawer {
         return b;
     }
 
+    /**
+     * Begin drawing a quadratic curve.
+     * @returns {QuadraticCurve}
+     */
+    quadratic() {
+        let q = new QuadraticCurve();
+        this.queue.push(q);
+        return q;
+    }
+
     finish() {
         const processCmd = (cmd) => {
 
@@ -194,6 +205,8 @@ export class Drawer {
                 this.backend.setRotation(cmd);
             } else if (cmd instanceof BezierPrimitive) {
                 this.backend.drawBezier(cmd);
+            } else if (cmd instanceof QuadraticCurve) {
+                this.backend.drawQuadratic(cmd);
             }
         };
 

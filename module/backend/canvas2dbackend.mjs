@@ -110,11 +110,21 @@ export class Canvas2DBackend extends Backend {
 
     drawBezier(cmd) {
         if (cmd.noStroke) return;
-        this.ctx.lineWdith = cmd.weight;
+        this.ctx.lineWidth = cmd.weight;
 
         this.ctx.beginPath();
         this.ctx.moveTo(cmd.pos.x, cmd.pos.y);
         this.ctx.bezierCurveTo(cmd.cp1x, cmd.cp1y, cmd.cp2x, cmd.cp2y, cmd.ap2x, cmd.ap2y);
+        this.ctx.stroke();
+    }
+
+    drawQuadratic(cmd) {
+        if (cmd.noStroke) return;
+        this.ctx.lineWidth = cmd.weight;
+
+        this.ctx.beginPath();
+        this.ctx.moveTo(cmd.pos.x, cmd.pos.y);
+        this.ctx.quadraticCurveTo(cmd.cpx, cmd.cpy, cmd.endx, cmd.endy);
         this.ctx.stroke();
     }
 

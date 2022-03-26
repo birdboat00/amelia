@@ -11,3 +11,4 @@ export * from "./state.mjs";
 export * from "./text.mjs";
 export * from "./pixelbuffer.mjs";
 export * from "./bezier.mjs";
+export * from "./quadratic.mjs";

@@ -13,6 +13,7 @@ export class Backend {
     drawPoint(point) { }
     drawPolygon(polygon) { }
     drawBezier(bezier) { }
+    drawQuadratic(cmd) { }
     clearBackground(bg) { }
     modifyPixelBuffer(pixelBuf) { }
 }

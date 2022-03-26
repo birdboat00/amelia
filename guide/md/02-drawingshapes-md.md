@@ -7,6 +7,7 @@ Here is a list:
 - [Lines](#lines)
 - [Arcs](#arcs)
 - [Bezier Curves](#bezier-curves)
+- [Quadratic Curves](#quadratic-curves)
 - [Points](#points)
 - [Polygons](#polygons)
 - [Text](#text)
@@ -103,6 +104,18 @@ This primitive creates cubic bezier curves.
 - `controlpts(cp1x, cp1y, cp2x, cp2y)` and `anchorpts(ap1x, ap1y, ap2x, ap2y)` to set the control and anchor points.
 
 The first anchor point is always equal to the position of the primitive.
+
+## Quadratic Curves
+This primitive creates a quadratic curve.
+
+<div class="cc"><div class="example" id="shqc-ex">
+    <a target="_blank" class="sclink" href="../editor/?source=../guide/sketches/shapes-quadratic.mjs">Look at code</a>
+</div></div>
+
+- `controlpt(x, y)` to set the control point (amber in the example)
+- `anchorpts(startX, startY, endX, endY)` to set the start and end points (blue in the example)
+
+The start anchor point is always equal to the position of the primitive.
 
 ## Points
 Points are single pixels!
