@@ -1,4 +1,7 @@
-# amelia
+# DEPRECATED - LOOK AT AJNOR
+[ajnor](https://github.com/birdboat00/ajnor/) ajnor is a new framework created by me for JS. It has a more functional style API.
+
+## amelia
 
 Amelia is an open-source creative-coding toolkit for modern JavaScript.
 
